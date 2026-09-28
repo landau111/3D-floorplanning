@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="480">
+<style>text{font:13px Arial,sans-serif}.title{font-size:17px;font-weight:bold}</style>
+<text class="title" x="25" y="25">Pareto screening: assumed_conductance_proxy</text>
+<rect x="65" y="65" width="410" height="320" fill="#f7fafc" stroke="#333"/>
+<circle cx="281.11" cy="385.00" r="7" fill="#6a4c93" stroke="white"><title>balanced: (0.4030481758194291, 1500, 80.63144001226047)</title></circle>
+<circle cx="222.31" cy="335.36" r="4" fill="#2364aa" stroke="white"><title>balanced: (0.3835738689010231, 1620, 81.55354400925587)</title></circle>
+<circle cx="241.30" cy="300.17" r="3" fill="#b8c4cc" stroke="white"><title>wire: (0.38986314015843576, 2300, 82.20726374860007)</title></circle>
+<circle cx="467.30" cy="383.36" r="4" fill="#2364aa" stroke="white"><title>wire: (0.464710747306174, 930, 80.66196767157217)</title></circle>
+<circle cx="127.39" cy="227.69" r="7" fill="#f77f00" stroke="white"><title>wire: (0.3521374469004412, 2800, 83.55368848162146)</title></circle>
+<circle cx="65.00" cy="65.00" r="7" fill="#d62828" stroke="white"><title>wire: (0.33147662578606474, 2530, 86.5756965925807)</title></circle>
+<circle cx="312.36" cy="241.81" r="3" fill="#b8c4cc" stroke="white"><title>thermal: (0.4133971276758301, 1010, 83.29138964321751)</title></circle>
+<circle cx="342.60" cy="301.34" r="3" fill="#b8c4cc" stroke="white"><title>thermal: (0.42341221211267926, 2480, 82.18557343409421)</title></circle>
+<circle cx="475.00" cy="185.25" r="3" fill="#b8c4cc" stroke="white"><title>thermal: (0.4672598973158661, 980, 84.34199504799957)</title></circle>
+<circle cx="322.96" cy="279.32" r="7" fill="#0a9396" stroke="white"><title>bond: (0.4169060226417917, 830, 82.59444121788553)</title></circle>
+<circle cx="300.24" cy="349.26" r="4" fill="#2364aa" stroke="white"><title>bond: (0.40938449675187705, 930, 81.29530795387073)</title></circle>
+<circle cx="236.18" cy="179.48" r="4" fill="#2364aa" stroke="white"><title>bond: (0.38816698136760713, 1010, 84.44913063188297)</title></circle>
+<circle cx="282.18" cy="374.47" r="3" fill="#b8c4cc" stroke="white"><title>anchor: (0.4034028252524059, 2530, 80.82697911834106)</title></circle>
+<circle cx="250.83" cy="300.62" r="3" fill="#b8c4cc" stroke="white"><title>anchor: (0.3930182976640244, 2120, 82.19879196193754)</title></circle>
+<text x="65" y="410">mean weighted wire length (mm): 0.331 to 0.467</text>
+<text x="65" y="430">peak temperature (C): 80.6 to 86.6</text>
+<rect x="595" y="65" width="410" height="320" fill="#f7fafc" stroke="#333"/>
+<circle cx="734.44" cy="385.00" r="7" fill="#6a4c93" stroke="white"><title>balanced: (0.4030481758194291, 1500, 80.63144001226047)</title></circle>
+<circle cx="759.42" cy="335.36" r="4" fill="#2364aa" stroke="white"><title>balanced: (0.3835738689010231, 1620, 81.55354400925587)</title></circle>
+<circle cx="900.94" cy="300.17" r="3" fill="#b8c4cc" stroke="white"><title>wire: (0.38986314015843576, 2300, 82.20726374860007)</title></circle>
+<circle cx="615.81" cy="383.36" r="4" fill="#2364aa" stroke="white"><title>wire: (0.464710747306174, 930, 80.66196767157217)</title></circle>
+<circle cx="1005.00" cy="227.69" r="7" fill="#f77f00" stroke="white"><title>wire: (0.3521374469004412, 2800, 83.55368848162146)</title></circle>
+<circle cx="948.81" cy="65.00" r="7" fill="#d62828" stroke="white"><title>wire: (0.33147662578606474, 2530, 86.5756965925807)</title></circle>
+<circle cx="632.46" cy="241.81" r="3" fill="#b8c4cc" stroke="white"><title>thermal: (0.4133971276758301, 1010, 83.29138964321751)</title></circle>
+<circle cx="938.40" cy="301.34" r="3" fill="#b8c4cc" stroke="white"><title>thermal: (0.42341221211267926, 2480, 82.18557343409421)</title></circle>
+<circle cx="626.22" cy="185.25" r="3" fill="#b8c4cc" stroke="white"><title>thermal: (0.4672598973158661, 980, 84.34199504799957)</title></circle>
+<circle cx="595.00" cy="279.32" r="7" fill="#0a9396" stroke="white"><title>bond: (0.4169060226417917, 830, 82.59444121788553)</title></circle>
+<circle cx="615.81" cy="349.26" r="4" fill="#2364aa" stroke="white"><title>bond: (0.40938449675187705, 930, 81.29530795387073)</title></circle>
+<circle cx="632.46" cy="179.48" r="4" fill="#2364aa" stroke="white"><title>bond: (0.38816698136760713, 1010, 84.44913063188297)</title></circle>
+<circle cx="948.81" cy="374.47" r="3" fill="#b8c4cc" stroke="white"><title>anchor: (0.4034028252524059, 2530, 80.82697911834106)</title></circle>
+<circle cx="863.48" cy="300.62" r="3" fill="#b8c4cc" stroke="white"><title>anchor: (0.3930182976640244, 2120, 82.19879196193754)</title></circle>
+<text x="595" y="410">cross-layer signals: 830 to 2.8e+03</text>
+<text x="595" y="430">peak temperature (C): 80.6 to 86.6</text>
+<text x="30" y="460" fill="#2364aa">Blue: nondominated; gray: dominated; colors: selected layouts</text>
+</svg>

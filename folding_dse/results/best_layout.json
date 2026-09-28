@@ -1,0 +1,194 @@
+{
+  "config": "config.yaml",
+  "seed": 20260929,
+  "baseline": {
+    "description": "Anchor-biased packing before annealing",
+    "metrics": {
+      "score": 0.2952631680160674,
+      "weighted_wirelength_mm_signals": 4947.136011914683,
+      "mean_weighted_manhattan_mm": 0.4530344333255204,
+      "cross_layer_signals": 1080,
+      "estimated_peak_bond_density_per_mm2": 3449.0181120427765,
+      "bond_density_limit_per_mm2": 16000.0,
+      "total_bond_capacity": 16016.0,
+      "estimated_thermal_hotspot_index": 1.3809069747166929,
+      "layer_area_mm2": {
+        "bottom": 0.318,
+        "top": 0.409
+      },
+      "layer_power_w": {
+        "bottom": 1.78,
+        "top": 4.03
+      },
+      "anchor_displacement_normalized": 0.038586660460215756,
+      "feasible": true
+    }
+  },
+  "metrics": {
+    "score": 0.20187657014583124,
+    "weighted_wirelength_mm_signals": 3074.999651917805,
+    "mean_weighted_manhattan_mm": 0.2815933747177477,
+    "cross_layer_signals": 1140,
+    "estimated_peak_bond_density_per_mm2": 5824.257931906562,
+    "bond_density_limit_per_mm2": 16000.0,
+    "total_bond_capacity": 16016.0,
+    "estimated_thermal_hotspot_index": 1.0503547137446567,
+    "layer_area_mm2": {
+      "bottom": 0.422,
+      "top": 0.305
+    },
+    "layer_power_w": {
+      "bottom": 3.14,
+      "top": 2.67
+    },
+    "anchor_displacement_normalized": 0.2207536240751606,
+    "feasible": true
+  },
+  "modules": {
+    "l2_b0": {
+      "x_mm": 0.035,
+      "y_mm": 0.055,
+      "w_mm": 0.26,
+      "h_mm": 0.35,
+      "layer": "bottom"
+    },
+    "l2_b1": {
+      "x_mm": 0.805,
+      "y_mm": 0.055,
+      "w_mm": 0.26,
+      "h_mm": 0.35,
+      "layer": "bottom"
+    },
+    "vec_vx": {
+      "x_mm": 0.459632892814148,
+      "y_mm": 0.09979740674834159,
+      "w_mm": 0.2917533204609675,
+      "h_mm": 0.2193633988428327,
+      "layer": "top"
+    },
+    "ix": {
+      "x_mm": 0.7133457283915329,
+      "y_mm": 0.6350537303798619,
+      "w_mm": 0.19748417658131498,
+      "h_mm": 0.2633122354417533,
+      "layer": "bottom"
+    },
+    "ls": {
+      "x_mm": 0.48785653491837,
+      "y_mm": 0.06706982365885009,
+      "w_mm": 0.15905973720586866,
+      "h_mm": 0.28919952219248846,
+      "layer": "bottom"
+    },
+    "is_int": {
+      "x_mm": 0.7492697214145486,
+      "y_mm": 0.6677879716722007,
+      "w_mm": 0.1816590212458495,
+      "h_mm": 0.2422120283277993,
+      "layer": "top"
+    },
+    "if_pp": {
+      "x_mm": 0,
+      "y_mm": 0.6790598923241498,
+      "w_mm": 0.17320508075688773,
+      "h_mm": 0.2309401076758503,
+      "layer": "top"
+    },
+    "vec_is_vec": {
+      "x_mm": 0.51923883419291,
+      "y_mm": 0.46437475573098586,
+      "w_mm": 0.17320508075688773,
+      "h_mm": 0.2309401076758503,
+      "layer": "top"
+    },
+    "mmu": {
+      "x_mm": 0.5885917713835638,
+      "y_mm": 0.3753532341874805,
+      "w_mm": 0.18708286933869708,
+      "h_mm": 0.18708286933869708,
+      "layer": "bottom"
+    },
+    "is_int_rf": {
+      "x_mm": 0.3292078860098386,
+      "y_mm": 0.6790598923241498,
+      "w_mm": 0.17320508075688773,
+      "h_mm": 0.2309401076758503,
+      "layer": "bottom"
+    },
+    "l2_ctl": {
+      "x_mm": 0.31208511590245336,
+      "y_mm": 0.11143951883134331,
+      "w_mm": 0.14265342617687105,
+      "h_mm": 0.2593698657761292,
+      "layer": "bottom"
+    },
+    "id": {
+      "x_mm": 0.2666699105217115,
+      "y_mm": 0.7436575432196996,
+      "w_mm": 0.2509980079602227,
+      "h_mm": 0.13944333775567924,
+      "layer": "top"
+    },
+    "rn": {
+      "x_mm": 0.5544253318589694,
+      "y_mm": 0.7339318313834099,
+      "w_mm": 0.17606816861659008,
+      "h_mm": 0.1760681686165901,
+      "layer": "top"
+    },
+    "is_int_fwd": {
+      "x_mm": 0.5199837572024728,
+      "y_mm": 0.7100026658870455,
+      "w_mm": 0.17320508075688773,
+      "h_mm": 0.17320508075688773,
+      "layer": "bottom"
+    },
+    "tpe": {
+      "x_mm": 0.13110672409275131,
+      "y_mm": 0.3638571397014829,
+      "w_mm": 0.16431676725154984,
+      "h_mm": 0.16431676725154984,
+      "layer": "top"
+    },
+    "if_ctl": {
+      "x_mm": 0.1950595641751713,
+      "y_mm": 0.5836025089068403,
+      "w_mm": 0.17866169147301836,
+      "h_mm": 0.1343320988518935,
+      "layer": "top"
+    }
+  },
+  "search_history": [
+    {
+      "restart": 1,
+      "final_score": 0.207093,
+      "final_feasible": true,
+      "accepted_moves": 2992
+    },
+    {
+      "restart": 2,
+      "final_score": 0.214186,
+      "final_feasible": true,
+      "accepted_moves": 2945
+    },
+    {
+      "restart": 3,
+      "final_score": 0.21534,
+      "final_feasible": true,
+      "accepted_moves": 3121
+    },
+    {
+      "restart": 4,
+      "final_score": 0.223092,
+      "final_feasible": true,
+      "accepted_moves": 2915
+    },
+    {
+      "restart": 5,
+      "final_score": 0.224276,
+      "final_feasible": true,
+      "accepted_moves": 2862
+    }
+  ],
+  "model_limits": "Proxy only: modules are rectangles; signal bundles are spread uniformly over enlarged endpoint hulls; thermal index is Gaussian power smoothing; no pins, timing graph, detailed routing, bond legalization, or calibrated thermal model."
+}

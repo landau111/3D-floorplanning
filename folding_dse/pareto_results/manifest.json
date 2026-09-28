@@ -1,0 +1,57 @@
+{
+  "config": "config_enlarged.yaml",
+  "candidate_count": 14,
+  "pareto_count": 8,
+  "selected": [
+    {
+      "layout": "layout_01",
+      "profile": "wire",
+      "pareto": true,
+      "wire_mm": 0.33147662578606474,
+      "cross_layer_signals": 2530,
+      "pareto_peak_temperature_C": 86.5756965925807,
+      "temperature_backend": "assumed_conductance_proxy",
+      "peak_temperature_C": 86.5756965925807
+    },
+    {
+      "layout": "layout_02",
+      "profile": "bond",
+      "pareto": true,
+      "wire_mm": 0.4169060226417917,
+      "cross_layer_signals": 830,
+      "pareto_peak_temperature_C": 82.59444121788553,
+      "temperature_backend": "assumed_conductance_proxy",
+      "peak_temperature_C": 82.59444121788553
+    },
+    {
+      "layout": "layout_03",
+      "profile": "balanced",
+      "pareto": true,
+      "wire_mm": 0.4030481758194291,
+      "cross_layer_signals": 1500,
+      "pareto_peak_temperature_C": 80.63144001226047,
+      "temperature_backend": "assumed_conductance_proxy",
+      "peak_temperature_C": 80.63144001226047
+    },
+    {
+      "layout": "layout_04",
+      "profile": "wire",
+      "pareto": true,
+      "wire_mm": 0.3521374469004412,
+      "cross_layer_signals": 2800,
+      "pareto_peak_temperature_C": 83.55368848162146,
+      "temperature_backend": "assumed_conductance_proxy",
+      "peak_temperature_C": 83.55368848162146
+    }
+  ],
+  "thermal_warning": "Proxy temperatures use uncalibrated conductances; HotSpot temperatures also require calibrated package/material/power input.",
+  "area_feasibility": {
+    "requested_multiplier": 3.0,
+    "applied_multiplier": 1.7,
+    "requested_total_area_mm2": 2.181,
+    "applied_total_area_mm2": 1.2359,
+    "two_layer_area_capacity_mm2": 1.3337999999999999,
+    "requested_area_feasible": false,
+    "note": "Area is only a necessary condition; rectangle packing and spacing are checked during search."
+  }
+}

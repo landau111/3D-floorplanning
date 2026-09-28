@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1214" height="533" viewBox="0 0 1214 533">
+<style>text{font:12px Arial,sans-serif}.title{font-weight:bold;font-size:17px}.hard{fill:#64748b}.soft{fill:#4f9cbb;stroke:#17435a;stroke-width:1}</style>
+<text class="title" x="30.0" y="25">bottom</text>
+<rect x="30.0" y="45" width="517.0" height="427.7" fill="#f7fafc" stroke="#222"/>
+<rect class="hard" x="46.45" y="232.37" width="159.33" height="214.48"/>
+<text x="49.45" y="248.37" fill="white">l2_b0</text>
+<rect class="hard" x="371.22" y="232.37" width="159.33" height="214.48"/>
+<text x="374.22" y="248.37" fill="white">l2_b1</text>
+<rect class="soft" x="195.51" y="67.60" width="164.43" height="91.35"/>
+<text x="198.51" y="83.60" fill="#082b3a">if_pp</text>
+<rect class="soft" x="213.07" y="302.62" width="117.88" height="117.88"/>
+<text x="216.07" y="318.62" fill="#082b3a">l2_ctl</text>
+<rect class="soft" x="221.61" y="175.86" width="114.65" height="114.65"/>
+<text x="224.61" y="191.86" fill="#082b3a">mmu</text>
+<rect class="soft" x="30.00" y="70.74" width="85.02" height="154.59"/>
+<text x="33.00" y="86.74" fill="#082b3a">id</text>
+<rect class="soft" x="428.83" y="83.21" width="74.68" height="135.78"/>
+<text x="431.83" y="99.21" fill="#082b3a">tpe</text>
+<text class="title" x="622.0" y="25">top</text>
+<rect x="622.0" y="45" width="517.0" height="427.7" fill="#f7fafc" stroke="#222"/>
+<rect class="soft" x="1024.03" y="262.26" width="114.97" height="209.04"/>
+<text x="1027.03" y="278.26" fill="#082b3a">vec_vx</text>
+<rect class="soft" x="717.68" y="70.96" width="103.63" height="188.43"/>
+<text x="720.68" y="86.96" fill="#082b3a">ix</text>
+<rect class="soft" x="839.10" y="192.29" width="131.43" height="131.43"/>
+<text x="842.10" y="208.29" fill="#082b3a">ls</text>
+<rect class="soft" x="622.00" y="289.30" width="128.54" height="128.54"/>
+<text x="625.00" y="305.30" fill="#082b3a">is_int</text>
+<rect class="soft" x="983.67" y="116.83" width="141.34" height="106.27"/>
+<text x="986.67" y="132.83" fill="#082b3a">vec_is_vec</text>
+<rect class="soft" x="761.41" y="331.18" width="106.14" height="141.52"/>
+<text x="764.41" y="347.18" fill="#082b3a">is_int_rf</text>
+<rect class="soft" x="624.84" y="84.88" width="80.02" height="145.49"/>
+<text x="627.84" y="100.88" fill="#082b3a">rn</text>
+<rect class="soft" x="880.67" y="329.39" width="78.72" height="143.12"/>
+<text x="883.67" y="345.39" fill="#082b3a">is_int_fwd</text>
+<rect class="soft" x="855.71" y="74.21" width="82.22" height="109.62"/>
+<text x="858.71" y="90.21" fill="#082b3a">if_ctl</text>
+</svg>

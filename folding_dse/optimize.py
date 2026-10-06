@@ -2,10 +2,12 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import csv
 import json
 import math
 import random
+import re
 from pathlib import Path
 
 
@@ -13,16 +15,113 @@ SHAPES = (0.55, 0.75, 1.0, 1.33, 1.8)  # width / height; area remains exact
 LAYERS = ("bottom", "top")
 
 
+def _scalar(value: str):
+    value = value.strip()
+    if value.startswith("[") and value.endswith("]"):
+        contents = value[1:-1].strip()
+        return [_scalar(part) for part in contents.split(",")] if contents else []
+    if re.fullmatch(r"[+-]?\d+", value):
+        return int(value)
+    if re.fullmatch(r"[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?", value):
+        return float(value)
+    if value in ("true", "false"):
+        return value == "true"
+    if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_-]*", value):
+        raise ValueError(f"Unsupported YAML scalar in compact configuration: {value!r}")
+    return value
+
+
+def _parse_compact_yaml(raw: str) -> dict:
+    """Read the user's original flat-key/list YAML style without third-party modules."""
+    data = {}
+    current = None
+    for number, source in enumerate(raw.splitlines(), 1):
+        line = source.split("#", 1)[0].rstrip()
+        if not line.strip():
+            continue
+        stripped = line.strip()
+        if stripped.startswith("- "):
+            if current is None or not isinstance(data[current], list):
+                raise ValueError(f"Line {number}: list item has no list key")
+            item = stripped[2:].strip()
+            if ": " in item and not item.startswith("["):
+                key, value = item.split(": ", 1)
+                data[current].append({key: _scalar(value)})
+            else:
+                data[current].append(_scalar(item))
+            continue
+        if line[0].isspace():
+            if current != "power_w" or not isinstance(data[current], dict) or ": " not in stripped:
+                raise ValueError(f"Line {number}: unsupported nested entry")
+            key, value = stripped.split(": ", 1)
+            data[current][key] = _scalar(value)
+            continue
+        if ":" not in line:
+            raise ValueError(f"Line {number}: expected 'key: value' or a comment")
+        key, value = line.split(":", 1)
+        key, value = key.strip(), value.strip()
+        if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key) or key in data:
+            raise ValueError(f"Line {number}: invalid or duplicate key {key!r}")
+        if value:
+            data[key] = _scalar(value)
+            current = None
+        else:
+            data[key] = {} if key == "power_w" else []
+            current = key
+    return data
+
+
+def _normalize_compact_config(raw: dict) -> dict:
+    if "modules" in raw:
+        return raw
+    base = json.loads((Path(__file__).parent / "config.yaml").read_text(encoding="utf-8"))
+    result = copy.deepcopy(base)
+    result["provenance"] = "Synthetic assumptions from the compact user-style YAML input; solver defaults from config.yaml."
+    fixed = list(raw["fixed_bottom"]) + list(raw["fixed_top"])
+    movable = list(raw["movable_modules"])
+    names = fixed + movable
+    if len(names) != len(set(names)) or set(raw["power_w"]) != set(names):
+        raise ValueError("Module lists and power_w must name the same modules exactly once")
+    result["modules"] = {}
+    for name in names:
+        geometry = raw.get(name)
+        if not isinstance(geometry, list) or len(geometry) != (4 if name in fixed else 3):
+            raise ValueError(f"Invalid geometry list for {name}")
+        result["modules"][name] = ({"kind": "hard", "rect": geometry, "power_w": raw["power_w"][name]}
+                                    if name in fixed else
+                                    {"kind": "soft", "anchor": geometry[:2], "area_mm2": geometry[2],
+                                     "power_w": raw["power_w"][name]})
+    result["fixed_bottom"] = list(raw["fixed_bottom"])
+    result["fixed_top"] = list(raw["fixed_top"])
+    result["movable_initial_layer"] = {}
+    for pair in raw["movable_initial_layer"]:
+        if not isinstance(pair, dict) or len(pair) != 1:
+            raise ValueError("movable_initial_layer entries must be '- module: layer'")
+        name, layer = next(iter(pair.items()))
+        if name in result["movable_initial_layer"]:
+            raise ValueError(f"Duplicate initial layer: {name}")
+        result["movable_initial_layer"][name] = layer
+    result["interconnect"] = raw["interconnect"]
+    for key in ("die_width_mm", "die_height_mm", "die_area_limit_mm2", "area_margin",
+                "bond_pitch_um", "bond_window_mm", "bond_reserve_fraction", "module_gap_mm",
+                "max_density_per_mm2"):
+        if key in raw:
+            result[key] = raw[key]
+    return result
+
+
 def load_config(path: Path) -> dict:
     raw = path.read_text(encoding="utf-8")
     try:
-        return json.loads(raw)  # JSON is also YAML 1.2; no dependency for bundled runtime.
+        parsed = json.loads(raw)  # JSON is also YAML 1.2; no dependency for bundled runtime.
     except json.JSONDecodeError:
         try:
             import yaml
-        except ImportError as exc:
-            raise SystemExit("For non-JSON YAML, install PyYAML (pip install pyyaml).") from exc
-        return yaml.safe_load(raw)
+        except ImportError:
+            parsed = _parse_compact_yaml(raw)
+        else:
+            parsed = yaml.safe_load(raw)
+    return _normalize_compact_config(parsed)
 
 
 def validate(c: dict) -> None:

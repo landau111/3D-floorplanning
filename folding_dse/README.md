@@ -6,6 +6,12 @@
 
 Python 3.10+；随附的 `config.yaml` 是 JSON 格式的 YAML 1.2 文件，因此只用标准库。普通 YAML 语法需要安装 PyYAML。
 
+另附 [folding_dse_annealing_cfg.yaml](folding_dse_annealing_cfg.yaml)：按原参数草案的分段、模块顺序、`模块名: [参数]` 和 `- 项目` 列表写法补齐。这个固定的简洁 YAML 样式可以由 `optimize.py` 的内置解析器直接读取，无需 PyYAML；若改用任意嵌套 YAML 结构，则仍需 PyYAML。说明文字必须以 `#` 开头，键值用 `:`，列表项用 `- `，缩进和层级必须符合 YAML 语法。运行：
+
+```powershell
+python folding_dse/optimize.py folding_dse/folding_dse_annealing_cfg.yaml --output folding_dse/compact_results
+```
+
 ```powershell
 python folding_dse/optimize.py folding_dse/config.yaml --output folding_dse/results
 python folding_dse/test_optimize.py

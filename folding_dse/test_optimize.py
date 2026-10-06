@@ -10,6 +10,7 @@ from thermal import hotspot_inputs, proxy_temperature
 
 
 CONFIG = Path(__file__).parent / "config.yaml"
+COMPACT_CONFIG = Path(__file__).parent / "folding_dse_annealing_cfg.yaml"
 
 
 class ExplorerTests(unittest.TestCase):
@@ -25,6 +26,17 @@ class ExplorerTests(unittest.TestCase):
         self.assertTrue(o.geometry_ok(self.c, first))
         for name in self.c["fixed_bottom"]:
             self.assertEqual(first[name][4], "bottom")
+
+    def test_original_style_yaml_is_executable(self):
+        compact = o.load_config(COMPACT_CONFIG)
+        o.validate(compact)
+        self.assertEqual(len(compact["modules"]), 16)
+        self.assertEqual(compact["interconnect"][0], ["l2_b0", "l2_ctl", 5000])
+        self.assertTrue(o.geometry_ok(compact, o.construct(compact, random.Random(1))))
+        source = COMPACT_CONFIG.read_text(encoding="utf-8")
+        changed = source.replace("if_pp: [0.18, 0.61, 0.0680]", "if_pp: [0.18, 0.61, 0.0700]")
+        parsed = o._normalize_compact_config(o._parse_compact_yaml(changed))
+        self.assertEqual(parsed["modules"]["if_pp"]["area_mm2"], .07)
 
     def test_overlap_rejected(self):
         rects = o.initial_fixed(self.c)

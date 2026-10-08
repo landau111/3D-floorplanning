@@ -12,6 +12,7 @@ from pathlib import Path
 from optimize import anneal, load_config, metrics, mutate, validate, write_svg
 from thermal import find_hotspot, run_hotspot, temperature_svg
 from constraints import constraint_feasibility
+from results import default_output, write_coordinates, write_coordinate_summary, write_result_index
 
 
 # Multipliers on user-configured weights. Every actual set is saved with results.
@@ -158,7 +159,7 @@ def thermal_search(config, executable, output, steps, restarts, rounds, profiles
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("config",type=Path)
-    parser.add_argument("--output",type=Path,default=Path(__file__).parent/"local_results")
+    parser.add_argument("--output",type=Path,help="Default: result/YYYY-MM-DD/HHMMSS_explore (Shanghai time)")
     parser.add_argument("--hotspot-exe")
     parser.add_argument("--steps",type=int)
     parser.add_argument("--restarts",type=int)
@@ -178,11 +179,10 @@ def main():
     profiles = args.profiles.split(",")
     if min(steps,restarts,rounds,args.selected) <= 0 or any(p not in PROFILES for p in profiles) or len(set(profiles)) != len(profiles):
         parser.error("Positive search budgets and distinct known profiles required")
-    args.output = args.output.resolve()
+    args.output = (args.output or default_output()).resolve()
+    if args.output.exists() and any(args.output.iterdir()):
+        raise RuntimeError("Output is not empty. Use a new --output directory to preserve provenance.")
     args.output.mkdir(parents=True,exist_ok=True)
-    # New runs in the same output directory must not mix with previous selected layouts.
-    if (args.output/"manifest.json").exists():
-        raise RuntimeError("Output already contains results. Use a new --output directory to preserve provenance.")
     (args.output/"effective_config.json").write_text(json.dumps(config,indent=2),encoding="utf-8")
     (args.output/"constraint_feasibility.json").write_text(json.dumps(feasibility,indent=2),encoding="utf-8")
     shutil.copyfile(str(args.config),str(args.output/"input_config.yaml"))
@@ -193,7 +193,7 @@ def main():
         selected = [min((i for i,flag in enumerate(flags) if flag),key=lambda i:pool[i]["metrics"]["score"])]
     lo = min(v for i in selected for layer in pool[i]["thermal"]["temperature_C"] for row in layer for v in row)
     hi = max(v for i in selected for layer in pool[i]["thermal"]["temperature_C"] for row in layer for v in row)
-    selections = []
+    selections, layouts = [], []
     for rank,i in enumerate(selected,1):
         item = pool[i]
         folder = args.output/"layout_{:02d}".format(rank)
@@ -206,6 +206,8 @@ def main():
                    "thermal":{k:v for k,v in thermal.items() if k != "temperature_C"},
                    "modules":{n:dict(zip(("x_mm","y_mm","w_mm","h_mm","layer"),r)) for n,r in item["rects"].items()}}
         (folder/"layout.json").write_text(json.dumps(payload,indent=2),encoding="utf-8")
+        write_coordinates(folder, payload["modules"])
+        layouts.append((folder.name, payload))
         with (folder/"temperature.csv").open("w",newline="",encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow(["layer","row_from_bottom","column_from_left","temperature_C","backend"])
@@ -237,6 +239,8 @@ def main():
                 "constraint_feasibility":feasibility}
     (args.output/"search_history.json").write_text(json.dumps(history,indent=2),encoding="utf-8")
     (args.output/"manifest.json").write_text(json.dumps(manifest,indent=2),encoding="utf-8")
+    write_coordinate_summary(args.output, layouts)
+    write_result_index(args.output, selections)
     print(json.dumps({"candidates":len(pool),"pareto":sum(flags),"selected":len(selected),"thermal_backend":"HotSpot","output":str(args.output)}))
 
 

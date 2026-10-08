@@ -20,3 +20,4 @@ folding_dse/compact_results/
 folding_dse/results/
 folding_dse/pareto_results/
 configs/local/
+result/**/hotspot_pool/

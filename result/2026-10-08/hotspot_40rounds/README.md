@@ -4,12 +4,12 @@
 实际调用 HotSpot 239次（另1次复用相同布局），得到57个五目标非支配候选，选出下面4个代表布局。
 这是一次搜索样例；正式默认配置为2次重启，不能把本例当作全局最优或真实芯片温度。
 
-| 方案 | 最高温度℃ | 来源profile | 软约束违例条数 | 布局图 | 温度图 | 违例明细 |
-| --- | ---: | --- | ---: | --- | --- | --- |
-| 1 | 38.643 | timing | 12 | [布局](layout_01/layout.svg) | [温度](layout_01/temperature.svg) | [明细](layout_01/constraint_violations.csv) |
-| 2 | 36.886 | balanced | 12 | [布局](layout_02/layout.svg) | [温度](layout_02/temperature.svg) | [明细](layout_02/constraint_violations.csv) |
-| 3 | 41.283 | constraint | 12 | [布局](layout_03/layout.svg) | [温度](layout_03/temperature.svg) | [明细](layout_03/constraint_violations.csv) |
-| 4 | 38.224 | timing | 12 | [布局](layout_04/layout.svg) | [温度](layout_04/temperature.svg) | [明细](layout_04/constraint_violations.csv) |
+| 方案 | 最高温度℃ | 来源profile | 软约束违例条数 | 布局图 | 温度图 | 违例明细 | 模块坐标 |
+| --- | ---: | --- | ---: | --- | --- | --- | --- |
+| 1 | 38.643 | timing | 12 | [布局](layout_01/layout.svg) | [温度](layout_01/temperature.svg) | [明细](layout_01/constraint_violations.csv) | [坐标](layout_01/module_coordinates.csv) |
+| 2 | 36.886 | balanced | 12 | [布局](layout_02/layout.svg) | [温度](layout_02/temperature.svg) | [明细](layout_02/constraint_violations.csv) | [坐标](layout_02/module_coordinates.csv) |
+| 3 | 41.283 | constraint | 12 | [布局](layout_03/layout.svg) | [温度](layout_03/temperature.svg) | [明细](layout_03/constraint_violations.csv) | [坐标](layout_03/module_coordinates.csv) |
+| 4 | 38.224 | timing | 12 | [布局](layout_04/layout.svg) | [温度](layout_04/temperature.svg) | [明细](layout_04/constraint_violations.csv) | [坐标](layout_04/module_coordinates.csv) |
 
 profile表示生成候选时的搜索权重组，不等同于最终代表方案的评选类别。
 违例条数相同不代表违例程度相同；方案1的平均软约束惩罚更低。部分要求存在几何冲突，见 [必要条件检查](constraint_feasibility.json)。
@@ -17,6 +17,7 @@ profile表示生成候选时的搜索权重组，不等同于最终代表方案�
 ## 查看
 
 - [帕累托图](pareto.svg)：五维非支配判定，四个二维投影。
+- [所有入选方案模块坐标](all_module_coordinates.csv)：每个方案16个模块，共64行；各方案目录另有 `module_coordinates.csv`。坐标单位mm，原点在各层左下角，x/y为模块左下角，w/h为宽高，并附中心坐标。
 - [候选全集指标](pareto_candidates.csv)：239个候选，包含前沿标志和选中编号。
 - [运行记录](manifest.json)、[有效配置](effective_config.json)、[原始配置](input_config.yaml)、[搜索过程](search_history.json)。
 - 每个 `layout_0N/hotspot/` 保留该方案的完整输入、温度网格输出、运行命令和日志，可独立复算。
@@ -32,7 +33,7 @@ profile表示生成候选时的搜索权重组，不等同于最终代表方案�
 ```bash
 make hotspot
 DSE_ROOT="$(pwd)"
-cd examples/hotspot_20261008/layout_01/hotspot
+cd result/2026-10-08/hotspot_40rounds/layout_01/hotspot
 "$DSE_ROOT/third_party/HotSpot/hotspot" -c hotspot.config -grid_layer_file stack.lcf -f bottom.flp -p power.ptrace -steady_file rerun.steady -grid_steady_file rerun.grid.steady
 ```
 
@@ -40,4 +41,4 @@ cd examples/hotspot_20261008/layout_01/hotspot
 原始HotSpot温度单位K、网格行0在顶部；导出的 `temperature.csv` 使用℃和从底部开始的行号。
 四幅温度图共用色标。层结构/材料/封装仍是估计，输入总功耗0.845 W，未额外增加泄漏功耗。
 
-详细运行和调参步骤参见 [操作手册](../../操作手册.md)。
+详细运行和调参步骤参见 [操作手册](../../../操作手册.md)。

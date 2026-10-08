@@ -7,6 +7,7 @@ import shlex
 import subprocess
 import shutil
 import sys
+from results import default_output
 
 
 HERE = Path(__file__).resolve().parent
@@ -57,7 +58,7 @@ def main() -> int:
     parser.add_argument("action", nargs="?", default="explore",
                         choices=("explore", "quick", "optimize", "test", "test-hotspot", "help", "hotspot"))
     parser.add_argument("--config", type=Path, default=HERE / "folding_dse_annealing_cfg.yaml")
-    parser.add_argument("--output", type=Path)
+    parser.add_argument("--output", type=Path, help="Default: result/YYYY-MM-DD/HHMMSS_action (Shanghai time)")
     parser.add_argument("--steps", type=int)
     parser.add_argument("--restarts", type=int)
     parser.add_argument("--selected", type=int, default=4)
@@ -86,11 +87,7 @@ def main() -> int:
     else:
         quick = args.action == "quick"
         single = args.action == "optimize"
-        default = HERE/("quick_results" if quick else "single_results" if single else "local_results")
-        if args.output is None and (default/"manifest.json").exists():
-            from datetime import datetime
-            default = HERE/(default.name+"_"+datetime.now().strftime("%Y%m%d_%H%M%S"))
-        output = (args.output or default).resolve()
+        output = (args.output or default_output(args.action)).resolve()
         command += [str(HERE/"explore.py"),str(args.config.resolve()),"--output",str(output),
                     "--selected",str(1 if single else args.selected)]
         for name,value in (("steps",args.steps if args.steps is not None else (500 if quick else None)),

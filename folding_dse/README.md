@@ -22,15 +22,15 @@ make optimize      # 使用配置权重，只选出一个方案，同样调用 H
 缺失 HotSpot、运行失败、超时或返回异常网格时会明确报错，不能退回旧模型。
 
 ```bash
-make explore ARGS="--config folding_dse/folding_dse_annealing_cfg.yaml --output folding_dse/my_run --steps 2000 --restarts 2 --thermal-rounds 40"
+make explore ARGS="--config folding_dse/folding_dse_annealing_cfg.yaml --output result/2026-10-09/my_run --steps 2000 --restarts 2 --thermal-rounds 40"
 make explore ARGS="--hotspot-exe /absolute/path/hotspot --profiles balanced,thermal,constraint"
 # 没有 make 时，先完成 HotSpot 编译，然后：
 python3 folding_dse/run.py explore
 ```
 
 Windows 使用 `./run.cmd quick` 或 `./run.cmd explore`。提供 `--hotspot-exe` 时运行本机 HotSpot；否则自动使用已有非 Docker 的 WSL 发行版，用其中的 GCC/make/Python3 编译和运行。可设置环境变量 `FOLDING_DSE_WSL_DISTRO` 指定发行版。
-双击 `run.cmd` 执行正常探索，结束后保留窗口。默认输出在 `folding_dse/local_results` / `quick_results` / `single_results`。
-默认目录已有结果时自动新建时间戳目录；显式 `--output` 请使用新目录，防止混合不同配置的结果。
+双击 `run.cmd` 执行正常探索，结束后保留窗口。默认输出在仓库根目录 `result/YYYY-MM-DD/HHMMSS_explore/`；quick、optimize 的目录后缀对应运行类型。日期和时间使用北京时间。
+每次运行单独保存；同秒重名自动加编号。显式 `--output` 请使用新目录或空目录，非空目录会拒绝覆盖。
 
 ## 本次配置及 YAML 样式
 
@@ -109,9 +109,11 @@ RC 排序代价采用 `[曼哈顿线长 + 跨层几何长度]² × [1+α×(端�
 - `constraint_feasibility.json`：Top面积冲突和同层距离下界。
 - `pareto_candidates.csv`、`pareto.svg`：所有候选的五目标指标及4张温度对比散点图。
 - `search_history.json`：每轮候选、实际温度、接受结果、是否使用缓存。
-- `layout_01` 等：布局SVG/JSON，统一色标的温度SVG，64×64×2温度CSV，逐条约束违例CSV。
+- `README.md`：结果入口，链接帕累托图、各方案图和坐标表。
+- `all_module_coordinates.csv`：所有入选方案的模块坐标汇总，单位mm，原点在各层左下角。
+- `layout_01` 等：布局SVG/JSON、模块坐标 `module_coordinates.csv`（x/y为左下角，w/h为宽高，并给出中心坐标）、统一色标的温度SVG、64×64×2温度CSV、逐条约束违例CSV。
 - `layout_0N/hotspot`：该方案完整的 HotSpot 输入、输出、运行命令和stdout/stderr。
 - `hotspot_pool`：候选全集的热仿真输入/输出，可追溯和复算。
 
-真实 HotSpot 验证示例保存在 [examples/hotspot_20261008](../examples/hotspot_20261008/README.md)。旧 `results` / `pareto_results` 代理输出已从当前版本移除。
+真实 HotSpot 验证示例保存在 [result/2026-10-08/hotspot_40rounds](../result/2026-10-08/hotspot_40rounds/README.md)。旧 `results` / `pareto_results` 代理输出已从当前版本移除。
 三倍原始模块面积会超出两层面积预算；本次附件仍使用约1.7倍的几何面积，没有为满足新增约束擅自缩小模块。

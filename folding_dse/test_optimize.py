@@ -4,6 +4,8 @@ import random
 import os
 import sys
 import tempfile
+import csv
+from datetime import datetime, timezone
 import unittest
 from unittest.mock import patch
 from contextlib import contextmanager
@@ -12,6 +14,7 @@ from pathlib import Path
 import optimize as o
 from make_enlarged import scale_config
 from thermal import hotspot_inputs, parse_grid, run_hotspot, find_hotspot
+from results import default_output, write_coordinates, write_coordinate_summary
 
 
 CONFIG = Path(__file__).parent / "config.yaml"
@@ -188,6 +191,46 @@ class ExplorerTests(unittest.TestCase):
         self.assertAlmostEqual(report["layer_preferences"]["top"]["required_area_mm2"],.6902)
         tight = [v for v in report["pair_distance_lower_bounds"] if v["pair"] == ["is_int","ix"]][0]
         self.assertFalse(tight["distance_necessary_condition_met"])
+
+
+class ResultTests(unittest.TestCase):
+    def test_shanghai_date_and_existing_incomplete_runs_are_preserved(self):
+        with temporary_directory() as directory:
+            root = Path(directory)
+            now = datetime(2026, 10, 8, 16, 0, 0, tzinfo=timezone.utc)
+            first = default_output("quick", root, now)
+            self.assertEqual(first.relative_to(root).as_posix(), "2026-10-09/000000_quick")
+            self.assertFalse(first.exists())
+            first.mkdir(parents=True)
+            (first / "input_config.yaml").write_text("partial run", encoding="utf-8")
+            second = default_output("quick", root, now)
+            self.assertNotEqual(first, second)
+            self.assertEqual((first / "input_config.yaml").read_text(), "partial run")
+
+    def test_coordinate_exports_match_layout_and_summary(self):
+        config = o.load_config(COMPACT_CONFIG)
+        rects = o.construct(config, random.Random(1))
+        modules = {name: dict(zip(("x_mm", "y_mm", "w_mm", "h_mm", "layer"), rect))
+                   for name, rect in rects.items()}
+        payload = dict(candidate=3, profile="balanced", modules=modules)
+        with temporary_directory() as directory:
+            folder = Path(directory)
+            write_coordinates(folder, modules)
+            write_coordinate_summary(folder, [("layout_01", payload)])
+            with (folder / "module_coordinates.csv").open(newline="") as stream:
+                rows = list(csv.DictReader(stream))
+            with (folder / "all_module_coordinates.csv").open(newline="") as stream:
+                summary = list(csv.DictReader(stream))
+            self.assertEqual(len(rows), len(modules))
+            for row, aggregate in zip(rows, summary):
+                module = modules[row["module"]]
+                self.assertEqual(row["layer"], module["layer"])
+                for key in ("x_mm", "y_mm", "w_mm", "h_mm"):
+                    self.assertEqual(float(row[key]), module[key])
+                self.assertAlmostEqual(float(row["center_x_mm"]), module["x_mm"] + module["w_mm"] / 2)
+                self.assertAlmostEqual(float(row["center_y_mm"]), module["y_mm"] + module["h_mm"] / 2)
+                self.assertTrue(all(aggregate[key] == value for key, value in row.items()))
+                self.assertEqual((aggregate["layout"], aggregate["candidate"]), ("layout_01", "3"))
 
 
 class RealHotSpotTests(unittest.TestCase):

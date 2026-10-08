@@ -1,5 +1,5 @@
 [
-  "../../../../third_party/HotSpot/hotspot",
+  "../../../../../third_party/HotSpot/hotspot",
   "-c",
   "hotspot.config",
   "-grid_layer_file",

@@ -1,59 +1,117 @@
 # 模块级双 die 折叠布局探索器
 
-`config.yaml` 根据用户提供的参数草案构造。草案给出 1.10 × 0.91 mm die、每层面积上限 0.702 mm²、`area_margin=0.95`、两个 L2 宏固定在下层、14 个可移动模块、5 µm F2F pitch、`max_density_per_mm2=20000`，以及 `l2_b0`—`l2_ctl` 的 5000 个信号。其余矩形/面积、锚点、功耗和互联数量都是**特意模糊化的合成假设**，不代表 C910 的真实数据。附件中的“你自己随机参数填上”是待补空位，不是求解器指令。
+读取脱敏的模块面积、功耗、连接数和布局约束，探索上下层分配、模块位置及宽高比。
+**当前温度只由真实 HotSpot 计算。旧的自写导热求解器、Gaussian 热点评分及其配置参数已删除。**
+
+安装、运行、调参及排错参见根目录的 [操作手册](../操作手册.md)。本文件说明模型与算法。
 
 ## 运行
 
-Python 3.10+；随附的 `config.yaml` 是 JSON 格式的 YAML 1.2 文件，因此只用标准库。普通 YAML 语法需要安装 PyYAML。
+在项目根目录运行。CentOS/Linux 需要 Python 3.6+、GNU make 和 GCC；不需要 pip、NumPy、Matplotlib、SuperLU 或 BLAS。
+HotSpot C 源码已经包含在 `third_party/HotSpot`，保留上游许可；布局搜索本身使用 Python 标准库。
 
-另附 [folding_dse_annealing_cfg.yaml](folding_dse_annealing_cfg.yaml)：按原参数草案的分段、模块顺序、`模块名: [参数]` 和 `- 项目` 列表写法补齐。这个固定的简洁 YAML 样式可以由 `optimize.py` 的内置解析器直接读取，无需 PyYAML；若改用任意嵌套 YAML 结构，则仍需 PyYAML。说明文字必须以 `#` 开头，键值用 `:`，列表项用 `- `，缩进和层级必须符合 YAML 语法。运行：
-
-```powershell
-python folding_dse/optimize.py folding_dse/folding_dse_annealing_cfg.yaml --output folding_dse/compact_results
+```bash
+make hotspot       # 首次编译 HotSpot；GNU99 兼容较旧 GCC
+make test-hotspot  # 行为测试 + 真实 HotSpot 一致性测试
+make quick         # 6组权重，每组3轮，500次几何扰动，1次重启
+make explore       # 使用 YAML 的40轮，每轮1000次几何扰动，2次重启
+make optimize      # 使用配置权重，只选出一个方案，同样调用 HotSpot
 ```
 
-```powershell
-python folding_dse/optimize.py folding_dse/config.yaml --output folding_dse/results
-python folding_dse/test_optimize.py
+`make quick/explore/optimize` 自动先检查/编译 HotSpot。不支持仅靠 Python 计算温度。
+缺失 HotSpot、运行失败、超时或返回异常网格时会明确报错，不能退回旧模型。
+
+```bash
+make explore ARGS="--config folding_dse/folding_dse_annealing_cfg.yaml --output folding_dse/my_run --steps 2000 --restarts 2 --thermal-rounds 40"
+make explore ARGS="--hotspot-exe /absolute/path/hotspot --profiles balanced,thermal,constraint"
+# 没有 make 时，先完成 HotSpot 编译，然后：
+python3 folding_dse/run.py explore
 ```
 
-本机若 `python` 指向 Windows Store 占位程序，请换用本机已安装的 Python 3.10+ 可执行文件运行相同命令。
+Windows 使用 `./run.cmd quick` 或 `./run.cmd explore`。提供 `--hotspot-exe` 时运行本机 HotSpot；否则自动使用已有非 Docker 的 WSL 发行版，用其中的 GCC/make/Python3 编译和运行。可设置环境变量 `FOLDING_DSE_WSL_DISTRO` 指定发行版。
+双击 `run.cmd` 执行正常探索，结束后保留窗口。默认输出在 `folding_dse/local_results` / `quick_results` / `single_results`。
+默认目录已有结果时自动新建时间戳目录；显式 `--output` 请使用新目录，防止混合不同配置的结果。
 
-可传 `--steps`、`--restarts` 调整搜索预算。程序每次读取配置；改模块面积、锚点、功耗、固定位置、网络条目或目标权重后重跑即可。`best_layout.json` 保存指标、模块坐标、搜索记录及模型限制；`best_layout.csv` 可导入表格；`best_layout.svg` 显示上下两层。固定种子可重现结果。若无法排布或密度代理无可行解，程序会报错。
+## 本次配置及 YAML 样式
 
-## 模型与约束
+默认输入为 `folding_dse_annealing_cfg.yaml`，根据 2026-10-08 的附件整理，保留原来的注释分段、模块顺序、`模块名: [参数]` 和 `- 项目` 列表写法。
+修正了列表字段的缩进、裸露的说明文字、`if_ctrl` → 已定义的 `if_ctl`，并删除两条完全重复的配对约束。
+注释中的 Top 要求写为明确的 `layer: top`。空白的层结构部分补了可替换的估计值。
+这里使用内置的严格 YAML 子集解析器，支持嵌套映射、列表映射及 `[ ]` / `{ }`；无需安装 PyYAML。
+不支持 YAML 标签、锚点或多行字符串。未知字段、重复键、未知模块及相互矛盾的 HBT 密度参数会报错。
 
-- 硬模块的 `rect=[x,y,w,h]` 固定不动，坐标原点在 die 左下角。软模块的 `anchor=[x,y]` 是中心偏好的参考点，可换层、平移，并在五种宽高比中选择，面积不变。
-- 每层矩形必须在 die 内、互不重叠且保持 0.008 mm 间距。每层模块面积必须 ≤ `0.702 × 0.95 = 0.6669 mm²`。这是模块面积上限，并非自动证明标准单元可实现的利用率。
-- `max_density_per_mm2` **按 F2F 信号键合解释**。每个跨层互联 bundle 假设均匀分布于两端模块投影外接框并向外扩 0.05 mm；在对齐的 0.10 mm 窗口计算平均密度。容量取 5 µm pitch 对应的 40,000/mm² 与 20,000/mm² 较小值，并额外预留 20%，即 16,000/mm²。还检查整片总数上限。这只是筛选代理，未确定每个键合点的位置，也未完成滑动窗口 DRC。
-- 退火目标结合按信号数加权的模块中心曼哈顿线长、跨层信号比例、平滑功率热点指数、锚点偏移与两层总功耗差。权重都在配置中。每个 restart 独立随机排布，再进行形状、位置、层的随机扰动与降温接受；保存所有探索中代理约束合格的最低分方案。**它是启发式最优候选，不保证全局最优。**
-- 热点指数并非摄氏温度；线长并非时序；跨层信号数并非实际键合数。真实签核需要宏 pin、网表、时序约束、工艺与材料、供电网络、bond 预留和详细布线。配置里的机密参数可用同一单位和结构的脱敏数据替换。
+新增参数均进入评价：
 
-## 扩大面积与多目标搜索
+| 参数 | 当前使用方式 |
+| --- | --- |
+| `layout_constrains` | 同层、指定 Top 层及中心曼哈顿距离超限的软惩罚，逐条报告 |
+| `power_w` | 新功耗合计 **0.845 W**，作为 HotSpot 的发热输入 |
+| `ambient_c`、`grid_rows/cols` | 26.85℃，每个物理层 64×64 网格 |
+| `hbt` | 5 µm pitch、20,000/mm² 密度上限，扣除 20% 预留 |
+| `timing` | 单条跨层连接 100 ps，时钟周期 333 ps，占周期约 0.3003 |
+| `critical_modules`、`net_weights` | 按关键—关键、关键—其他、其他—其他分类加权；附件三类权重均为1，按原值执行 |
+| `rc_temp_alpha/ref_temp` | 使用 HotSpot 模块温度修正 RC 排序代价，系数0.0039/K，参考27℃ |
+| `hbt_vert_um` | 跨层连接的几何长度加10 µm；不把它当作 HB 热界面的厚度 |
+| `anneal.iters` | 40次外层热反馈，每次先用几何退火生成候选，再实际调用 HotSpot |
+| `shape_aspects` | 软模块可选宽高比，面积保持不变，可自行扩展搜索形状 |
 
-原配置模块面积合计 0.7270 mm²；把**全部模块**乘 3 后是 2.1810 mm²。两层允许的面积合计是 `2 × 0.702 × 0.95 = 1.3338 mm²`，所以三倍方案在面积这一必要条件上就不成立。理论统一倍率上界为 `1.3338 / 0.7270 = 1.8347`，尚未计入模块形状与间距。`make_enlarged.py` 对三倍输入明确报不可行。
+`config.yaml` 是解析器依赖的内部默认值与早期测试数据来源；日常修改 `folding_dse_annealing_cfg.yaml`。过期的 `config_enlarged.yaml` 已移除。
 
-当前 [config_enlarged.yaml](config_enlarged.yaml) 对**每个模块**统一扩大 1.7 倍，总面积 1.2359 mm²，占面积预算约 92.7%。硬宏保持原宽高比；因原坐标也属猜测，右侧 L2 宏随宽度增加向左调整，以维持离右边界 0.035 mm。
+## 布局约束与冲突
 
-```powershell
-python folding_dse/make_enlarged.py folding_dse/config.yaml folding_dse/config_enlarged.yaml --factor 1.7
-python folding_dse/explore.py folding_dse/config_enlarged.yaml
-```
+硬约束：固定的两个 L2 宏在 bottom；所有模块位于 die 内，同层不重叠，间距至少0.008 mm；每层面积 ≤ `0.702×0.95=0.6669 mm²`；跨层信号通过局部与总量的键合密度容量筛选。
+键合容量只是一种估计：bundle 均匀分布于端点投影外接框扩展区域，再按0.10 mm固定网格统计。未完成具体键合点排布、滑动窗口 DRC 或详细布线。
 
-`explore.py` 用 balanced、wire、thermal、bond、anchor 五组权重做多次退火；加入双模块中心/层交换变异，帮助高密度排布跳出单模块移动的障碍。保存各次搜索中间改进点，对**信号数加权平均线长、跨层信号数、最高温度**做严格帕累托筛选。`pareto_candidates.csv` 是候选全集；`pareto.svg` 是两张散点图；`manifest.json` 记录入选的四个方案；每个 `layout_0N` 目录都有布局、温度图、温度网格 CSV、HotSpot 输入文件。四幅温度图共用颜色范围。
+软约束的距离定义已由用户确认：**模块中心曼哈顿距离**，即 `|xa-xb|+|ya-yb|`。
+每条约束的惩罚为 `weight × [(距离超限/max_dist)² + 不同层标志 + 不在指定层的端点数]`；对所有配对取平均，再乘配置的 `constraints` 权重。
+Top 是软偏好，不能越过面积等硬约束；未知配对名称不会被静默忽略。
 
-默认温度后端是 2 层、10×12 网格的稳态导热网络。功率按模块与网格的真实重叠面积投影，数值迭代到残差阈值，并检查功率守恒。环境温度、封装热阻、层内/层间/顶层散热导纳都是**合成估计值**，所以摄氏度结果只用于同配置方案的趋势比较，不能当作实测温度或 HotSpot 输出。
+本次 Top 偏好的10个模块面积合计 **0.6902 mm² > 0.6669 mm²**，因此无法全部放 Top。
+当前可选宽高比下，`is_int—ix` 和 `is_int_rf—ix` 的同层无重叠中心距离下界也超过0.20 mm。
+`constraint_feasibility.json` 报告这些必要条件检查；通过检查不代表能同时满足所有要求。
+扩大 `shape_aspects` 可改变距离下界，但不会消除 Top 面积冲突。输出保留每条违例及其幅度，不把有软违例的方案描述为完全满足约束。
 
-## 直接调用 HotSpot
+## HotSpot 温度模型
 
-热接口依据 HotSpot [官方源码](https://github.com/uvahotspot/HotSpot) 和 [文件格式说明](https://github.com/uvahotspot/HotSpot/wiki/File-Types)：每层完整矩形 floorplan（含空白区）、功耗 `.ptrace`、从散热侧到背侧的 `.lcf`。有 HotSpot 可执行文件时，指定其路径即可让**全部候选**用 HotSpot 网格稳态温度重新做帕累托排序，并生成相应温度图：
+使用上游 [HotSpot](https://github.com/uvahotspot/HotSpot) 的3D grid稳态模型，开启 `detailed_3D`。
+实际材料传热和封装求解在 HotSpot C 程序中进行；Python 只生成输入、调用程序、解析输出及绘图。
+每层按模块边界切分，完整覆盖 die，包括零功耗的空白硅区域；逐模块检查功率守恒。mm/µm 转为米，环境℃转为K，HotSpot结果再转回℃。
+按[官方文件格式](https://github.com/uvahotspot/HotSpot/wiki/File-Types)生成 `.flp`、`.ptrace`、`.lcf` 和 `.config`；功耗 trace 必须按物理层号从小到大排序。
+HotSpot 网格行0在上边缘；导出的温度 CSV 行0在下边缘，绘图和模块坐标一致。
 
-```powershell
-python folding_dse/explore.py folding_dse/config_enlarged.yaml --hotspot-exe C:\path\to\hotspot.exe
-```
+当前堆栈：bottom硅50 µm → HB等效界面2 µm（1.4 W/m/K）→ top硅50 µm → TIM20 µm（4 W/m/K）→ HotSpot自带扩散器/散热器。
+硅热导率130 W/m/K；封装参数取公开模板，配置中明确列出。散热器位于top侧，未启用背侧散热。
+这些层厚、材料和封装数值均为估计，F2F金属/介质结构被等效成均匀层；需要实际工艺数据校准。
+输入目前标注为动态功耗，程序直接使用给定值，未额外编造泄漏功耗或做温度—泄漏迭代。
 
-本机未找到已安装的 HotSpot；官方源码的网络获取也未成功。本次 `pareto_results` 的温度后端字段为 `assumed_conductance_proxy`，不是 HotSpot。HotSpot 的材料、硅层厚度与默认封装参数仍需用真实堆栈校准，才能用于物理温度判断。`--hotspot-exe` 指定的程序若报错，流程会保留 stdout/stderr 并失败，不会把备用模型误称为 HotSpot。
+上游温度输出原来保留0.01 K，随附源码仅提高文本输出精度至8位小数，防止帕累托排序把相近结果合并；没有修改热求解物理或收敛容限。
+源码来源、快照SHA256及修改说明保存在 `third_party/HotSpot/PROVENANCE.md`，许可保存在 `LICENSE`。
+输出精度不代表物理精度；温度和相近方案的排名依赖上述假设。
 
-## 下一步算法改进
+## 搜索、时序代价及帕累托输出
 
-现有退火每次扰动后重算全部连接和热热点指数，适合目前 16 模块规模。模块数或网络边数增大后，可缓存未受影响的连接项与网格功率，做增量评分。更大的收益是用当前便宜的代理筛选大候选池，再对帕累托前沿调用已校准 HotSpot、真实 pin/走线估计和时序模型做第二阶段局部搜索；否则代理目标与物理目标之间的排序偏差会限制搜索质量。高占用率下还可以用序列对、B* 树或约束规划生成初始非重叠布局，减少随机贪心构造失败。当前结果没有这些第二阶段验证。
+两层搜索：内层做位置、宽高比、换层及双模块交换退火，使用上一次 HotSpot 模块温度作为固定 RC 权重；外层对新候选实际调用 HotSpot，以完整温度/RC/约束得分接受或拒绝。
+周期性重新排布和多模块扰动帮助离开局部极小值；相同布局复用真实 HotSpot 的计算结果。
+没有在每次廉价几何扰动中预测温度。外层接受、最终评价和帕累托排序都使用该布局自己的真实 HotSpot 结果。
+这是启发式候选搜索，不保证全局最优。
+
+RC 排序代价采用 `[曼哈顿线长 + 跨层几何长度]² × [1+α×(端点温度最大值−参考温度)]`，按信号数及关键模块类别加权。
+端点模块最高温度代替线路温度是一项估计。还把跨层信号比例乘100/333作为平均时钟预算代价。
+缺少金属线单位RC、驱动/负载、缓冲器和路径图，**不能把这个代价换成真实 ns、路径加周期数、IPC 或 BIPS**。当前没有调用 gem5、McPAT 或 CACTI。
+
+六组权重：balanced、wire、thermal、bond、timing、constraint，按乘数调整用户原有权重；配置、乘数及实际搜索预算写入结果。
+联合最小化五个目标：信号加权平均线长、跨层信号数、时序代价、软约束惩罚、HotSpot最高温度。
+先选择约束、温度、时序的代表方案及均衡方案，再补充前沿分散点；只选严格非支配方案，前沿不足4个就输出实际数量。
+
+输出：
+
+- `manifest.json`、`effective_config.json`、`input_config.yaml`：运行设置及物理假设。
+- `constraint_feasibility.json`：Top面积冲突和同层距离下界。
+- `pareto_candidates.csv`、`pareto.svg`：所有候选的五目标指标及4张温度对比散点图。
+- `search_history.json`：每轮候选、实际温度、接受结果、是否使用缓存。
+- `layout_01` 等：布局SVG/JSON，统一色标的温度SVG，64×64×2温度CSV，逐条约束违例CSV。
+- `layout_0N/hotspot`：该方案完整的 HotSpot 输入、输出、运行命令和stdout/stderr。
+- `hotspot_pool`：候选全集的热仿真输入/输出，可追溯和复算。
+
+真实 HotSpot 验证示例保存在 [examples/hotspot_20261008](../examples/hotspot_20261008/README.md)。旧 `results` / `pareto_results` 代理输出已从当前版本移除。
+三倍原始模块面积会超出两层面积预算；本次附件仍使用约1.7倍的几何面积，没有为满足新增约束擅自缩小模块。

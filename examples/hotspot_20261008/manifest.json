@@ -1,0 +1,265 @@
+{
+  "config": "folding_dse_annealing_cfg.yaml",
+  "candidate_count": 239,
+  "pareto_count": 57,
+  "temperature_backend": "HotSpot",
+  "selected": [
+    {
+      "layout": "layout_01",
+      "candidate": 199,
+      "profile": "timing",
+      "peak_temperature_C": 38.64268971000001,
+      "soft_constraint_violations": 12,
+      "objectives": {
+        "mean_weighted_manhattan_mm": 0.37684832975227106,
+        "cross_layer_signals": 1430,
+        "timing_cost_normalized": 0.07898159472014718,
+        "soft_constraint_penalty": 0.6416488720281447,
+        "peak_temperature_C": 38.64268971000001
+      }
+    },
+    {
+      "layout": "layout_02",
+      "candidate": 5,
+      "profile": "balanced",
+      "peak_temperature_C": 36.88633114000004,
+      "soft_constraint_violations": 12,
+      "objectives": {
+        "mean_weighted_manhattan_mm": 0.36034820522284716,
+        "cross_layer_signals": 2760,
+        "timing_cost_normalized": 0.11476039450368208,
+        "soft_constraint_penalty": 1.772239646938923,
+        "peak_temperature_C": 36.88633114000004
+      }
+    },
+    {
+      "layout": "layout_03",
+      "candidate": 208,
+      "profile": "constraint",
+      "peak_temperature_C": 41.28281664000002,
+      "soft_constraint_violations": 12,
+      "objectives": {
+        "mean_weighted_manhattan_mm": 0.3995025558086384,
+        "cross_layer_signals": 860,
+        "timing_cost_normalized": 0.07254274477866779,
+        "soft_constraint_penalty": 1.9835641836326463,
+        "peak_temperature_C": 41.28281664000002
+      }
+    },
+    {
+      "layout": "layout_04",
+      "candidate": 196,
+      "profile": "timing",
+      "peak_temperature_C": 38.22373317,
+      "soft_constraint_violations": 12,
+      "objectives": {
+        "mean_weighted_manhattan_mm": 0.3782334861647718,
+        "cross_layer_signals": 1430,
+        "timing_cost_normalized": 0.07912437294675279,
+        "soft_constraint_penalty": 0.740743310590522,
+        "peak_temperature_C": 38.22373317
+      }
+    }
+  ],
+  "pareto_objectives": [
+    "mean_weighted_manhattan_mm",
+    "cross_layer_signals",
+    "timing_cost_normalized",
+    "soft_constraint_penalty",
+    "peak_temperature_C"
+  ],
+  "search": {
+    "thermal_rounds": 40,
+    "geometry_moves_per_round": 1000,
+    "restarts": 1,
+    "profiles": [
+      "balanced",
+      "wire",
+      "thermal",
+      "bond",
+      "timing",
+      "constraint"
+    ],
+    "profile_weight_multipliers": {
+      "balanced": {},
+      "wire": {
+        "wirelength": 2.5,
+        "temperature": 0.4
+      },
+      "thermal": {
+        "temperature": 4.0,
+        "wirelength": 0.6
+      },
+      "bond": {
+        "cross_layer": 4.0,
+        "timing": 0.7
+      },
+      "timing": {
+        "timing": 3.0,
+        "temperature": 0.5
+      },
+      "constraint": {
+        "constraints": 3.0,
+        "wirelength": 0.6
+      }
+    },
+    "hotspot_calls": 239
+  },
+  "model_limits": "Synthetic module powers, stack and package. RC L^2 is a ranking cost, not physical delay. No IPC/BIPS, routing or STA. Soft constraints may remain violated; inspect per-pair reports.",
+  "thermal_feedback": "Exact HotSpot outer acceptance; inner geometric proposals use frozen last module temperatures for RC weights.",
+  "power_W": 0.845,
+  "constraint_feasibility": {
+    "all_soft_constraints_necessarily_possible": false,
+    "layer_preferences": {
+      "bottom": {
+        "preferred_modules": [
+          "l2_b0",
+          "l2_b1"
+        ],
+        "required_area_mm2": 0.309400319312,
+        "capacity_mm2": 0.6668999999999999,
+        "area_necessary_condition_met": true
+      },
+      "top": {
+        "preferred_modules": [
+          "id",
+          "if_ctl",
+          "is_int",
+          "is_int_fwd",
+          "is_int_rf",
+          "ix",
+          "ls",
+          "rn",
+          "vec_is_vec",
+          "vec_vx"
+        ],
+        "required_area_mm2": 0.6902,
+        "capacity_mm2": 0.6668999999999999,
+        "area_necessary_condition_met": false
+      }
+    },
+    "pair_distance_lower_bounds": [
+      {
+        "pair": [
+          "is_int",
+          "is_int_fwd"
+        ],
+        "max_dist_mm": 0.2,
+        "minimum_center_manhattan_lower_bound_mm": 0.1931556601524429,
+        "distance_necessary_condition_met": true
+      },
+      {
+        "pair": [
+          "is_int",
+          "ix"
+        ],
+        "max_dist_mm": 0.2,
+        "minimum_center_manhattan_lower_bound_mm": 0.2196647055831454,
+        "distance_necessary_condition_met": false
+      },
+      {
+        "pair": [
+          "is_int",
+          "rn"
+        ],
+        "max_dist_mm": 0.2,
+        "minimum_center_manhattan_lower_bound_mm": 0.19453989725337348,
+        "distance_necessary_condition_met": true
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "is_int_rf"
+        ],
+        "max_dist_mm": 0.2,
+        "minimum_center_manhattan_lower_bound_mm": 0.18843606915128974,
+        "distance_necessary_condition_met": true
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "ix"
+        ],
+        "max_dist_mm": 0.2,
+        "minimum_center_manhattan_lower_bound_mm": 0.21494511458199222,
+        "distance_necessary_condition_met": false
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "ls"
+        ],
+        "max_dist_mm": 0.3,
+        "minimum_center_manhattan_lower_bound_mm": 0.2083896601654086,
+        "distance_necessary_condition_met": true
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "ix"
+        ],
+        "max_dist_mm": 0.3,
+        "minimum_center_manhattan_lower_bound_mm": 0.20199038767514477,
+        "distance_necessary_condition_met": true
+      },
+      {
+        "pair": [
+          "ix",
+          "ls"
+        ],
+        "max_dist_mm": 0.3,
+        "minimum_center_manhattan_lower_bound_mm": 0.2219439786892637,
+        "distance_necessary_condition_met": true
+      },
+      {
+        "pair": [
+          "id",
+          "rn"
+        ],
+        "max_dist_mm": 0.3,
+        "minimum_center_manhattan_lower_bound_mm": 0.18357517079877944,
+        "distance_necessary_condition_met": true
+      },
+      {
+        "pair": [
+          "vec_vx",
+          "vec_is_vec"
+        ],
+        "max_dist_mm": 0.3,
+        "minimum_center_manhattan_lower_bound_mm": 0.22700647684043385,
+        "distance_necessary_condition_met": true
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "is_int"
+        ],
+        "max_dist_mm": 0.3,
+        "minimum_center_manhattan_lower_bound_mm": 0.1843149222745178,
+        "distance_necessary_condition_met": true
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "is_int_rf"
+        ],
+        "max_dist_mm": 0.3,
+        "minimum_center_manhattan_lower_bound_mm": 0.17959533127336463,
+        "distance_necessary_condition_met": true
+      }
+    ],
+    "aspect_ratios": [
+      0.55,
+      0.75,
+      1.0,
+      1.33,
+      1.8
+    ],
+    "note": "Passing these necessary conditions does not prove simultaneous feasibility. Failure proves some soft violations are unavoidable under the configured geometry/shape model."
+  },
+  "example_packaging": {
+    "retained_layouts": 4,
+    "candidate_pool_omitted": true,
+    "command_paths": "Portable relative executable paths; original binary SHA256 retained."
+  }
+}

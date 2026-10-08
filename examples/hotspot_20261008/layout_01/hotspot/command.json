@@ -1,0 +1,15 @@
+[
+  "../../../../third_party/HotSpot/hotspot",
+  "-c",
+  "hotspot.config",
+  "-grid_layer_file",
+  "stack.lcf",
+  "-f",
+  "bottom.flp",
+  "-p",
+  "power.ptrace",
+  "-steady_file",
+  "hotspot.steady",
+  "-grid_steady_file",
+  "hotspot.grid.steady"
+]

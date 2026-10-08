@@ -28,7 +28,7 @@ die_width_mm: 1.10
 die_height_mm: 0.91
 die_area_limit_mm2: 0.702
 area_margin: 0.95
-bond_pitch_um: 5.0
+
 bond_window_mm: 0.10
 bond_reserve_fraction: 0.20
 module_gap_mm: 0.008
@@ -75,22 +75,22 @@ movable_initial_layer:
 
 #==模块动态功耗(W) ==
 power_w:
-  l2_b0: 0.45
-  l2_b1: 0.45
-  if_pp: 0.26
-  if_ctl: 0.15
-  l2_ctl: 0.23
-  tpe: 0.15
-  ls: 0.55
-  mmu: 0.24
-  id: 0.25
-  rn: 0.24
-  is_int: 0.40
-  ix: 0.55
-  vec_vx: 0.82
-  is_int_fwd: 0.24
-  is_int_rf: 0.43
-  vec_is_vec: 0.40
+  l2_b0: 0.045
+  l2_b1: 0.045
+  if_pp: 0.026
+  if_ctl: 0.015
+  l2_ctl: 0.023
+  tpe: 0.015
+  ls: 0.355
+  mmu: 0.024
+  id: 0.025
+  rn: 0.024
+  is_int: 0.040
+  ix: 0.055
+  vec_vx: 0.082
+  is_int_fwd: 0.024
+  is_int_rf: 0.043
+  vec_is_vec: 0.0040
 
 #==模块间互联信号数===
 interconnect:
@@ -112,5 +112,144 @@ interconnect:
 - [mmu, l2_ctl, 180]
 - [tpe, if_ctl, 150]
 - [vec_vx, ls, 380]
+##实际模块信号互联可能不只这些情况，需支持别的组合情况
 
 max_density_per_mm2: 20000
+
+#====布局约束（软约束，违例计入惩罚）===
+layout_constrains:
+#---同层Top紧约束（>2000根）---
+- pair: [is_int, is_int_fwd]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.20
+- pair: [is_int, ix]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.20
+- pair: [is_int, rn]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.20
+- pair: [is_int_fwd, is_int_rf]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.20
+- pair: [is_int_rf, ix]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.20
+#--- 同层Top中等约束（1000-2000根）---
+- pair: [is_int_rf, ls]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.30
+- pair: [is_int_fwd, ix]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.30
+- pair: [ix, ls]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.30
+- pair: [id, rn]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.30
+- pair: [vec_vx, vec_is_vec]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.30
+- pair: [if_ctl, is_int]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.30
+- pair: [if_ctl, is_int_rf]
+  type: same_layer_max_dist
+  layer: top
+  max_dist_mm: 0.30
+# 重复的 if_ctl 配对已去重；Top 是软偏好，距离为中心曼哈顿距离。
+
+#===HotSpot===
+ambient_c: 26.85
+grid_rows: 64
+grid_cols: 64
+
+
+#=== 层结构===
+# 顺序：远离散热器的 bottom -> HB界面 -> top -> TIM -> HotSpot自带扩散器/散热器。
+# 以下层结构/封装尚无后端数据，均为可替换的合成估计；不是工艺实测值。
+stack:
+- name: bottom_si
+  power_layer: bottom
+  thickness_um: 50
+  conductivity_W_m_K: 130
+  heat_capacity_J_m3_K: 1630300
+- name: hb_interface
+  power_layer: none
+  thickness_um: 2
+  conductivity_W_m_K: 1.4
+  heat_capacity_J_m3_K: 2200000
+- name: top_si
+  power_layer: top
+  thickness_um: 50
+  conductivity_W_m_K: 130
+  heat_capacity_J_m3_K: 1630300
+- name: tim
+  power_layer: none
+  thickness_um: 20
+  conductivity_W_m_K: 4
+  heat_capacity_J_m3_K: 4000000
+
+# HotSpot封装参数（SI单位），取公开模板中的估计值；散热器仅在top侧。
+hotspot:
+  r_convec: 1.042
+  c_convec: 140.4
+  s_sink: 0.06
+  t_sink: 0.0069
+  k_sink: 400
+  p_sink: 3550000
+  s_spreader: 0.03
+  t_spreader: 0.001
+  k_spreader: 400
+  p_spreader: 3550000
+
+
+
+#=== HBT工艺参数===
+hbt:
+  pitch_um: 5
+  max_density_per_mm2: 20000
+
+#===时序预算===
+timing:
+  hbt_latency_ps: 100
+  clock_period_ps: 333
+#===时序感知线长权重====
+#乱序执行系统关键时序模块
+# rn/is_int/is_int_fwd/is_int_rf/vec_is_vec/vec_vx
+#它们之间的交互路径对线长极为敏感，RC平方律延时代价中重点加权。
+critical_modules: [rn, is_int, is_int_fwd, is_int_rf, vec_is_vec, vec_vx]
+net_weights: {crit_crit: 1.0 , crit_other: 1.0, other_other: 1.0}
+rc_temp_alpha: 0.0039 #铜线电阻温度系数(K^-1): 温度每升1K 延迟 +0.39%
+rc_ref_temp: 27.0 #参考温度（℃）：高于此则RC延时代价按(R正比于T)上浮
+hbt_vert_um: 10 #跨层 F2F垂直互联长度(um) 2->10(2\4\6\8)
+
+
+#===退火====
+anneal:
+  iters: 40 #退火迭代次数（每次收敛到近优布局，越大越优但越慢）
+
+
+
+
+# 软模块可选宽高比；可增加形状以探索更窄/更长的模块，面积保持不变。
+shape_aspects: [0.55, 0.75, 1.0, 1.33, 1.8]
+
+#===布局评分权重（非工艺数据，可用于参数探索）===
+objective_weights: {wirelength: 1.0, cross_layer: 0.18, timing: 1.0, constraints: 2.0, temperature: 0.8, anchor: 0.04, layer_balance: 0.02}
+# 40次外层HotSpot反馈，每次进行下述数量的几何退火扰动；不是40次单点移动。
+search:
+  seed: 20260929
+  restarts: 2
+  steps_per_restart: 1000

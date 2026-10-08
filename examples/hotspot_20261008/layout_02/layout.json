@@ -1,0 +1,662 @@
+{
+  "profile": "balanced",
+  "candidate": 5,
+  "pareto": true,
+  "metrics": {
+    "score": 4.702886434489613,
+    "weighted_wirelength_mm_signals": 3935.002401033491,
+    "mean_weighted_manhattan_mm": 0.36034820522284716,
+    "cross_layer_signals": 2760,
+    "estimated_peak_bond_density_per_mm2": 9431.295312779834,
+    "bond_density_limit_per_mm2": 16000.0,
+    "total_bond_capacity": 16016.0,
+    "timing_cost_normalized": 0.11476039450368208,
+    "rc_quadratic_cost_mm2": 0.1569995731904294,
+    "mean_hbt_clock_budget_fraction": 0.0759000759000759,
+    "interconnect_costs": [
+      {
+        "pair": [
+          "l2_b0",
+          "l2_ctl"
+        ],
+        "signals": 5000,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.3261561336752223,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.03325625472,
+        "rc_cost_mm2": 0.10991555152997436,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "l2_b1",
+          "l2_ctl"
+        ],
+        "signals": 900,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.3706872062407359,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.03325625472,
+        "rc_cost_mm2": 0.141978713737359,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "if_pp",
+          "if_ctl"
+        ],
+        "signals": 120,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.31939510138809474,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.025733015412,
+        "rc_cost_mm2": 0.10463833883087659,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "id"
+        ],
+        "signals": 200,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.5784878072957531,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.026380123926,
+        "rc_cost_mm2": 0.35545380843803287,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "id",
+          "rn"
+        ],
+        "signals": 300,
+        "category": "crit_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.3345395371725868,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.030286991631,
+        "rc_cost_mm2": 0.11530632214642153,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "rn",
+          "is_int"
+        ],
+        "signals": 320,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.6722927560983865,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.031894747833,
+        "rc_cost_mm2": 0.4803711566379429,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "is_int",
+          "ix"
+        ],
+        "signals": 440,
+        "category": "crit_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.23566313267755323,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.031894747833,
+        "rc_cost_mm2": 0.062275234741449075,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "ix",
+          "is_int_fwd"
+        ],
+        "signals": 450,
+        "category": "crit_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.22504701542783745,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.030357429219,
+        "rc_cost_mm2": 0.05692425937299264,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "is_int_rf"
+        ],
+        "signals": 350,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.25762051594274504,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.0275032754880002,
+        "rc_cost_mm2": 0.07359054551155748,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "is_int"
+        ],
+        "signals": 320,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.26653790699438984,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.031894747833,
+        "rc_cost_mm2": 0.07891230788150116,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "rn",
+          "vec_is_vec"
+        ],
+        "signals": 250,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.6799652137158021,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.030286991631,
+        "rc_cost_mm2": 0.47635596397261887,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "vec_is_vec",
+          "vec_vx"
+        ],
+        "signals": 550,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.3352714266811031,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.0260123992440002,
+        "rc_cost_mm2": 0.11533090347799742,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "ix",
+          "ls"
+        ],
+        "signals": 280,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.4551521320599929,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.038556691446,
+        "rc_cost_mm2": 0.21515100105282328,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "ls",
+          "mmu"
+        ],
+        "signals": 230,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.7274157699282235,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.038556691446,
+        "rc_cost_mm2": 0.5495353472350837,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "ls",
+          "l2_ctl"
+        ],
+        "signals": 500,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.06796646628368996,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.038556691446,
+        "rc_cost_mm2": 0.00631314711881278,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "mmu",
+          "l2_ctl"
+        ],
+        "signals": 180,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.7349878334386599,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.03325625472,
+        "rc_cost_mm2": 0.5734643218772674,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "tpe",
+          "if_ctl"
+        ],
+        "signals": 150,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.7125102796413739,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.024493742598,
+        "rc_cost_mm2": 0.5201056589093012,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "vec_vx",
+          "ls"
+        ],
+        "signals": 380,
+        "category": "crit_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.52201075500543,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.038556691446,
+        "rc_cost_mm2": 0.28300174278100343,
+        "hbt_latency_ps": 0
+      }
+    ],
+    "soft_constraint_penalty": 1.772239646938923,
+    "soft_constraint_violations": 12,
+    "constraint_details": [
+      {
+        "pair": [
+          "is_int",
+          "is_int_fwd"
+        ],
+        "distance_mm": 0.266640537991533,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.06664053799153297,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 2,
+        "penalty": 2.1110240325950236,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int",
+          "ix"
+        ],
+        "distance_mm": 0.23566313267755323,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.03566313267755322,
+        "different_layers": true,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 1,
+        "penalty": 2.0317964758094194,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int",
+          "rn"
+        ],
+        "distance_mm": 0.6722927560983865,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.47229275609838645,
+        "different_layers": true,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 1,
+        "penalty": 7.576511186575248,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "is_int_rf"
+        ],
+        "distance_mm": 0.25762051594274504,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.05762051594274503,
+        "different_layers": true,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 1,
+        "penalty": 2.0830030964377033,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "ix"
+        ],
+        "distance_mm": 0.2719111179361172,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.07191111793611721,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.12928022207055395,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "ls"
+        ],
+        "distance_mm": 0.5188625794434147,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.21886257944341475,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.5322314297847227,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "ix"
+        ],
+        "distance_mm": 0.22504701542783745,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.0,
+        "different_layers": true,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 1,
+        "penalty": 2.0,
+        "violated": true
+      },
+      {
+        "pair": [
+          "ix",
+          "ls"
+        ],
+        "distance_mm": 0.4551521320599929,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.1551521320599929,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.2674687120306831,
+        "violated": true
+      },
+      {
+        "pair": [
+          "id",
+          "rn"
+        ],
+        "distance_mm": 0.3345395371725868,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.03453953717258679,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.013255329201072275,
+        "violated": true
+      },
+      {
+        "pair": [
+          "vec_vx",
+          "vec_is_vec"
+        ],
+        "distance_mm": 0.3352714266811031,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.03527142668110311,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.013823039334671473,
+        "violated": true
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "is_int"
+        ],
+        "distance_mm": 0.5139238218350586,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.2139238218350586,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 2,
+        "penalty": 2.508482239427977,
+        "violated": true
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "is_int_rf"
+        ],
+        "distance_mm": 0.24738591484066869,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.0,
+        "different_layers": true,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 1,
+        "penalty": 2.0,
+        "violated": true
+      }
+    ],
+    "peak_temperature_C": 36.88633114000004,
+    "temperature_feedback": "HotSpot",
+    "layer_area_mm2": {
+      "bottom": 0.652800319312,
+      "top": 0.5831
+    },
+    "layer_power_w": {
+      "bottom": 0.23299999999999998,
+      "top": 0.612
+    },
+    "anchor_displacement_normalized": 0.1749405292794047,
+    "feasible": true
+  },
+  "thermal": {
+    "backend": "HotSpot",
+    "peak_C": 36.88633114000004,
+    "mean_C": 32.962522110095236,
+    "module_peak_C": {
+      "l2_b0": 34.465478750000045,
+      "l2_b1": 34.629285460000006,
+      "vec_vx": 33.66984596000003,
+      "ix": 34.78395621000004,
+      "ls": 36.88633114000004,
+      "is_int": 35.17814047000002,
+      "if_pp": 33.598209080000004,
+      "vec_is_vec": 33.19276404000004,
+      "is_int_rf": 34.05212192000005,
+      "l2_ctl": 35.527244800000005,
+      "mmu": 32.74238482000004,
+      "id": 33.76413434,
+      "rn": 34.76589529,
+      "is_int_fwd": 33.18701639,
+      "tpe": 33.28044682000001,
+      "if_ctl": 32.784202040000025
+    },
+    "input_directory": "layout_02/hotspot",
+    "command": [
+      "../../../../third_party/HotSpot/hotspot",
+      "-c",
+      "hotspot.config",
+      "-grid_layer_file",
+      "stack.lcf",
+      "-f",
+      "bottom.flp",
+      "-p",
+      "power.ptrace",
+      "-steady_file",
+      "hotspot.steady",
+      "-grid_steady_file",
+      "hotspot.grid.steady"
+    ],
+    "executable_sha256": "7d62ecd862167f73947262ef5f68bdc50dc9ca8d884899e8a1f62ebc055e3a6f",
+    "inputs": {
+      "floorplan_elements": 464,
+      "total_power_W": 0.8450000000000001,
+      "power_conservation_error_W": 5.551115123125783e-17,
+      "active_layer_indices": {
+        "top": 2,
+        "bottom": 0
+      },
+      "stack": [
+        {
+          "name": "bottom_si",
+          "power_layer": "bottom",
+          "thickness_um": 50,
+          "conductivity_W_m_K": 130,
+          "heat_capacity_J_m3_K": 1630300
+        },
+        {
+          "name": "hb_interface",
+          "power_layer": "none",
+          "thickness_um": 2,
+          "conductivity_W_m_K": 1.4,
+          "heat_capacity_J_m3_K": 2200000
+        },
+        {
+          "name": "top_si",
+          "power_layer": "top",
+          "thickness_um": 50,
+          "conductivity_W_m_K": 130,
+          "heat_capacity_J_m3_K": 1630300
+        },
+        {
+          "name": "tim",
+          "power_layer": "none",
+          "thickness_um": 20,
+          "conductivity_W_m_K": 4,
+          "heat_capacity_J_m3_K": 4000000
+        }
+      ],
+      "package_parameters": {
+        "r_convec": 1.042,
+        "c_convec": 140.4,
+        "s_sink": 0.06,
+        "t_sink": 0.0069,
+        "k_sink": 400,
+        "p_sink": 3550000,
+        "s_spreader": 0.03,
+        "t_spreader": 0.001,
+        "k_spreader": 400,
+        "p_spreader": 3550000
+      },
+      "power_note": "Only provided module powers; no additional leakage model."
+    },
+    "command_note": "Executable path normalized for this example package; numerical outputs unchanged."
+  },
+  "modules": {
+    "l2_b0": {
+      "x_mm": 0.035,
+      "y_mm": 0.055,
+      "w_mm": 0.338999,
+      "h_mm": 0.456344,
+      "layer": "bottom"
+    },
+    "l2_b1": {
+      "x_mm": 0.726001,
+      "y_mm": 0.055,
+      "w_mm": 0.338999,
+      "h_mm": 0.456344,
+      "layer": "bottom"
+    },
+    "vec_vx": {
+      "x_mm": 0.814342862858286,
+      "y_mm": 0.2503529921914317,
+      "w_mm": 0.285657137141714,
+      "h_mm": 0.3808761828556187,
+      "layer": "top"
+    },
+    "ix": {
+      "x_mm": 0.5332880684843804,
+      "y_mm": 0.4974133158616128,
+      "w_mm": 0.25748786379167465,
+      "h_mm": 0.3433171517222329,
+      "layer": "top"
+    },
+    "ls": {
+      "x_mm": 0.4368428547207467,
+      "y_mm": 0.15656834776158626,
+      "w_mm": 0.24217762076624672,
+      "h_mm": 0.3229034943549956,
+      "layer": "top"
+    },
+    "is_int": {
+      "x_mm": 0.38380840697702534,
+      "y_mm": 0.43535142589725845,
+      "w_mm": 0.31541084318710416,
+      "h_mm": 0.2371510099151159,
+      "layer": "bottom"
+    },
+    "if_pp": {
+      "x_mm": 0,
+      "y_mm": 0.5502296355476122,
+      "w_mm": 0.34985711369071804,
+      "h_mm": 0.19436506316151003,
+      "layer": "bottom"
+    },
+    "vec_is_vec": {
+      "x_mm": 0.7992675607786883,
+      "y_mm": 0,
+      "w_mm": 0.3007324392213118,
+      "h_mm": 0.22611461595587354,
+      "layer": "top"
+    },
+    "is_int_rf": {
+      "x_mm": 0.3160594880687079,
+      "y_mm": 0.5158960807780988,
+      "w_mm": 0.19339079605813717,
+      "h_mm": 0.35161962919661305,
+      "layer": "top"
+    },
+    "l2_ctl": {
+      "x_mm": 0.40233510167739867,
+      "y_mm": 0.15485146800217645,
+      "w_mm": 0.25079872407968906,
+      "h_mm": 0.250798724079689,
+      "layer": "bottom"
+    },
+    "mmu": {
+      "x_mm": 0.02338975089916786,
+      "y_mm": 0.5108939506626055,
+      "w_mm": 0.24392621835300934,
+      "h_mm": 0.24392621835300937,
+      "layer": "top"
+    },
+    "id": {
+      "x_mm": 0.05200515071267237,
+      "y_mm": 0.2648327203904188,
+      "w_mm": 0.28130943816374165,
+      "h_mm": 0.2115108557622118,
+      "layer": "top"
+    },
+    "rn": {
+      "x_mm": 0.15750610646806545,
+      "y_mm": 0.033739406493715374,
+      "w_mm": 0.2647470490864818,
+      "h_mm": 0.19905793164397126,
+      "layer": "top"
+    },
+    "is_int_fwd": {
+      "x_mm": 0.4520812974169267,
+      "y_mm": 0.6841682041872758,
+      "w_mm": 0.22583179581272428,
+      "h_mm": 0.2258317958127243,
+      "layer": "bottom"
+    },
+    "tpe": {
+      "x_mm": 0.8120485234592528,
+      "y_mm": 0.5608760420689283,
+      "w_mm": 0.15888675212238434,
+      "h_mm": 0.28888500385888055,
+      "layer": "bottom"
+    },
+    "if_ctl": {
+      "x_mm": 0.17220037313362715,
+      "y_mm": 0.7587591094696512,
+      "w_mm": 0.2709981549752692,
+      "h_mm": 0.1505545305418162,
+      "layer": "bottom"
+    }
+  }
+}

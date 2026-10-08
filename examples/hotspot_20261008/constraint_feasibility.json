@@ -1,0 +1,149 @@
+{
+  "all_soft_constraints_necessarily_possible": false,
+  "layer_preferences": {
+    "bottom": {
+      "preferred_modules": [
+        "l2_b0",
+        "l2_b1"
+      ],
+      "required_area_mm2": 0.309400319312,
+      "capacity_mm2": 0.6668999999999999,
+      "area_necessary_condition_met": true
+    },
+    "top": {
+      "preferred_modules": [
+        "id",
+        "if_ctl",
+        "is_int",
+        "is_int_fwd",
+        "is_int_rf",
+        "ix",
+        "ls",
+        "rn",
+        "vec_is_vec",
+        "vec_vx"
+      ],
+      "required_area_mm2": 0.6902,
+      "capacity_mm2": 0.6668999999999999,
+      "area_necessary_condition_met": false
+    }
+  },
+  "pair_distance_lower_bounds": [
+    {
+      "pair": [
+        "is_int",
+        "is_int_fwd"
+      ],
+      "max_dist_mm": 0.2,
+      "minimum_center_manhattan_lower_bound_mm": 0.1931556601524429,
+      "distance_necessary_condition_met": true
+    },
+    {
+      "pair": [
+        "is_int",
+        "ix"
+      ],
+      "max_dist_mm": 0.2,
+      "minimum_center_manhattan_lower_bound_mm": 0.2196647055831454,
+      "distance_necessary_condition_met": false
+    },
+    {
+      "pair": [
+        "is_int",
+        "rn"
+      ],
+      "max_dist_mm": 0.2,
+      "minimum_center_manhattan_lower_bound_mm": 0.19453989725337348,
+      "distance_necessary_condition_met": true
+    },
+    {
+      "pair": [
+        "is_int_fwd",
+        "is_int_rf"
+      ],
+      "max_dist_mm": 0.2,
+      "minimum_center_manhattan_lower_bound_mm": 0.18843606915128974,
+      "distance_necessary_condition_met": true
+    },
+    {
+      "pair": [
+        "is_int_rf",
+        "ix"
+      ],
+      "max_dist_mm": 0.2,
+      "minimum_center_manhattan_lower_bound_mm": 0.21494511458199222,
+      "distance_necessary_condition_met": false
+    },
+    {
+      "pair": [
+        "is_int_rf",
+        "ls"
+      ],
+      "max_dist_mm": 0.3,
+      "minimum_center_manhattan_lower_bound_mm": 0.2083896601654086,
+      "distance_necessary_condition_met": true
+    },
+    {
+      "pair": [
+        "is_int_fwd",
+        "ix"
+      ],
+      "max_dist_mm": 0.3,
+      "minimum_center_manhattan_lower_bound_mm": 0.20199038767514477,
+      "distance_necessary_condition_met": true
+    },
+    {
+      "pair": [
+        "ix",
+        "ls"
+      ],
+      "max_dist_mm": 0.3,
+      "minimum_center_manhattan_lower_bound_mm": 0.2219439786892637,
+      "distance_necessary_condition_met": true
+    },
+    {
+      "pair": [
+        "id",
+        "rn"
+      ],
+      "max_dist_mm": 0.3,
+      "minimum_center_manhattan_lower_bound_mm": 0.18357517079877944,
+      "distance_necessary_condition_met": true
+    },
+    {
+      "pair": [
+        "vec_vx",
+        "vec_is_vec"
+      ],
+      "max_dist_mm": 0.3,
+      "minimum_center_manhattan_lower_bound_mm": 0.22700647684043385,
+      "distance_necessary_condition_met": true
+    },
+    {
+      "pair": [
+        "if_ctl",
+        "is_int"
+      ],
+      "max_dist_mm": 0.3,
+      "minimum_center_manhattan_lower_bound_mm": 0.1843149222745178,
+      "distance_necessary_condition_met": true
+    },
+    {
+      "pair": [
+        "if_ctl",
+        "is_int_rf"
+      ],
+      "max_dist_mm": 0.3,
+      "minimum_center_manhattan_lower_bound_mm": 0.17959533127336463,
+      "distance_necessary_condition_met": true
+    }
+  ],
+  "aspect_ratios": [
+    0.55,
+    0.75,
+    1.0,
+    1.33,
+    1.8
+  ],
+  "note": "Passing these necessary conditions does not prove simultaneous feasibility. Failure proves some soft violations are unavoidable under the configured geometry/shape model."
+}

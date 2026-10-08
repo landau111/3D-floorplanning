@@ -1,0 +1,662 @@
+{
+  "profile": "constraint",
+  "candidate": 208,
+  "pareto": true,
+  "metrics": {
+    "score": 5.418021301666419,
+    "weighted_wirelength_mm_signals": 4362.567909430331,
+    "mean_weighted_manhattan_mm": 0.3995025558086384,
+    "cross_layer_signals": 860,
+    "estimated_peak_bond_density_per_mm2": 3250.0792200847673,
+    "bond_density_limit_per_mm2": 16000.0,
+    "total_bond_capacity": 16016.0,
+    "timing_cost_normalized": 0.07254274477866779,
+    "rc_quadratic_cost_mm2": 0.1975314826318352,
+    "mean_hbt_clock_budget_fraction": 0.02365002365002365,
+    "interconnect_costs": [
+      {
+        "pair": [
+          "l2_b0",
+          "l2_ctl"
+        ],
+        "signals": 5000,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.31248204009133373,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.025343488677,
+        "rc_cost_mm2": 0.10011969097471624,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "l2_b1",
+          "l2_ctl"
+        ],
+        "signals": 900,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.4107084618457539,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.0349440822120002,
+        "rc_cost_mm2": 0.174575858760778,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "if_pp",
+          "if_ctl"
+        ],
+        "signals": 120,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.35198605749322814,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.042746597127,
+        "rc_cost_mm2": 0.12919023946807676,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "id"
+        ],
+        "signals": 200,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.594906374219276,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.042746597127,
+        "rc_cost_mm2": 0.381553202517158,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "id",
+          "rn"
+        ],
+        "signals": 300,
+        "category": "crit_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.3497651926783115,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.019976652267,
+        "rc_cost_mm2": 0.12477954754845559,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "rn",
+          "is_int"
+        ],
+        "signals": 320,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.4927220653076272,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.018546314592,
+        "rc_cost_mm2": 0.24727761579000324,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "is_int",
+          "ix"
+        ],
+        "signals": 440,
+        "category": "crit_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.3846940284311605,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.0357293533740002,
+        "rc_cost_mm2": 0.15327706449133258,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "ix",
+          "is_int_fwd"
+        ],
+        "signals": 450,
+        "category": "crit_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.4339631864731059,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.0357293533740002,
+        "rc_cost_mm2": 0.1950527436456187,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "is_int_rf"
+        ],
+        "signals": 350,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.2069270258855443,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.0271361299560002,
+        "rc_cost_mm2": 0.043980730401515206,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "is_int"
+        ],
+        "signals": 320,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.8766889905340918,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.0227242048410001,
+        "rc_cost_mm2": 0.7860490369721899,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "rn",
+          "vec_is_vec"
+        ],
+        "signals": 250,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.9616773216692094,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.0261955038540003,
+        "rc_cost_mm2": 0.9490494825729506,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "vec_is_vec",
+          "vec_vx"
+        ],
+        "signals": 550,
+        "category": "crit_crit",
+        "weight": 1.0,
+        "manhattan_mm": 0.41695953983638034,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.0417916984680002,
+        "rc_cost_mm2": 0.18112096437415126,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "ix",
+          "ls"
+        ],
+        "signals": 280,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.4371575625848671,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.055702984896,
+        "rc_cost_mm2": 0.21108769124422355,
+        "hbt_latency_ps": 100
+      },
+      {
+        "pair": [
+          "ls",
+          "mmu"
+        ],
+        "signals": 230,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.38730258973986764,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.055702984896,
+        "rc_cost_mm2": 0.1583589273517164,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "ls",
+          "l2_ctl"
+        ],
+        "signals": 500,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.7616182217079692,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.055702984896,
+        "rc_cost_mm2": 0.6123735180443098,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "mmu",
+          "l2_ctl"
+        ],
+        "signals": 180,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.5776188814977046,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.047254293021,
+        "rc_cost_mm2": 0.3494096633909322,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "tpe",
+          "if_ctl"
+        ],
+        "signals": 150,
+        "category": "other_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.6433573504151323,
+        "cross_layer": false,
+        "rc_temperature_factor": 1.042746597127,
+        "rc_cost_mm2": 0.43160186793875,
+        "hbt_latency_ps": 0
+      },
+      {
+        "pair": [
+          "vec_vx",
+          "ls"
+        ],
+        "signals": 380,
+        "category": "crit_other",
+        "weight": 1.0,
+        "manhattan_mm": 0.07018744167622315,
+        "cross_layer": true,
+        "rc_temperature_factor": 1.055702984896,
+        "rc_cost_mm2": 0.006788197432739563,
+        "hbt_latency_ps": 100
+      }
+    ],
+    "soft_constraint_penalty": 1.9835641836326463,
+    "soft_constraint_violations": 12,
+    "constraint_details": [
+      {
+        "pair": [
+          "is_int",
+          "is_int_fwd"
+        ],
+        "distance_mm": 0.6735395265934576,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.4735395265934576,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 5.605992081158899,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int",
+          "ix"
+        ],
+        "distance_mm": 0.3846940284311605,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.1846940284311605,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.852797103453258,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int",
+          "rn"
+        ],
+        "distance_mm": 0.4927220653076272,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.2927220653076272,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 2.142155187949068,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "is_int_rf"
+        ],
+        "distance_mm": 0.2069270258855443,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.00692702588554428,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.001199592190475013,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "ix"
+        ],
+        "distance_mm": 0.6371126504137401,
+        "max_dist_mm": 0.2,
+        "excess_mm": 0.4371126504137401,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 4.776686728793113,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "ls"
+        ],
+        "distance_mm": 0.6423137474638495,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.3423137474638495,
+        "different_layers": true,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 1,
+        "penalty": 3.301985574474935,
+        "violated": true
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "ix"
+        ],
+        "distance_mm": 0.4339631864731059,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.1339631864731059,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.1994015036669794,
+        "violated": true
+      },
+      {
+        "pair": [
+          "ix",
+          "ls"
+        ],
+        "distance_mm": 0.4371575625848671,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.1371575625848671,
+        "different_layers": true,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 1,
+        "penalty": 2.2090244108246857,
+        "violated": true
+      },
+      {
+        "pair": [
+          "id",
+          "rn"
+        ],
+        "distance_mm": 0.3497651926783115,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.04976519267831153,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.027517493358994137,
+        "violated": true
+      },
+      {
+        "pair": [
+          "vec_vx",
+          "vec_is_vec"
+        ],
+        "distance_mm": 0.41695953983638034,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.11695953983638036,
+        "different_layers": false,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 0,
+        "penalty": 0.15199482176375384,
+        "violated": true
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "is_int"
+        ],
+        "distance_mm": 0.4580737380842485,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.15807373808424852,
+        "different_layers": true,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 1,
+        "penalty": 2.2776367407991955,
+        "violated": true
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "is_int_rf"
+        ],
+        "distance_mm": 0.45190163548907475,
+        "max_dist_mm": 0.3,
+        "excess_mm": 0.15190163548907476,
+        "different_layers": true,
+        "requested_layer": "top",
+        "wrong_layer_endpoints": 1,
+        "penalty": 2.256378965158397,
+        "violated": true
+      }
+    ],
+    "peak_temperature_C": 41.28281664000002,
+    "temperature_feedback": "HotSpot",
+    "layer_area_mm2": {
+      "bottom": 0.664700319312,
+      "top": 0.5712
+    },
+    "layer_power_w": {
+      "bottom": 0.5479999999999999,
+      "top": 0.297
+    },
+    "anchor_displacement_normalized": 0.12126788480517227,
+    "feasible": true
+  },
+  "thermal": {
+    "backend": "HotSpot",
+    "peak_C": 41.28281664000002,
+    "mean_C": 33.239473115772725,
+    "module_peak_C": {
+      "l2_b0": 32.87435677000002,
+      "l2_b1": 35.96002108000005,
+      "vec_vx": 37.715820120000046,
+      "ix": 36.16137266000004,
+      "is_int": 31.75546528000001,
+      "ls": 41.28281664000002,
+      "if_pp": 34.032315159999996,
+      "is_int_rf": 32.826719190000006,
+      "vec_is_vec": 33.71679586000005,
+      "l2_ctl": 33.49833043000001,
+      "id": 32.12221853,
+      "mmu": 39.11648539000004,
+      "rn": 31.420015239999998,
+      "is_int_fwd": 33.95798204000005,
+      "tpe": 33.476590680000015,
+      "if_ctl": 37.960665930000005
+    },
+    "input_directory": "layout_03/hotspot",
+    "command": [
+      "../../../../third_party/HotSpot/hotspot",
+      "-c",
+      "hotspot.config",
+      "-grid_layer_file",
+      "stack.lcf",
+      "-f",
+      "bottom.flp",
+      "-p",
+      "power.ptrace",
+      "-steady_file",
+      "hotspot.steady",
+      "-grid_steady_file",
+      "hotspot.grid.steady"
+    ],
+    "executable_sha256": "7d62ecd862167f73947262ef5f68bdc50dc9ca8d884899e8a1f62ebc055e3a6f",
+    "inputs": {
+      "floorplan_elements": 477,
+      "total_power_W": 0.845,
+      "power_conservation_error_W": 2.7755575615628914e-17,
+      "active_layer_indices": {
+        "top": 2,
+        "bottom": 0
+      },
+      "stack": [
+        {
+          "name": "bottom_si",
+          "power_layer": "bottom",
+          "thickness_um": 50,
+          "conductivity_W_m_K": 130,
+          "heat_capacity_J_m3_K": 1630300
+        },
+        {
+          "name": "hb_interface",
+          "power_layer": "none",
+          "thickness_um": 2,
+          "conductivity_W_m_K": 1.4,
+          "heat_capacity_J_m3_K": 2200000
+        },
+        {
+          "name": "top_si",
+          "power_layer": "top",
+          "thickness_um": 50,
+          "conductivity_W_m_K": 130,
+          "heat_capacity_J_m3_K": 1630300
+        },
+        {
+          "name": "tim",
+          "power_layer": "none",
+          "thickness_um": 20,
+          "conductivity_W_m_K": 4,
+          "heat_capacity_J_m3_K": 4000000
+        }
+      ],
+      "package_parameters": {
+        "r_convec": 1.042,
+        "c_convec": 140.4,
+        "s_sink": 0.06,
+        "t_sink": 0.0069,
+        "k_sink": 400,
+        "p_sink": 3550000,
+        "s_spreader": 0.03,
+        "t_spreader": 0.001,
+        "k_spreader": 400,
+        "p_spreader": 3550000
+      },
+      "power_note": "Only provided module powers; no additional leakage model."
+    },
+    "command_note": "Executable path normalized for this example package; numerical outputs unchanged."
+  },
+  "modules": {
+    "l2_b0": {
+      "x_mm": 0.035,
+      "y_mm": 0.055,
+      "w_mm": 0.338999,
+      "h_mm": 0.456344,
+      "layer": "bottom"
+    },
+    "l2_b1": {
+      "x_mm": 0.726001,
+      "y_mm": 0.055,
+      "w_mm": 0.338999,
+      "h_mm": 0.456344,
+      "layer": "bottom"
+    },
+    "vec_vx": {
+      "x_mm": 0.7695687263324785,
+      "y_mm": 0.5291238171443813,
+      "w_mm": 0.285657137141714,
+      "h_mm": 0.3808761828556187,
+      "layer": "top"
+    },
+    "ix": {
+      "x_mm": 0.5370939828861155,
+      "y_mm": 0.276816469679172,
+      "w_mm": 0.22049943310584727,
+      "h_mm": 0.4009080601924495,
+      "layer": "top"
+    },
+    "is_int": {
+      "x_mm": 0.39131823706658686,
+      "y_mm": 0.06320941649016959,
+      "w_mm": 0.36693323643409576,
+      "h_mm": 0.20385179801894207,
+      "layer": "top"
+    },
+    "ls": {
+      "x_mm": 0.7406350587163955,
+      "y_mm": 0.5289074188804948,
+      "w_mm": 0.20738852427268006,
+      "h_mm": 0.3770700441321455,
+      "layer": "bottom"
+    },
+    "if_pp": {
+      "x_mm": 0.07776500594084429,
+      "y_mm": 0.5226349039596994,
+      "w_mm": 0.34985711369071804,
+      "h_mm": 0.19436506316151003,
+      "layer": "bottom"
+    },
+    "is_int_rf": {
+      "x_mm": 0.12951388376360934,
+      "y_mm": 0.5174389179444692,
+      "w_mm": 0.19339079605813717,
+      "h_mm": 0.35161962919661305,
+      "layer": "top"
+    },
+    "vec_is_vec": {
+      "x_mm": 0.7747252424569933,
+      "y_mm": 0.1768039927339742,
+      "w_mm": 0.2258317958127243,
+      "h_mm": 0.3011090610836324,
+      "layer": "top"
+    },
+    "l2_ctl": {
+      "x_mm": 0.39228775597792254,
+      "y_mm": 0.15446804010872067,
+      "w_mm": 0.2171980662897347,
+      "h_mm": 0.2895974217196463,
+      "layer": "bottom"
+    },
+    "id": {
+      "x_mm": 0.18078126460785474,
+      "y_mm": 0.16740098459998784,
+      "w_mm": 0.18090052515125546,
+      "h_mm": 0.3289100457295553,
+      "layer": "top"
+    },
+    "mmu": {
+      "x_mm": 0.3950476741581336,
+      "y_mm": 0.7281881314227381,
+      "w_mm": 0.3272613634390714,
+      "h_mm": 0.18181186857726192,
+      "layer": "bottom"
+    },
+    "rn": {
+      "x_mm": 0,
+      "y_mm": 0.013424873341054397,
+      "w_mm": 0.1702498164463034,
+      "h_mm": 0.3095451208114607,
+      "layer": "top"
+    },
+    "is_int_fwd": {
+      "x_mm": 0.3334594906277274,
+      "y_mm": 0.5647534654111777,
+      "w_mm": 0.19557607215607947,
+      "h_mm": 0.2607680962081059,
+      "layer": "top"
+    },
+    "tpe": {
+      "x_mm": 0.02794276240644631,
+      "y_mm": 0.7503128057732869,
+      "w_mm": 0.28743694960808364,
+      "h_mm": 0.15968719422671313,
+      "layer": "bottom"
+    },
+    "if_ctl": {
+      "x_mm": 0.47495487392640295,
+      "y_mm": 0.518992047871155,
+      "w_mm": 0.23294634575369497,
+      "h_mm": 0.17514762838623682,
+      "layer": "bottom"
+    }
+  }
+}

@@ -1,0 +1,2 @@
+# Preserve input snapshots and SHA256 provenance across Windows/Linux checkouts.
+* -text whitespace=cr-at-eol

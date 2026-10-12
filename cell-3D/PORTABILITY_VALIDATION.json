@@ -1,0 +1,14 @@
+{
+  "relocated_windows_x64_runtime": true,
+  "non_ascii_and_space_path": true,
+  "launcher_full_run": true,
+  "identical_coordinates_regions_edges_and_route_choices_in_all_four_profiles": true,
+  "changed_config_full_pipeline": true,
+  "changed_power_total_W": 0.855,
+  "changed_id_x_mm": 0.03,
+  "input_unchanged": true,
+  "proxy_backend_does_not_require_WSL": true,
+  "hotspot_verified_separately": true,
+  "unit_tests": "9 passed in workspace; 8 passed and 1 optional archive skipped in bundle",
+  "limitations": "Company desktop itself has not been accessed; Linux/ARM runtime not tested"
+}

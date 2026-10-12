@@ -1,0 +1,16 @@
+{
+  "frequency_GHz": 2.0,
+  "provenance": "Existing c910-like-o3-se-v1 gem5 baseline; no rerun",
+  "runs": [
+    {
+      "workload": "stream",
+      "cpi": 1.1599017236307134,
+      "l2_accesses_per_instruction": 0.04878892911351147
+    },
+    {
+      "workload": "matmul",
+      "cpi": 1.3466622592279045,
+      "l2_accesses_per_instruction": 0.0014134288255691395
+    }
+  ]
+}

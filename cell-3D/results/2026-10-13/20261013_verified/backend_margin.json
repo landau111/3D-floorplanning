@@ -1,0 +1,18 @@
+{
+  "eligible_region_area_mm2": [
+    0.15080000000000002,
+    0.7020000000000001
+  ],
+  "actual_cell_area_mm2": [
+    0.071776,
+    0.34844800000000004
+  ],
+  "physical_cell_utilization": [
+    0.4759681697612732,
+    0.49636467236467235
+  ],
+  "cts_reserved_row_fraction": 0.1,
+  "cell_side_padding_um": 1.0,
+  "macro_keepout_mm": 0.004,
+  "nominal_module_dynamic_power_W": 0.845
+}

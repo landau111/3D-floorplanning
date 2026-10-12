@@ -1,0 +1,167 @@
+[
+  {
+    "date": "2026-09-25",
+    "run": "puzzle",
+    "path": "2026-09-25/puzzle",
+    "kind": "legacy",
+    "status": "complete",
+    "started_at": "2026-09-25",
+    "date_basis": "original files modification date; historical manifest has no explicit run timestamp",
+    "note": "",
+    "no_feasible_candidate": null
+  },
+  {
+    "date": "2026-09-25",
+    "run": "rectangular",
+    "path": "2026-09-25/rectangular",
+    "kind": "legacy",
+    "status": "complete",
+    "started_at": "2026-09-25",
+    "date_basis": "original files modification date; historical manifest has no explicit run timestamp",
+    "note": "",
+    "no_feasible_candidate": null
+  },
+  {
+    "date": "2026-10-13",
+    "run": "013919_layout",
+    "path": "2026-10-13/013919_layout",
+    "kind": "formal",
+    "status": "complete",
+    "started_at": "2026-10-13T01:39:19.555876+08:00",
+    "date_basis": "run_info UTC+08 timestamp",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_final",
+    "path": "2026-10-13/20261013_final",
+    "kind": "development",
+    "status": "complete",
+    "started_at": "2026-10-13",
+    "date_basis": "original directory date",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_full",
+    "path": "2026-10-13/20261013_full",
+    "kind": "development",
+    "status": "failed",
+    "started_at": "2026-10-13",
+    "date_basis": "original directory date",
+    "note": "Original run stopped before a legal region checkpoint; if_ctl compactness exceeded the limit. Inputs retained; no completed result.",
+    "no_feasible_candidate": null
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_full_02",
+    "path": "2026-10-13/20261013_full_02",
+    "kind": "development",
+    "status": "complete",
+    "started_at": "2026-10-13",
+    "date_basis": "original directory date",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_release",
+    "path": "2026-10-13/20261013_release",
+    "kind": "formal",
+    "status": "complete",
+    "started_at": "2026-10-13",
+    "date_basis": "original directory date",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_verified",
+    "path": "2026-10-13/20261013_verified",
+    "kind": "development",
+    "status": "complete",
+    "started_at": "2026-10-13",
+    "date_basis": "original directory date",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "adapter_quick_01",
+    "path": "2026-10-13/adapter_quick_01",
+    "kind": "quick",
+    "status": "complete",
+    "started_at": "2026-10-13",
+    "date_basis": "original directory date",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "changed_config",
+    "path": "2026-10-13/changed_config",
+    "kind": "environment_validation",
+    "status": "complete",
+    "started_at": "2026-10-13",
+    "date_basis": "original directory date",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "organized_portable_02_changed",
+    "path": "2026-10-13/organized_portable_02_changed",
+    "kind": "quick",
+    "status": "complete",
+    "started_at": "2026-10-13T01:54:14.838985+08:00",
+    "date_basis": "run_info UTC+08 timestamp",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "organized_portable_02_full",
+    "path": "2026-10-13/organized_portable_02_full",
+    "kind": "environment_validation",
+    "status": "complete",
+    "started_at": "2026-10-13T01:53:54.202412+08:00",
+    "date_basis": "run_info UTC+08 timestamp",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "organized_portable_full",
+    "path": "2026-10-13/organized_portable_full",
+    "kind": "environment_validation",
+    "status": "complete",
+    "started_at": "2026-10-13T01:52:23.560773+08:00",
+    "date_basis": "run_info UTC+08 timestamp",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "portable_full",
+    "path": "2026-10-13/portable_full",
+    "kind": "environment_validation",
+    "status": "complete",
+    "started_at": "2026-10-13",
+    "date_basis": "original directory date",
+    "note": "",
+    "no_feasible_candidate": true
+  },
+  {
+    "date": "2026-10-13",
+    "run": "zip_validation",
+    "path": "2026-10-13/zip_validation",
+    "kind": "environment_validation",
+    "status": "complete",
+    "started_at": "2026-10-13",
+    "date_basis": "original directory date",
+    "note": "",
+    "no_feasible_candidate": true
+  }
+]

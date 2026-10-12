@@ -1,0 +1,101 @@
+[
+  {
+    "date": "2026-09-25",
+    "run": "puzzle",
+    "path": "results/2026-09-25/puzzle",
+    "kind": "legacy",
+    "status": "complete",
+    "date_basis": "original files modification date; historical manifest has no explicit run timestamp",
+    "note": ""
+  },
+  {
+    "date": "2026-09-25",
+    "run": "rectangular",
+    "path": "results/2026-09-25/rectangular",
+    "kind": "legacy",
+    "status": "complete",
+    "date_basis": "original files modification date; historical manifest has no explicit run timestamp",
+    "note": ""
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_final",
+    "path": "results/2026-10-13/20261013_final",
+    "kind": "development",
+    "status": "complete",
+    "date_basis": "original directory date",
+    "note": ""
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_full",
+    "path": "results/2026-10-13/20261013_full",
+    "kind": "development",
+    "status": "failed",
+    "date_basis": "original directory date",
+    "note": "Original run stopped before a legal region checkpoint; if_ctl compactness exceeded the limit. Inputs retained; no completed result."
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_full_02",
+    "path": "results/2026-10-13/20261013_full_02",
+    "kind": "development",
+    "status": "complete",
+    "date_basis": "original directory date",
+    "note": ""
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_release",
+    "path": "results/2026-10-13/20261013_release",
+    "kind": "formal",
+    "status": "complete",
+    "date_basis": "original directory date",
+    "note": ""
+  },
+  {
+    "date": "2026-10-13",
+    "run": "20261013_verified",
+    "path": "results/2026-10-13/20261013_verified",
+    "kind": "development",
+    "status": "complete",
+    "date_basis": "original directory date",
+    "note": ""
+  },
+  {
+    "date": "2026-10-13",
+    "run": "adapter_quick_01",
+    "path": "results/2026-10-13/adapter_quick_01",
+    "kind": "quick",
+    "status": "complete",
+    "date_basis": "original directory date",
+    "note": ""
+  },
+  {
+    "date": "2026-10-13",
+    "run": "changed_config",
+    "path": "results/2026-10-13/changed_config",
+    "kind": "environment_validation",
+    "status": "complete",
+    "date_basis": "original directory date",
+    "note": ""
+  },
+  {
+    "date": "2026-10-13",
+    "run": "portable_full",
+    "path": "results/2026-10-13/portable_full",
+    "kind": "environment_validation",
+    "status": "complete",
+    "date_basis": "original directory date",
+    "note": ""
+  },
+  {
+    "date": "2026-10-13",
+    "run": "zip_validation",
+    "path": "results/2026-10-13/zip_validation",
+    "kind": "environment_validation",
+    "status": "complete",
+    "date_basis": "original directory date",
+    "note": ""
+  }
+]

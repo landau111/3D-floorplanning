@@ -1,0 +1,1170 @@
+{
+  "config_snapshot": {
+    "schema": "cell3d-estimate-v1",
+    "track": "C-synthetic-exploration",
+    "provenance": "All physical parameters are assumptions except user-supplied bonding constraints. Not calibrated C910 physical design.",
+    "die_mm": 1.6,
+    "tiers": 2,
+    "node_nm_assumed": 28,
+    "vdd_V": 0.8,
+    "frequency_GHz": 2.0,
+    "ambient_C": 45.0,
+    "temperature_limit_C": 95.0,
+    "package_R_K_W": 3.5,
+    "lateral_G_W_K": 0.008,
+    "intertier_G_W_K_at_16": 0.012,
+    "top_sink_G_W_K_at_16": 0.025,
+    "thermal_grid": 16,
+    "routing_grid": 16,
+    "routing_tracks_per_edge": 600,
+    "routing_capacity_note": "Assumed 3 effective directional routing layers x 100um / 0.5um track pitch = 600 tracks per 0.1mm GCell edge before macro blockage.",
+    "macro_routing_capacity_factor": 0.45,
+    "pitch_um": 5.0,
+    "max_density_per_mm2": 20000,
+    "constraint_interpretation": "F2F signal bonds; fixed, aligned 0.1mm windows. Power/clock reserves not modeled. Not standard-cell count density.",
+    "cell_width_um": 8.0,
+    "cell_height_um": 4.0,
+    "cell_count_per_logic_module": 2100,
+    "cell_geometry_note": "Uniform synthetic standard cells, each individually placed; no library mapping, clustering or claim to full C910 gate count.",
+    "module_region_mm": 0.34,
+    "macro_side_mm": 0.76,
+    "wire_C_pF_per_mm": 0.2,
+    "wire_activity": 0.12,
+    "wire_delay_ns_per_mm": 0.11,
+    "wire_delay_ns_per_mm2": 0.04,
+    "bond_C_pF": 0.004,
+    "bond_delay_ns": 0.014,
+    "leakage_alpha_per_K": 0.012,
+    "leakage_reference_C": 60.0,
+    "logic_delay_alpha_per_K": 0.0012,
+    "wire_delay_alpha_per_K": 0.002,
+    "density_target": 0.78,
+    "placement_steps": 160,
+    "routing_steps": 160,
+    "seed": 20260925,
+    "modules": [
+      {
+        "name": "l2_b0",
+        "kind": "sram_macro",
+        "dynamic_W": 0.55,
+        "leakage_W": 0.1
+      },
+      {
+        "name": "l2_b1",
+        "kind": "sram_macro",
+        "dynamic_W": 0.55,
+        "leakage_W": 0.1
+      },
+      {
+        "name": "if_pp",
+        "kind": "logic",
+        "dynamic_W": 0.38,
+        "leakage_W": 0.035
+      },
+      {
+        "name": "if_ctl",
+        "kind": "logic",
+        "dynamic_W": 0.2,
+        "leakage_W": 0.02
+      },
+      {
+        "name": "l2_ctl",
+        "kind": "logic",
+        "dynamic_W": 0.3,
+        "leakage_W": 0.03
+      },
+      {
+        "name": "tpe",
+        "kind": "logic",
+        "dynamic_W": 0.18,
+        "leakage_W": 0.02
+      },
+      {
+        "name": "ls",
+        "kind": "logic",
+        "dynamic_W": 0.8,
+        "leakage_W": 0.07
+      },
+      {
+        "name": "mm",
+        "kind": "logic",
+        "dynamic_W": 0.24,
+        "leakage_W": 0.025
+      },
+      {
+        "name": "id",
+        "kind": "logic",
+        "dynamic_W": 0.32,
+        "leakage_W": 0.03
+      },
+      {
+        "name": "rn",
+        "kind": "logic",
+        "dynamic_W": 0.34,
+        "leakage_W": 0.035
+      },
+      {
+        "name": "is_int",
+        "kind": "logic",
+        "dynamic_W": 0.54,
+        "leakage_W": 0.045
+      },
+      {
+        "name": "ix",
+        "kind": "logic",
+        "dynamic_W": 0.72,
+        "leakage_W": 0.065
+      },
+      {
+        "name": "vec_vx",
+        "kind": "logic",
+        "dynamic_W": 1.05,
+        "leakage_W": 0.09
+      },
+      {
+        "name": "is_int_fwd",
+        "kind": "logic",
+        "dynamic_W": 0.32,
+        "leakage_W": 0.03
+      },
+      {
+        "name": "is_int_rf",
+        "kind": "logic",
+        "dynamic_W": 0.55,
+        "leakage_W": 0.07
+      },
+      {
+        "name": "vec_is_vec",
+        "kind": "logic",
+        "dynamic_W": 0.55,
+        "leakage_W": 0.05
+      }
+    ],
+    "connections": [
+      [
+        "if_pp",
+        "if_ctl",
+        96
+      ],
+      [
+        "if_ctl",
+        "id",
+        128
+      ],
+      [
+        "id",
+        "rn",
+        192
+      ],
+      [
+        "rn",
+        "is_int",
+        192
+      ],
+      [
+        "is_int",
+        "ix",
+        256
+      ],
+      [
+        "ix",
+        "is_int_fwd",
+        256
+      ],
+      [
+        "is_int_fwd",
+        "is_int_rf",
+        256
+      ],
+      [
+        "is_int_rf",
+        "is_int",
+        256
+      ],
+      [
+        "rn",
+        "vec_is_vec",
+        192
+      ],
+      [
+        "vec_is_vec",
+        "vec_vx",
+        384
+      ],
+      [
+        "ix",
+        "ls",
+        128
+      ],
+      [
+        "ls",
+        "mm",
+        128
+      ],
+      [
+        "ls",
+        "l2_ctl",
+        256
+      ],
+      [
+        "l2_ctl",
+        "l2_b0",
+        256
+      ],
+      [
+        "l2_ctl",
+        "l2_b1",
+        256
+      ],
+      [
+        "mm",
+        "tpe",
+        64
+      ],
+      [
+        "tpe",
+        "if_ctl",
+        64
+      ],
+      [
+        "vec_vx",
+        "ls",
+        256
+      ]
+    ]
+  },
+  "fixed_source_parameters": [
+    {
+      "category": "布局几何",
+      "name": "slot_grid",
+      "value": "4×4; slot_pitch=0.4 mm",
+      "meaning": "宏占左上2×2格，其余12格可放逻辑模块；每层用7格"
+    },
+    {
+      "category": "布局几何",
+      "name": "logic_slot_margin",
+      "value": "0.03 mm",
+      "meaning": "逻辑区域左下角=(slot_x×0.4+0.03,slot_y×0.4+0.03)"
+    },
+    {
+      "category": "布局几何",
+      "name": "macro_origin",
+      "value": "(0.02,0.82) mm",
+      "meaning": "两层各一个固定宏；区域到(0.78,1.58) mm"
+    },
+    {
+      "category": "布局几何",
+      "name": "candidate_slot_orders",
+      "value": {
+        "A_split": [
+          0,
+          1,
+          4,
+          5,
+          2,
+          3,
+          6
+        ],
+        "B_critical_local": [
+          0,
+          1,
+          2,
+          3,
+          7,
+          6,
+          5
+        ],
+        "C_hot_top": [
+          3,
+          2,
+          1,
+          0,
+          5,
+          4,
+          6
+        ]
+      },
+      "meaning": "slot按y优先、再x遍历，排除左上2×2"
+    },
+    {
+      "category": "网表与功率",
+      "name": "macro_port_power_samples",
+      "value": "8×8=64 points/macro; inset=0.01 mm",
+      "meaning": "只作固定端口/功率采样，不是可移动SRAM bit cells"
+    },
+    {
+      "category": "网表与功率",
+      "name": "initial_cell_sampling",
+      "value": "unique random legal row/sites",
+      "meaning": "每模块从42×85=3570个合法site中无放回取2100个"
+    },
+    {
+      "category": "网表与功率",
+      "name": "cell_activity_distribution",
+      "value": "Uniform(0.65,1.35), normalized per module",
+      "meaning": "只决定模块动态功率如何分到cell，模块总和保持给定预算"
+    },
+    {
+      "category": "网表与功率",
+      "name": "leakage_distribution",
+      "value": "uniform per module",
+      "meaning": "每cell泄漏等于模块泄漏/节点数"
+    },
+    {
+      "category": "网表与功率",
+      "name": "local_net_offsets",
+      "value": "1,7; circular IDs",
+      "meaning": "每个逻辑cell连接ID偏移1和7的两个cell；共58800条模块内两端网络"
+    },
+    {
+      "category": "网表与功率",
+      "name": "external_net_endpoints",
+      "value": "independent random choice with replacement",
+      "meaning": "按config.connections指定数量生成模块间网络，合计3616条"
+    },
+    {
+      "category": "时序代理",
+      "name": "base_logic_delay",
+      "value": "Uniform(0.24,0.35) ns",
+      "meaning": "每条两端网络是独立的已寄存路径代理，不是完整STA图"
+    },
+    {
+      "category": "时序代理",
+      "name": "external_logic_extra",
+      "value": "0.035 ns",
+      "meaning": "模块间网络额外固定逻辑延迟"
+    },
+    {
+      "category": "时序代理",
+      "name": "criticality",
+      "value": "1+2×I(logic_ns>0.34 ns)",
+      "meaning": "用于线长和bond目标的固定关键性权重，取1或3"
+    },
+    {
+      "category": "cell优化",
+      "name": "profiles",
+      "value": {
+        "balanced": [
+          1.0,
+          0.45,
+          0.4
+        ],
+        "timing": [
+          1.8,
+          0.12,
+          0.15
+        ],
+        "thermal": [
+          0.45,
+          1.2,
+          0.5
+        ]
+      },
+      "meaning": "三元组=(wire_timing,thermal,power_spread)"
+    },
+    {
+      "category": "cell优化",
+      "name": "inner_weights",
+      "value": "wire=0.45; smooth_timing=1.5; density=30",
+      "meaning": "J=w0(0.45WL+1.5Timing)+30mean(overflow²)+w1Heat+w2Spread"
+    },
+    {
+      "category": "cell优化",
+      "name": "normalization",
+      "value": "wire=0.25 mm; timing=0.5 ns; temperature=40 K",
+      "meaning": "把不同项变成无量纲分数；power spread=bin_count×sum(Pbin²)/Ptotal²"
+    },
+    {
+      "category": "cell优化",
+      "name": "wire_smoothing",
+      "value": "epsilon=0.0004 mm",
+      "meaning": "sqrt(dx²+epsilon²)+sqrt(dy²+epsilon²)"
+    },
+    {
+      "category": "cell优化",
+      "name": "smoothmax_temperatures",
+      "value": "timing=0.012 ns; thermal=2°C",
+      "meaning": "log-sum-exp平滑峰值；不是物理温度设定"
+    },
+    {
+      "category": "cell优化",
+      "name": "adam",
+      "value": "beta1=0.9; beta2=0.999; epsilon=1e-9",
+      "meaning": "含偏差修正"
+    },
+    {
+      "category": "cell优化",
+      "name": "coordinate_learning_rate",
+      "value": "0.006×(0.20+0.80×(1−i/steps)) mm",
+      "meaning": "每步投影回固定模块fence；取最小连续目标点后合法化"
+    },
+    {
+      "category": "cell优化",
+      "name": "restart_seeds",
+      "value": "17,41",
+      "meaning": "对初选优胜方案追加独立坐标扰动优化，两者也参与最后排名"
+    },
+    {
+      "category": "cell优化",
+      "name": "restart_perturbation",
+      "value": "Normal(0,0.003 mm)",
+      "meaning": "添加到初始坐标后投影回模块区域"
+    },
+    {
+      "category": "cell优化",
+      "name": "legalizer",
+      "value": "y,x lexicographic order; growing square ring",
+      "meaning": "在模块内搜索空闲site，选当前搜索窗内欧氏距离最近位置；不是全局最优合法化"
+    },
+    {
+      "category": "路由优化",
+      "name": "candidate_space",
+      "value": "2 L paths (XY,YX) × 2 trunk tiers=4",
+      "meaning": "模块间网参与优化；模块内网固定同层XY背景路由"
+    },
+    {
+      "category": "路由优化",
+      "name": "softmax",
+      "value": "temperature=1",
+      "meaning": "logits归一化；最终argmax离散"
+    },
+    {
+      "category": "路由优化",
+      "name": "initial_logits",
+      "value": "baseline_choice=0.1; other=0",
+      "meaning": "初始偏好源端点tier的XY路径"
+    },
+    {
+      "category": "路由优化",
+      "name": "baseline_route",
+      "value": "source endpoint tier; XY",
+      "meaning": "用于优化前参考"
+    },
+    {
+      "category": "路由优化",
+      "name": "loss_weights",
+      "value": "route_overflow=12; bond_overflow=5",
+      "meaning": "mean(max(demand/capacity−1,0)²)"
+    },
+    {
+      "category": "路由优化",
+      "name": "bond_cost",
+      "value": "(0.08+0.04×criticality)/guided_net_count",
+      "meaning": "期望bond数乘关键性相关系数"
+    },
+    {
+      "category": "路由优化",
+      "name": "adam_learning_rate",
+      "value": "0.15",
+      "meaning": "beta1=.9,beta2=.999,epsilon=1e−9"
+    },
+    {
+      "category": "路由优化",
+      "name": "macro_capacity_region",
+      "value": "x∈[0.02,0.78], y∈[0.82,1.58] mm",
+      "meaning": "硬编码宏覆盖检查；折减系数从config读取"
+    },
+    {
+      "category": "bond合法化",
+      "name": "window",
+      "value": "aligned die_mm/routing_grid=0.1 mm",
+      "meaning": "只检查对齐窗口；不实现滑动窗口DRC"
+    },
+    {
+      "category": "bond合法化",
+      "name": "sites",
+      "value": "20×20=400 pitch sites/window; density capacity=200",
+      "meaning": "坐标偏移半pitch；取min(20000,40000)×0.01；同一位置只容纳1个bond"
+    },
+    {
+      "category": "bond合法化",
+      "name": "site_assignment",
+      "value": "nearest available site in endpoint bin",
+      "meaning": "按网络顺序分配；超容量报错"
+    },
+    {
+      "category": "bond合法化",
+      "name": "wire_detour_factor",
+      "value": "2",
+      "meaning": "合法bond到端点的Manhattan距离×2加入对应网络长度"
+    },
+    {
+      "category": "热与求解",
+      "name": "boundary",
+      "value": "adiabatic sides; tier1 to sink; package common mode",
+      "meaning": "两层有限体积RC模型，不是HotSpot材料堆栈"
+    },
+    {
+      "category": "热与求解",
+      "name": "power_deposition",
+      "value": "bilinear to cell-centered thermal grid",
+      "meaning": "热节点坐标夹在[0,G−1−1e−9]，边界外导数为0"
+    },
+    {
+      "category": "热与求解",
+      "name": "leakage_fixed_point",
+      "value": "max_iterations=150; tolerance=1e−6°C; damping=0.5",
+      "meaning": "初值60°C；残差为最大cell温度更新差"
+    },
+    {
+      "category": "热与求解",
+      "name": "runaway_threshold",
+      "value": "250°C",
+      "meaning": "超过阈值报热失稳，不返回伪造结果"
+    },
+    {
+      "category": "热与求解",
+      "name": "frequency_search",
+      "value": "26 bisections; bracket=[0,2] GHz; usable minimum=0.1 GHz",
+      "meaning": "2GHz上限实际取config.frequency_GHz；最低可用频率以下报错"
+    },
+    {
+      "category": "热与求解",
+      "name": "thermal_refinement",
+      "value": "G=32",
+      "meaning": "只对最终优胜方案加密重算验证，不重新优化cell"
+    },
+    {
+      "category": "IPC外推",
+      "name": "memory_CPI_fraction",
+      "value": {
+        "stream": 0.35,
+        "matmul": 0.12
+      },
+      "meaning": "固定ns内存停顿在基准CPI中的假设占比"
+    },
+    {
+      "category": "IPC外推",
+      "name": "unhidden_L2_fraction",
+      "value": "0.25",
+      "meaning": "L2访问/指令×0.25×额外互连cycles"
+    },
+    {
+      "category": "IPC外推",
+      "name": "link_delay_statistic",
+      "value": "p95(delay−base_logic_ns)",
+      "meaning": "仅涉及l2_b0/l2_b1/l2_ctl的网；包含温度相关逻辑附加延迟"
+    },
+    {
+      "category": "IPC外推",
+      "name": "link_cycles",
+      "value": "max(1,ceil(link_ns×f_GHz))",
+      "meaning": "以1cycle为已有CPI内含的互连基线；本次结果均为1cycle"
+    },
+    {
+      "category": "选择与探索",
+      "name": "workload_weights",
+      "value": {
+        "stream": 0.5,
+        "matmul": 0.5
+      },
+      "meaning": "最大化等权平均BIPS，平局时最小化能耗/指令"
+    },
+    {
+      "category": "选择与探索",
+      "name": "feasibility",
+      "value": "route overflow=0; bond density≤capacity; Tmax≤95°C; delay_max×f≤1",
+      "meaning": "本模型离散可行，不代表详细布线/hold/PDN/DRC签核"
+    },
+    {
+      "category": "选择与探索",
+      "name": "pareto_objectives",
+      "value": "min power_W; min peak_C; max mean_bips",
+      "meaning": "只比较离散可行方案；图上另外独立计算两个二维前沿"
+    },
+    {
+      "category": "选择与探索",
+      "name": "sensitivity_scenarios",
+      "value": {
+        "nominal": {},
+        "power_minus20": {
+          "power_scale": 0.8
+        },
+        "power_plus20": {
+          "power_scale": 1.2
+        },
+        "rc_minus25": {
+          "rc_scale": 0.75
+        },
+        "rc_plus25": {
+          "rc_scale": 1.25
+        },
+        "cooling_good": {
+          "package_R": 2.5
+        },
+        "cooling_poor": {
+          "package_R": 5.0
+        },
+        "combined_stress": {
+          "power_scale": 1.2,
+          "rc_scale": 1.25,
+          "package_R": 5.0
+        }
+      },
+      "meaning": "固定优化后布局，扰动功率、线/bond延迟RC乘数与封装热阻；不是真实统计置信区间"
+    },
+    {
+      "category": "数值验证",
+      "name": "gradient_check",
+      "value": "placement seed81;20 cells×2coords;step1e−7 mm; routing10 logits;step1e−5",
+      "meaning": "相对误差门限1%；仅验证，不属于芯片技术输入"
+    },
+    {
+      "category": "数值验证",
+      "name": "thermal_grid_acceptance",
+      "value": "peak delta<0.5°C",
+      "meaning": "验证脚本断言阈值"
+    }
+  ],
+  "baseline_consumed_fields": {
+    "stream": {
+      "baseline_CPI": 1.1599017236307134,
+      "baseline_IPC": 0.8621420070571233,
+      "instructions": 7590431,
+      "L2_accesses": 370329.0
+    },
+    "matmul": {
+      "baseline_CPI": 1.3466622592279045,
+      "baseline_IPC": 0.7425766877682753,
+      "instructions": 3914594,
+      "L2_accesses": 5533.0
+    }
+  },
+  "baseline_sha256": "6ed6d8051a3c2fe3421f3c7c300815e25d5cf12c31f1a2ef89362260666a6165",
+  "candidate_modules": {
+    "A_split": [
+      {
+        "name": "l2_b0",
+        "kind": "sram_macro",
+        "tier": 0,
+        "x_mm": 0.02,
+        "y_mm": 0.82,
+        "width_mm": 0.76,
+        "height_mm": 0.76,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.1
+      },
+      {
+        "name": "l2_b1",
+        "kind": "sram_macro",
+        "tier": 1,
+        "x_mm": 0.02,
+        "y_mm": 0.82,
+        "width_mm": 0.76,
+        "height_mm": 0.76,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.1
+      },
+      {
+        "name": "if_pp",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.03,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.38,
+        "leakage_at_60C_W": 0.035
+      },
+      {
+        "name": "if_ctl",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.2,
+        "leakage_at_60C_W": 0.02
+      },
+      {
+        "name": "l2_ctl",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.03,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.3,
+        "leakage_at_60C_W": 0.03
+      },
+      {
+        "name": "tpe",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.18,
+        "leakage_at_60C_W": 0.02
+      },
+      {
+        "name": "ls",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.8,
+        "leakage_at_60C_W": 0.07
+      },
+      {
+        "name": "mm",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.03,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.24,
+        "leakage_at_60C_W": 0.025
+      },
+      {
+        "name": "id",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.03,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.32,
+        "leakage_at_60C_W": 0.03
+      },
+      {
+        "name": "rn",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.34,
+        "leakage_at_60C_W": 0.035
+      },
+      {
+        "name": "is_int",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.54,
+        "leakage_at_60C_W": 0.045
+      },
+      {
+        "name": "ix",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 1.2300000000000002,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.72,
+        "leakage_at_60C_W": 0.065
+      },
+      {
+        "name": "vec_vx",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 1.05,
+        "leakage_at_60C_W": 0.09
+      },
+      {
+        "name": "is_int_fwd",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.32,
+        "leakage_at_60C_W": 0.03
+      },
+      {
+        "name": "is_int_rf",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 1.2300000000000002,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.07
+      },
+      {
+        "name": "vec_is_vec",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.05
+      }
+    ],
+    "B_critical_local": [
+      {
+        "name": "l2_b0",
+        "kind": "sram_macro",
+        "tier": 0,
+        "x_mm": 0.02,
+        "y_mm": 0.82,
+        "width_mm": 0.76,
+        "height_mm": 0.76,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.1
+      },
+      {
+        "name": "l2_b1",
+        "kind": "sram_macro",
+        "tier": 1,
+        "x_mm": 0.02,
+        "y_mm": 0.82,
+        "width_mm": 0.76,
+        "height_mm": 0.76,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.1
+      },
+      {
+        "name": "if_pp",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.03,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.38,
+        "leakage_at_60C_W": 0.035
+      },
+      {
+        "name": "if_ctl",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.2,
+        "leakage_at_60C_W": 0.02
+      },
+      {
+        "name": "l2_ctl",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.3,
+        "leakage_at_60C_W": 0.03
+      },
+      {
+        "name": "tpe",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 1.2300000000000002,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.18,
+        "leakage_at_60C_W": 0.02
+      },
+      {
+        "name": "ls",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.8,
+        "leakage_at_60C_W": 0.07
+      },
+      {
+        "name": "mm",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 1.2300000000000002,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.24,
+        "leakage_at_60C_W": 0.025
+      },
+      {
+        "name": "id",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.03,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.32,
+        "leakage_at_60C_W": 0.03
+      },
+      {
+        "name": "rn",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.34,
+        "leakage_at_60C_W": 0.035
+      },
+      {
+        "name": "is_int",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.54,
+        "leakage_at_60C_W": 0.045
+      },
+      {
+        "name": "ix",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 1.2300000000000002,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.72,
+        "leakage_at_60C_W": 0.065
+      },
+      {
+        "name": "vec_vx",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 1.05,
+        "leakage_at_60C_W": 0.09
+      },
+      {
+        "name": "is_int_fwd",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 1.2300000000000002,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.32,
+        "leakage_at_60C_W": 0.03
+      },
+      {
+        "name": "is_int_rf",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.07
+      },
+      {
+        "name": "vec_is_vec",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.05
+      }
+    ],
+    "C_hot_top": [
+      {
+        "name": "l2_b0",
+        "kind": "sram_macro",
+        "tier": 0,
+        "x_mm": 0.02,
+        "y_mm": 0.82,
+        "width_mm": 0.76,
+        "height_mm": 0.76,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.1
+      },
+      {
+        "name": "l2_b1",
+        "kind": "sram_macro",
+        "tier": 1,
+        "x_mm": 0.02,
+        "y_mm": 0.82,
+        "width_mm": 0.76,
+        "height_mm": 0.76,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.1
+      },
+      {
+        "name": "if_pp",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.38,
+        "leakage_at_60C_W": 0.035
+      },
+      {
+        "name": "if_ctl",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.03,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.2,
+        "leakage_at_60C_W": 0.02
+      },
+      {
+        "name": "l2_ctl",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 1.2300000000000002,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.3,
+        "leakage_at_60C_W": 0.03
+      },
+      {
+        "name": "tpe",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.18,
+        "leakage_at_60C_W": 0.02
+      },
+      {
+        "name": "ls",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.8,
+        "leakage_at_60C_W": 0.07
+      },
+      {
+        "name": "mm",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.24,
+        "leakage_at_60C_W": 0.025
+      },
+      {
+        "name": "id",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.32,
+        "leakage_at_60C_W": 0.03
+      },
+      {
+        "name": "rn",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.03,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.34,
+        "leakage_at_60C_W": 0.035
+      },
+      {
+        "name": "is_int",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.54,
+        "leakage_at_60C_W": 0.045
+      },
+      {
+        "name": "ix",
+        "kind": "logic",
+        "tier": 1,
+        "x_mm": 1.2300000000000002,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.72,
+        "leakage_at_60C_W": 0.065
+      },
+      {
+        "name": "vec_vx",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.03,
+        "y_mm": 0.03,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 1.05,
+        "leakage_at_60C_W": 0.09
+      },
+      {
+        "name": "is_int_fwd",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.43000000000000005,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.32,
+        "leakage_at_60C_W": 0.03
+      },
+      {
+        "name": "is_int_rf",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.03,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.07
+      },
+      {
+        "name": "vec_is_vec",
+        "kind": "logic",
+        "tier": 0,
+        "x_mm": 0.8300000000000001,
+        "y_mm": 0.43000000000000005,
+        "width_mm": 0.34,
+        "height_mm": 0.34,
+        "dynamic_W": 0.55,
+        "leakage_at_60C_W": 0.05
+      }
+    ]
+  }
+}

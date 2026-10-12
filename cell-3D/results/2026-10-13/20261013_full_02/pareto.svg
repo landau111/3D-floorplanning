@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="600" viewBox="0 0 1150 600">
+<rect width="100%" height="100%" fill="white"/><style>text{font-family:Arial,sans-serif;fill:#172033}.title{font-size:24px;font-weight:bold}.note{font-size:13px;fill:#475569}</style>
+<text x="35" y="35" font-size="23">Power / Temperature / Throughput trade-offs</text>
+<path d="M80.0 90V480 M80 90.0H510" stroke="#e2e8f0" fill="none"/>
+<text x="65.0" y="505" font-size="11">0.402</text>
+<text x="25" y="94.0" font-size="11">1.2059</text>
+<path d="M166.0 90V480 M80 168.0H510" stroke="#e2e8f0" fill="none"/>
+<text x="151.0" y="505" font-size="11">0.428</text>
+<text x="25" y="172.0" font-size="11">1.1566</text>
+<path d="M252.0 90V480 M80 246.0H510" stroke="#e2e8f0" fill="none"/>
+<text x="237.0" y="505" font-size="11">0.453</text>
+<text x="25" y="250.0" font-size="11">1.1073</text>
+<path d="M338.0 90V480 M80 324.0H510" stroke="#e2e8f0" fill="none"/>
+<text x="323.0" y="505" font-size="11">0.479</text>
+<text x="25" y="328.0" font-size="11">1.0580</text>
+<path d="M424.0 90V480 M80 402.0H510" stroke="#e2e8f0" fill="none"/>
+<text x="409.0" y="505" font-size="11">0.505</text>
+<text x="25" y="406.0" font-size="11">1.0087</text>
+<path d="M510.0 90V480 M80 480.0H510" stroke="#e2e8f0" fill="none"/>
+<text x="495.0" y="505" font-size="11">0.530</text>
+<text x="25" y="484.0" font-size="11">0.9594</text>
+<text x="240" y="535" font-size="14">Power (W)</text>
+<text x="80" y="70" font-size="14">Mean throughput (BIPS)</text>
+<circle cx="141.43" cy="424.29" r="5" fill="#64748b"/>
+<text x="149.42857142857144" y="416.28571428571433" font-size="12">initial</text>
+<circle cx="441.04" cy="151.30" r="5" fill="#dc2626"/>
+<text x="449.03650839912865" y="143.30405423409218" font-size="12">balanced</text>
+<circle cx="434.17" cy="154.67" r="5" fill="#dc2626"/>
+<text x="442.1729817101166" y="146.66753989699595" font-size="12">timing</text>
+<circle cx="448.57" cy="145.71" r="5" fill="#dc2626"/>
+<text x="456.57142857142856" y="137.71428571428567" font-size="12">thermal</text>
+<path d="M640.0 90V480 M640 90.0H1070" stroke="#e2e8f0" fill="none"/>
+<text x="625.0" y="505" font-size="11">33.073</text>
+<text x="585" y="94.0" font-size="11">1.2059</text>
+<path d="M726.0 90V480 M640 168.0H1070" stroke="#e2e8f0" fill="none"/>
+<text x="711.0" y="505" font-size="11">33.360</text>
+<text x="585" y="172.0" font-size="11">1.1566</text>
+<path d="M812.0 90V480 M640 246.0H1070" stroke="#e2e8f0" fill="none"/>
+<text x="797.0" y="505" font-size="11">33.647</text>
+<text x="585" y="250.0" font-size="11">1.1073</text>
+<path d="M898.0 90V480 M640 324.0H1070" stroke="#e2e8f0" fill="none"/>
+<text x="883.0" y="505" font-size="11">33.933</text>
+<text x="585" y="328.0" font-size="11">1.0580</text>
+<path d="M984.0 90V480 M640 402.0H1070" stroke="#e2e8f0" fill="none"/>
+<text x="969.0" y="505" font-size="11">34.220</text>
+<text x="585" y="406.0" font-size="11">1.0087</text>
+<path d="M1070.0 90V480 M640 480.0H1070" stroke="#e2e8f0" fill="none"/>
+<text x="1055.0" y="505" font-size="11">34.507</text>
+<text x="585" y="484.0" font-size="11">0.9594</text>
+<text x="800" y="535" font-size="14">Peak temperature (C)</text>
+<text x="640" y="70" font-size="14">Mean throughput (BIPS)</text>
+<circle cx="701.43" cy="424.29" r="5" fill="#64748b"/>
+<text x="709.4285714285711" y="416.28571428571433" font-size="12">initial</text>
+<circle cx="995.82" cy="151.30" r="5" fill="#dc2626"/>
+<text x="1003.8171640807655" y="143.30405423409218" font-size="12">balanced</text>
+<circle cx="1008.57" cy="154.67" r="5" fill="#dc2626"/>
+<text x="1016.5714285714289" y="146.66753989699595" font-size="12">timing</text>
+<circle cx="995.24" cy="145.71" r="5" fill="#dc2626"/>
+<text x="1003.2442803277049" y="137.71428571428567" font-size="12">thermal</text>
+<text x="35" y="570" font-size="12">Gray: input; orange: feasible refinement; red: routing-infeasible diagnostic | IPC is estimated</text>
+</svg>

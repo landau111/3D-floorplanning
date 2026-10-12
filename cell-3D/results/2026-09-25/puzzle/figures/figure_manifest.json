@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "01_puzzle_regions",
+    "02_puzzle_before_after",
+    "03_puzzle_cells",
+    "04_puzzle_pareto"
+  ],
+  "pdf": "C:\\Users\\yongxue\\Documents\\ChatGPT\\CLIP-3D\\cell3d\\output\\pdf\\puzzle_layouts.pdf",
+  "pareto_power": [
+    "C_hot_top__timing",
+    "C_hot_top__balanced",
+    "B_critical_local__timing",
+    "B_critical_local__balanced",
+    "B_critical_local__thermal",
+    "A_split__timing",
+    "A_split__balanced",
+    "A_split__thermal__seed41",
+    "A_split__thermal",
+    "A_split__thermal__seed17",
+    "puzzle__timing"
+  ],
+  "pareto_temperature": [
+    "C_hot_top__timing",
+    "C_hot_top__balanced",
+    "B_critical_local__timing",
+    "B_critical_local__balanced",
+    "A_split__timing",
+    "puzzle__balanced",
+    "puzzle__timing"
+  ],
+  "all_cells_drawn": true,
+  "identical_netlist": true,
+  "old_run": "A_split__thermal__seed17",
+  "new_run": "puzzle__timing"
+}

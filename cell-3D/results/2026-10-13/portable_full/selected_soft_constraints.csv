@@ -1,0 +1,13 @@
+﻿module_a,module_b,distance_mm,limit_mm,distance_pass,requested_tier,tier_pass,kind
+is_int,is_int_fwd,0.25290489875993954,0.2,False,TOP,True,soft; final-layout tiers fixed
+is_int,ix,0.2885139092572726,0.2,False,TOP,True,soft; final-layout tiers fixed
+is_int,rn,0.22753134285079823,0.2,False,TOP,True,soft; final-layout tiers fixed
+is_int_fwd,is_int_rf,0.30714254895887366,0.2,False,TOP,True,soft; final-layout tiers fixed
+is_int_rf,ix,0.2715335384615406,0.2,False,TOP,True,soft; final-layout tiers fixed
+is_int_rf,ls,0.517407754915614,0.3,False,TOP,True,soft; final-layout tiers fixed
+is_int_fwd,ix,0.514873371192567,0.3,False,TOP,True,soft; final-layout tiers fixed
+ix,ls,0.2694705241463812,0.3,True,TOP,True,soft; final-layout tiers fixed
+id,rn,0.3271610325499238,0.3,False,TOP,True,soft; final-layout tiers fixed
+vec_vx,vec_is_vec,0.2117201447527126,0.3,True,TOP,False,soft; final-layout tiers fixed
+if_ctl,is_int,0.5136660087570701,0.3,False,TOP,True,soft; final-layout tiers fixed
+if_ctl,is_int_rf,0.45324166878464217,0.3,False,TOP,True,soft; final-layout tiers fixed

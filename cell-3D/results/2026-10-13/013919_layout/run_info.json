@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-10-13T01:39:19.555876+08:00",
+  "kind": "formal",
+  "status": "complete",
+  "algorithm": "config-driven cell refinement",
+  "command_arguments": [
+    "--hotspot-wsl",
+    "Codex-C910-gem5"
+  ]
+}

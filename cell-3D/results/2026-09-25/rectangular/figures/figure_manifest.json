@@ -1,0 +1,54 @@
+{
+  "before": "A_split__baseline",
+  "after": "A_split__thermal__seed17",
+  "source_metrics_sha256": "51b65715154e7705d7c0b86f9d711cddf7d312eb5de3817aa4d734be2903d11e",
+  "full_cell_count": 29400,
+  "identical_tiers": true,
+  "identical_netlist": true,
+  "feasible_runs": 10,
+  "pareto_power": [
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    13,
+    14,
+    16,
+    17
+  ],
+  "pareto_temperature": [
+    3,
+    4,
+    5,
+    8,
+    9,
+    13,
+    14,
+    16,
+    17
+  ],
+  "pareto_joint": [
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    13,
+    14,
+    16,
+    17
+  ],
+  "pages": [
+    "01_initial_modules",
+    "02_before_cells",
+    "03_after_cells",
+    "04_before_after",
+    "05_cell_zoom",
+    "06_pareto"
+  ],
+  "pdf": "C:\\Users\\yongxue\\Documents\\ChatGPT\\CLIP-3D\\cell3d\\output\\pdf\\cell3d_layouts_and_pareto.pdf",
+  "source_note": "Existing saved estimates; no new simulation performed."
+}

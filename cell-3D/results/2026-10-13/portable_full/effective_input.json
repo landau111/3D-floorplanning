@@ -1,0 +1,523 @@
+{
+  "layout": {
+    "schema": "layout-summary-text-v1",
+    "width_mm": 0.9,
+    "height_mm": 0.78,
+    "area_limit_mm2": 0.667,
+    "modules": [
+      {
+        "name": "l2_b0",
+        "tier": 0,
+        "rect_mm": [
+          0.0,
+          0.0,
+          0.62,
+          0.36
+        ],
+        "hard": true,
+        "reference_C": 42.7
+      },
+      {
+        "name": "l2_b1",
+        "tier": 0,
+        "rect_mm": [
+          0.0,
+          0.368,
+          0.62,
+          0.36
+        ],
+        "hard": true,
+        "reference_C": 42.9
+      },
+      {
+        "name": "l2_ctl",
+        "tier": 0,
+        "rect_mm": [
+          0.64,
+          0.01,
+          0.24,
+          0.18
+        ],
+        "hard": true,
+        "reference_C": 43.4
+      },
+      {
+        "name": "mm",
+        "tier": 0,
+        "rect_mm": [
+          0.64,
+          0.21,
+          0.24,
+          0.12
+        ],
+        "hard": false,
+        "reference_C": 43.1
+      },
+      {
+        "name": "vec_is_vec",
+        "tier": 0,
+        "rect_mm": [
+          0.64,
+          0.35,
+          0.24,
+          0.17
+        ],
+        "hard": false,
+        "reference_C": 42.6
+      },
+      {
+        "name": "vec_vx",
+        "tier": 0,
+        "rect_mm": [
+          0.64,
+          0.54,
+          0.24,
+          0.17
+        ],
+        "hard": false,
+        "reference_C": 44.0
+      },
+      {
+        "name": "id",
+        "tier": 1,
+        "rect_mm": [
+          0.02,
+          0.02,
+          0.4,
+          0.1
+        ],
+        "hard": false,
+        "reference_C": 42.0
+      },
+      {
+        "name": "if_ctl",
+        "tier": 1,
+        "rect_mm": [
+          0.46,
+          0.175,
+          0.4,
+          0.07
+        ],
+        "hard": false,
+        "reference_C": 41.8
+      },
+      {
+        "name": "if_pp",
+        "tier": 1,
+        "rect_mm": [
+          0.46,
+          0.02,
+          0.4,
+          0.14
+        ],
+        "hard": false,
+        "reference_C": 42.2
+      },
+      {
+        "name": "is_int",
+        "tier": 1,
+        "rect_mm": [
+          0.02,
+          0.26,
+          0.4,
+          0.15
+        ],
+        "hard": false,
+        "reference_C": 43.2
+      },
+      {
+        "name": "is_int_fwd",
+        "tier": 1,
+        "rect_mm": [
+          0.46,
+          0.26,
+          0.4,
+          0.11
+        ],
+        "hard": false,
+        "reference_C": 43.5
+      },
+      {
+        "name": "is_int_rf",
+        "tier": 1,
+        "rect_mm": [
+          0.46,
+          0.385,
+          0.4,
+          0.2
+        ],
+        "hard": false,
+        "reference_C": 44.1
+      },
+      {
+        "name": "ix",
+        "tier": 1,
+        "rect_mm": [
+          0.02,
+          0.425,
+          0.4,
+          0.16
+        ],
+        "hard": false,
+        "reference_C": 43.8
+      },
+      {
+        "name": "ls",
+        "tier": 1,
+        "rect_mm": [
+          0.02,
+          0.6,
+          0.4,
+          0.17
+        ],
+        "hard": false,
+        "reference_C": 44.5
+      },
+      {
+        "name": "rn",
+        "tier": 1,
+        "rect_mm": [
+          0.02,
+          0.135,
+          0.4,
+          0.11
+        ],
+        "hard": false,
+        "reference_C": 42.8
+      },
+      {
+        "name": "tpe",
+        "tier": 1,
+        "rect_mm": [
+          0.46,
+          0.6,
+          0.4,
+          0.13
+        ],
+        "hard": false,
+        "reference_C": 42.4
+      }
+    ],
+    "pitch_um": 5.0,
+    "hbt_vertical_um": 6.0,
+    "max_density_per_mm2": 40000.0,
+    "spill_coef": 1.0,
+    "viol_penalty_coef": 1000.0,
+    "reference_hbt_count": 8582,
+    "reference_peak_C": 44.5,
+    "initial_layer_area_mm2": [
+      0.5999999999999999,
+      0.536
+    ],
+    "warnings": [],
+    "input_sha256": "fa7a6ed5c8e4c125f7e62985af7532694354e9c1c4ba1ae7249aacae6a499fc8"
+  },
+  "auxiliary": {
+    "power_w": {
+      "l2_b0": 0.045,
+      "l2_b1": 0.045,
+      "if_pp": 0.026,
+      "if_ctl": 0.015,
+      "l2_ctl": 0.023,
+      "tpe": 0.015,
+      "ls": 0.355,
+      "mm": 0.024,
+      "id": 0.025,
+      "rn": 0.024,
+      "is_int": 0.04,
+      "ix": 0.055,
+      "vec_vx": 0.082,
+      "is_int_fwd": 0.024,
+      "is_int_rf": 0.043,
+      "vec_is_vec": 0.004
+    },
+    "interconnect": [
+      [
+        "l2_b0",
+        "l2_ctl",
+        5000
+      ],
+      [
+        "l2_b1",
+        "l2_ctl",
+        900
+      ],
+      [
+        "if_pp",
+        "if_ctl",
+        120
+      ],
+      [
+        "if_ctl",
+        "id",
+        200
+      ],
+      [
+        "id",
+        "rn",
+        300
+      ],
+      [
+        "rn",
+        "is_int",
+        320
+      ],
+      [
+        "is_int",
+        "ix",
+        440
+      ],
+      [
+        "ix",
+        "is_int_fwd",
+        450
+      ],
+      [
+        "is_int_fwd",
+        "is_int_rf",
+        350
+      ],
+      [
+        "is_int_rf",
+        "is_int",
+        320
+      ],
+      [
+        "rn",
+        "vec_is_vec",
+        250
+      ],
+      [
+        "vec_is_vec",
+        "vec_vx",
+        550
+      ],
+      [
+        "ix",
+        "ls",
+        280
+      ],
+      [
+        "ls",
+        "mm",
+        230
+      ],
+      [
+        "ls",
+        "l2_ctl",
+        500
+      ],
+      [
+        "mm",
+        "l2_ctl",
+        180
+      ],
+      [
+        "tpe",
+        "if_ctl",
+        150
+      ],
+      [
+        "vec_vx",
+        "ls",
+        380
+      ]
+    ],
+    "cross_tier_signal_count": 1360,
+    "ambient_c": 26.85,
+    "timing": {
+      "hbt_latency_ps": 100,
+      "clock_period_ps": 333
+    },
+    "bond_window_mm": 0.1,
+    "bond_reserve_fraction": 0.2,
+    "module_gap_mm": 0.008,
+    "rc_temp_alpha": 0.0039,
+    "rc_ref_temp": 27.0,
+    "critical_modules": [
+      "rn",
+      "is_int",
+      "is_int_fwd",
+      "is_int_rf",
+      "vec_is_vec",
+      "vec_vx"
+    ],
+    "net_weights": {
+      "crit_crit": 1.0,
+      "crit_other": 1.0,
+      "other_other": 1.0
+    },
+    "objective_weights": {
+      "wirelength": 1.0,
+      "cross_layer": 0.18,
+      "timing": 1.0,
+      "constraints": 2.0,
+      "temperature": 0.8,
+      "anchor": 0.04,
+      "layer_balance": 0.02
+    },
+    "layout_constraints": [
+      {
+        "pair": [
+          "is_int",
+          "is_int_fwd"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.2
+      },
+      {
+        "pair": [
+          "is_int",
+          "ix"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.2
+      },
+      {
+        "pair": [
+          "is_int",
+          "rn"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.2
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "is_int_rf"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.2
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "ix"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.2
+      },
+      {
+        "pair": [
+          "is_int_rf",
+          "ls"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.3
+      },
+      {
+        "pair": [
+          "is_int_fwd",
+          "ix"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.3
+      },
+      {
+        "pair": [
+          "ix",
+          "ls"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.3
+      },
+      {
+        "pair": [
+          "id",
+          "rn"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.3
+      },
+      {
+        "pair": [
+          "vec_vx",
+          "vec_is_vec"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.3
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "is_int"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.3
+      },
+      {
+        "pair": [
+          "if_ctl",
+          "is_int_rf"
+        ],
+        "type": "same_layer_max_dist",
+        "layer": "TOP",
+        "max_dist_mm": 0.3
+      }
+    ],
+    "stack": [
+      {
+        "name": "bottom_si",
+        "power_layer": "bottom",
+        "thickness_um": 50,
+        "conductivity_W_m_K": 130,
+        "heat_capacity_J_m3_K": 1630300
+      },
+      {
+        "name": "hb_interface",
+        "power_layer": "none",
+        "thickness_um": 2,
+        "conductivity_W_m_K": 1.4,
+        "heat_capacity_J_m3_K": 2200000
+      },
+      {
+        "name": "top_si",
+        "power_layer": "top",
+        "thickness_um": 50,
+        "conductivity_W_m_K": 130,
+        "heat_capacity_J_m3_K": 1630300
+      },
+      {
+        "name": "tim",
+        "power_layer": "none",
+        "thickness_um": 20,
+        "conductivity_W_m_K": 4,
+        "heat_capacity_J_m3_K": 4000000
+      }
+    ],
+    "hotspot": {
+      "r_convec": 1.042,
+      "c_convec": 140.4,
+      "s_sink": 0.06,
+      "t_sink": 0.0069,
+      "k_sink": 400,
+      "p_sink": 3550000,
+      "s_spreader": 0.03,
+      "t_spreader": 0.001,
+      "k_spreader": 400,
+      "p_spreader": 3550000
+    },
+    "thermal_grid_rows": 64,
+    "thermal_grid_cols": 64,
+    "aliases": {
+      "mmu": "mm"
+    },
+    "warnings": [
+      "Layout summary HBT=8582 vs supplied cross-tier signals=1360; using supplied connectivity without scaling",
+      "Density limit differs: layout 40000.0 vs annealing 20000; layout wins"
+    ],
+    "input_sha256": "27f149829910b059af85e5a517f1a146d6734c91aeb87d74b654ba896bb65fb8",
+    "connectivity_grain": "module_pair_signal_counts_not_gate_level_netlist"
+  }
+}

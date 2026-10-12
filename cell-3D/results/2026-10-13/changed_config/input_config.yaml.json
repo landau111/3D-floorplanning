@@ -1,0 +1,55 @@
+Partition BOT(6): l2_b0, l2_b1, l2_ctl, mm, vec_is_vec, vec_vx
+               TOP(10): id, if_ctrl, if_pp, is_int, is_int_fwd, is_int_rf, ix, ls, rn, tpe
+Layer area: BOT=0.600 mm^2  TOP=0.536mm^2  Max=0.600mm^2
+HBT = 8582  (12225/mm^2 , 上限 40000/mm^2)  PASS
+PeakTemp = 45.5 °C
+===========================================
+Final placement coordinates (mm)  x,y为矩形的左下角
+ BOT:
+	l2_b0       x= 0.000    y= 0.000   w=0.620   h= 0.360  #硬模块（固定矩形）
+	l2_b1        x= 0.000    y= 0.368   w=0.620   h= 0.360  #硬模块（固定矩形）
+	l2_ctrl      x= 0.640    y= 0.010   w=0.240   h= 0.180  #硬模块（固定矩形）
+	mm           x= 0.640    y= 0.210   w=0.240   h= 0.120
+	vec_is_vec   x= 0.640    y= 0.350   w=0.240   h= 0.170
+	vec_vx       x= 0.640    y= 0.540   w=0.240   h= 0.170
+ TOP:
+	id           x= 0.030    y= 0.020   w=0.400   h= 0.100
+	if_ctl       x= 0.460    y= 0.175   w=0.400   h= 0.070
+	if_pp        x= 0.460    y= 0.020   w=0.400   h= 0.140
+	is_int       x= 0.020    y= 0.260   w=0.400   h= 0.150
+	is_int_fwd   x= 0.460    y= 0.260   w=0.400   h= 0.110
+	is_int_rf    x= 0.460    y= 0.385   w=0.400   h= 0.200
+	ix           x= 0.020    y= 0.425   w=0.400   h= 0.160
+	ls           x= 0.020    y= 0.600   w=0.400   h= 0.170
+	rn           x= 0.020    y= 0.135   w=0.400   h= 0.110
+	tpe          x= 0.460    y= 0.600   w=0.400   h= 0.130
+============================================
+Module steady-state temps (°C) :
+
+	l2_b0        = 42.7
+	l2_b1        = 42.9
+	l2_ctrl      = 43.4
+	mm           = 43.1
+	vec_is_vec   = 42.6
+	vec_vx       = 44.0
+	id           = 42.0
+	if_ctl       = 41.8
+	if_pp        = 42.2
+	is_int       = 43.2
+	is_int_fwd   = 43.5
+	is_int_rf    = 44.1
+	ix           = 43.8
+	ls           = 45.5
+	rn           = 42.8
+	tpe          = 42.4
+
+============================================
+Key parameters :
+	die W x H        = 0.900 x 0.780 mm
+	area_limit        = 0.667 mm^2
+	HBT pitch        = 5.0 um
+        hbt_vert           = 6.0 um
+        spill_coef         = 1
+        viol_penalty_coef = 1000
+	
+

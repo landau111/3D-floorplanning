@@ -1,0 +1,43 @@
+{
+  "placement": [],
+  "routing": [
+    {
+      "iteration": 0,
+      "loss": 0.16830729937041217
+    },
+    {
+      "iteration": 20,
+      "loss": 0.08298960623326362
+    },
+    {
+      "iteration": 40,
+      "loss": 0.07990972996228118
+    },
+    {
+      "iteration": 60,
+      "loss": 0.07934767453588823
+    },
+    {
+      "iteration": 80,
+      "loss": 0.07917150844372664
+    },
+    {
+      "iteration": 100,
+      "loss": 0.0790856113353451
+    },
+    {
+      "iteration": 120,
+      "loss": 0.07903160033574186
+    },
+    {
+      "iteration": 140,
+      "loss": 0.07899368941295822
+    },
+    {
+      "iteration": 159,
+      "loss": 0.07896717850212387
+    }
+  ],
+  "soft_routing_loss": 0.0789659658849236,
+  "legalization_mean_move_um": 0
+}

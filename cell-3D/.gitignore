@@ -1,5 +1,4 @@
 __pycache__/
 *.pyc
 runtime/
-runs/*
-!runs/20261013_release/
+.venv/

@@ -1,0 +1,351 @@
+# CLIP-3D 布局优化输入草案；仅补齐配置，尚未接入或运行优化器。
+# 原始材料：D:/work/ChatGPT/CLIP-3D/cell3d/config.yaml.json
+# 原文件是布局摘要；本文件转换为 YAML，新增数值均为估算。
+# 已有明确数值沿用，不通过估算温度反推或伪造仿真结果。
+# 本 schema 需要后续配置适配；当前 cell3d 与 folding_dse 不能直接执行本 schema。
+schema: clip3d-layout-input-v1
+data_status: synthetic_estimate
+prepared_date: "2026-10-12"
+
+units:
+  geometry: mm
+  bonding_geometry: um
+  area: mm2
+  power: W
+  temperature: degC
+  time: ps
+
+# 名称统一；mm 保留原名，不预先假定它等同于 MMU。
+module_aliases:
+  if_ctrl: if_ctl
+  l2_ctrl: l2_ctl
+
+die:
+  width_mm: 0.900
+  height_mm: 0.780
+  area_limit_per_tier_mm2: 0.667
+  tier_count: 2
+  bottom_tier: 0
+  top_tier: 1
+  heatsink_side: top
+  minimum_module_gap_mm: 0.008
+  macro_keepout_mm: 0.004
+  edge_clearance_mm: 0.000
+  # 保留 l2_b0 在 (0,0) 的位置；宏保护区在 die 边缘裁剪。
+  clip_macro_keepout_at_die_edge: true
+  area_limit_definition: sum_of_initial_module_region_areas
+  # 优化后的软模块领地可填满可用平面；0.667 不是领地覆盖率上限。
+
+# 本轮保留附件分层，未来只优化同层位置、形状和 cell 坐标。
+partition:
+  fixed: true
+  bottom: [l2_b0, l2_b1, l2_ctl, mm, vec_is_vec, vec_vx]
+  top: [id, if_ctl, if_pp, is_int, is_int_fwd, is_int_rf, ix, ls, rn, tpe]
+
+# initial_rect_mm = [左下角 x, 左下角 y, 宽 w, 高 h]。
+# kind=hard：矩形外形、位置均固定；按附件把 l2_ctl 也视为硬模块。
+# kind=soft：矩形仅作为初始位置/面积预算，后续不作为矩形 fence。
+# region_area_mm2 为模块初始预算面积，不等于实际 cell 面积。
+# power_w 为 2 GHz / 0.8 V 下动态+泄漏合计，不再额外叠加同一份泄漏。
+# cell_count 仅给出软模块的合成标准单元数量；硬模块不拆解。
+modules:
+  l2_b0:
+    kind: hard
+    initial_rect_mm: [0.000, 0.000, 0.620, 0.360]
+    region_area_mm2: 0.2232
+    power_w: 0.090
+  l2_b1:
+    kind: hard
+    initial_rect_mm: [0.000, 0.368, 0.620, 0.360]
+    region_area_mm2: 0.2232
+    power_w: 0.090
+  l2_ctl:
+    kind: hard
+    initial_rect_mm: [0.640, 0.010, 0.240, 0.180]
+    region_area_mm2: 0.0432
+    power_w: 0.046
+  mm:
+    kind: soft
+    initial_rect_mm: [0.640, 0.210, 0.240, 0.120]
+    region_area_mm2: 0.0288
+    power_w: 0.052
+    cell_count: 11700
+  vec_is_vec:
+    kind: soft
+    initial_rect_mm: [0.640, 0.350, 0.240, 0.170]
+    region_area_mm2: 0.0408
+    power_w: 0.008
+    cell_count: 16575
+  vec_vx:
+    kind: soft
+    initial_rect_mm: [0.640, 0.540, 0.240, 0.170]
+    region_area_mm2: 0.0408
+    power_w: 0.080
+    cell_count: 16575
+  id:
+    kind: soft
+    initial_rect_mm: [0.020, 0.020, 0.400, 0.100]
+    region_area_mm2: 0.0400
+    power_w: 0.025
+    cell_count: 16250
+  if_ctl:
+    kind: soft
+    initial_rect_mm: [0.460, 0.175, 0.400, 0.070]
+    region_area_mm2: 0.0280
+    power_w: 0.015
+    cell_count: 11375
+  if_pp:
+    kind: soft
+    initial_rect_mm: [0.460, 0.020, 0.400, 0.140]
+    region_area_mm2: 0.0560
+    power_w: 0.026
+    cell_count: 22750
+  is_int:
+    kind: soft
+    initial_rect_mm: [0.020, 0.260, 0.400, 0.150]
+    region_area_mm2: 0.0600
+    power_w: 0.040
+    cell_count: 24375
+  is_int_fwd:
+    kind: soft
+    initial_rect_mm: [0.460, 0.260, 0.400, 0.110]
+    region_area_mm2: 0.0440
+    power_w: 0.024
+    cell_count: 17875
+  is_int_rf:
+    kind: soft
+    initial_rect_mm: [0.460, 0.385, 0.400, 0.200]
+    region_area_mm2: 0.0800
+    power_w: 0.043
+    cell_count: 32500
+  ix:
+    kind: soft
+    initial_rect_mm: [0.020, 0.425, 0.400, 0.160]
+    region_area_mm2: 0.0640
+    power_w: 0.055
+    cell_count: 26000
+  ls:
+    kind: soft
+    initial_rect_mm: [0.020, 0.600, 0.400, 0.170]
+    region_area_mm2: 0.0680
+    power_w: 0.155
+    cell_count: 27625
+  rn:
+    kind: soft
+    initial_rect_mm: [0.020, 0.135, 0.400, 0.110]
+    region_area_mm2: 0.0440
+    power_w: 0.024
+    cell_count: 17875
+  tpe:
+    kind: soft
+    initial_rect_mm: [0.460, 0.600, 0.400, 0.130]
+    region_area_mm2: 0.0520
+    power_w: 0.015
+    cell_count: 21125
+
+# 平均 2.0 x 0.8 um 仅为 28nm 合成几何，不是真实库。
+# count = region_area * 0.65 / (2.0 * 0.8 * 1e-6)，均为整数。
+# 更换真实 LEF/网表后应整体替换这些 cell 参数。
+cells:
+  source: synthetic_uniform
+  width_um: 2.0
+  row_height_um: 0.8
+  site_pitch_um: 0.2
+  initial_soft_region_utilization: 0.65
+  density_upper_bound: 0.80
+  decompose_hard_modules: false
+
+hbt:
+  pitch_um: 5.0
+  vertical_length_um: 6.0
+  max_density_per_mm2: 40000
+  # 采用本次附件中的 40000；早期对话的 20000 不同时作为第二个上限。
+  density_scope: local_window_total_bonds
+  density_window_mm: 0.100
+  reserve_fraction: 0.20
+  # 20% 留给电源/时钟等；信号预算等效 32000/mm2。
+  one_bond_per_cross_tier_signal: true
+  same_tier_borrowing_extra_bonds: 2
+  horizontal_density_window_mode: fixed_grid
+  # 固定窗口只是探索约束，尚未检查任意滑动窗口或逐 bond 排布。
+
+# [模块A, 模块B, 独立信号连接数]，无向聚合，不是总线位宽/流量/Gbps。
+# 无连接清单，因此全部为估算；六组跨层数相加为附件参考值 8582。
+# 此表是模块级聚合数据，不能代替 DRG-3D 需要的多端门级网络。
+interconnect:
+  - [l2_b0, l2_ctl, 4096]
+  - [l2_b1, l2_ctl, 4096]
+  - [mm, l2_ctl, 400]
+  - [vec_is_vec, vec_vx, 1800]
+  - [if_pp, if_ctl, 120]
+  - [if_ctl, id, 200]
+  - [id, rn, 300]
+  - [rn, is_int, 320]
+  - [is_int, ix, 440]
+  - [is_int, is_int_fwd, 800]
+  - [ix, is_int_fwd, 450]
+  - [is_int_fwd, is_int_rf, 350]
+  - [is_int_rf, is_int, 320]
+  - [is_int_rf, ix, 600]
+  - [ix, ls, 280]
+  - [is_int_rf, ls, 600]
+  - [tpe, if_ctl, 150]
+  - [rn, vec_is_vec, 1500]
+  - [ls, mm, 1200]
+  - [ls, l2_ctl, 2400]
+  - [vec_vx, ls, 1800]
+  - [if_pp, l2_ctl, 1000]
+  - [tpe, mm, 682]
+
+electrical:
+  node_nm_assumed: 28
+  voltage_v: 0.8
+  nominal_frequency_ghz: 2.0
+  clock_period_ps: 500.0
+  wire_capacitance_pf_per_mm: 0.20
+  wire_delay_ps_per_mm: 110.0
+  wire_delay_ps_per_mm2: 40.0
+  bond_capacitance_pf: 0.004
+  bond_delay_ps: 14.0
+  reference_temperature_c: 27.0
+  wire_resistance_temperature_coeff_per_k: 0.0039
+  logic_delay_temperature_coeff_per_k: 0.0012
+  # 模块预算已含内部线/时钟功率；下面活动率仅用于估算新增模块间连线功率。
+  intermodule_wire_activity: 0.12
+
+# 热模型参数借用本项目已有 HotSpot 假设，尚未对本配置调用 HotSpot。
+# steady-state reference 下的温度只供对照，不作为求解器温度输入。
+thermal:
+  backend: hotspot
+  model: grid_3d_steady
+  ambient_c: 26.85
+  temperature_limit_c: 95.0
+  grid_rows: 64
+  grid_cols: 64
+  module_power_definition: total_dynamic_plus_leakage_at_reference_operating_point
+  temperature_dependent_leakage_enabled: false
+  stack:
+    - name: bottom_si
+      power_layer: bottom
+      thickness_um: 50.0
+      conductivity_w_per_m_k: 130.0
+      heat_capacity_j_per_m3_k: 1630300.0
+    - name: hb_interface
+      power_layer: none
+      thickness_um: 2.0
+      conductivity_w_per_m_k: 1.4
+      heat_capacity_j_per_m3_k: 2200000.0
+    - name: top_si
+      power_layer: top
+      thickness_um: 50.0
+      conductivity_w_per_m_k: 130.0
+      heat_capacity_j_per_m3_k: 1630300.0
+    - name: tim
+      power_layer: none
+      thickness_um: 20.0
+      conductivity_w_per_m_k: 4.0
+      heat_capacity_j_per_m3_k: 4000000.0
+  package:
+    convection_resistance_k_per_w: 1.042
+    convection_capacitance_j_per_k: 140.4
+    sink_side_m: 0.060
+    sink_thickness_m: 0.0069
+    sink_conductivity_w_per_m_k: 400.0
+    sink_heat_capacity_j_per_m3_k: 3550000.0
+    spreader_side_m: 0.030
+    spreader_thickness_m: 0.001
+    spreader_conductivity_w_per_m_k: 400.0
+    spreader_heat_capacity_j_per_m3_k: 3550000.0
+
+# 未来梯度布局默认值；仅约定配置，当前没有执行这些步骤。
+# 缩小 die 后相应缩小分区网格和学习率，避免直接照搬 1.6mm 版本。
+optimization:
+  method: projected_adam
+  seed: 20261012
+  restarts: 3
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-9
+  shape_steps: 360
+  cell_steps: 180
+  routing_steps: 160
+  shape_learning_rate_mm: 0.003
+  cell_learning_rate_mm: 0.002
+  routing_learning_rate: 0.15
+  spill_coef: 1.0
+  viol_penalty_coef: 1000.0
+  # 此两系数沿用附件；惩罚值不能替代最终硬合法性检查。
+  shape:
+    mode: puzzle_partition
+    grid_cols: 60
+    grid_rows: 52
+    tile_pitch_um: 15.0
+    fill_free_plane: true
+    preserve_soft_module_area_ratios: true
+    connected_components_per_module: 1
+    holes_allowed: 0
+    max_area_relative_error: 0.25
+    max_bbox_aspect: 3.0
+    max_compactness_p2_over_16a: 2.5
+    softmax_temperature_start_mm2: 0.015
+    softmax_temperature_end_mm2: 0.0008
+  # 下列权重用于归一化目标；面积/几何/HBT 硬约束另行拒绝违例。
+  weights:
+    wirelength: 1.0
+    worst_path_delay: 1.5
+    peak_temperature: 0.45
+    uniform_cell_density: 35.0
+    region_area_balance: 35.0
+    region_compactness: 1.0
+    region_boundary_smoothness: 0.35
+    original_position_anchor: 0.025
+    routing_overflow: 12.0
+    hbt_density_overflow: 5.0
+  hard_checks:
+    inside_die: true
+    no_cell_overlap: true
+    whole_cell_inside_own_region: true
+    obey_macro_keepout: true
+    obey_hbt_pitch: true
+    obey_hbt_density: true
+    post_discretization_routing_check: true
+
+# 参考/核对项，严禁当作新运行结果或通过状态。
+reference:
+  status: unverified_user_summary_and_estimates
+  source_hbt_status: "PASS in supplied summary; not verified here"
+  layer_region_area_mm2: {bottom: 0.600, top: 0.536}
+  hbt_count: 8582
+  hbt_average_density_per_mm2: 12225.071225
+  # 密度分母为完整单 die 0.900*0.780=0.702 mm2，不是模块面积/两层面积和。
+  peak_temperature_c: 44.5
+  # 以下各模块为估计的局部峰温参考；不参与目标值或性能排名。
+  module_local_peak_temperature_c:
+    l2_b0: 38.2
+    l2_b1: 38.8
+    l2_ctl: 40.1
+    mm: 41.0
+    vec_is_vec: 39.4
+    vec_vx: 42.3
+    id: 36.6
+    if_ctl: 35.5
+    if_pp: 36.1
+    is_int: 40.2
+    is_int_fwd: 40.8
+    is_int_rf: 43.6
+    ix: 42.7
+    ls: 44.5
+    rn: 38.4
+    tpe: 37.2
+  total_module_power_w: 0.788
+  soft_cell_count: 262600
+  soft_cell_area_mm2: 0.42016
+
+provenance:
+  supplied_fields: [partition, die_dimensions, area_limit, l2_b0_rectangle, hbt_pitch, hbt_vertical_length, density_limit, layer_area_references, hbt_reference_count, peak_temperature_reference, spill_coef, viol_penalty_coef]
+  estimated_fields: [other_rectangles, module_power, module_reference_temperatures, cell_geometry_and_counts, module_connectivity, electrical_parameters, thermal_stack, package, optimization_settings]
+  estimated_numbers_note: "Nominal values are illustrative assumptions, not recovered confidential data or silicon measurements."
+  power_uncertainty_fraction: 0.30
+  interconnect_uncertainty_fraction: 0.30
+  rc_uncertainty_fraction: 0.25
+  uncertainty_definition: illustrative_sensitivity_range_not_confidence_interval

@@ -1,0 +1,48 @@
+{
+  "actual_offline_zip_extraction": true,
+  "non_ascii_and_space_path": "C:\\Users\\yongxue\\Documents\\ChatGPT\\CLIP-3D\\build\\新版ZIP 解压验证 02",
+  "isolated_runtime": true,
+  "different_working_directory": true,
+  "windows_launcher_full_run": true,
+  "identical_placement_to_formal_HotSpot_run": {
+    "initial": {
+      "xy_mm": true,
+      "labels": true,
+      "edges": true,
+      "route_choice": true
+    },
+    "balanced": {
+      "xy_mm": true,
+      "labels": true,
+      "edges": true,
+      "route_choice": true
+    },
+    "timing": {
+      "xy_mm": true,
+      "labels": true,
+      "edges": true,
+      "route_choice": true
+    },
+    "thermal": {
+      "xy_mm": true,
+      "labels": true,
+      "edges": true,
+      "route_choice": true
+    }
+  },
+  "changed_config": true,
+  "changed_power_total_W": 0.855,
+  "changed_id_x_mm": 0.03,
+  "original_input_unchanged": true,
+  "quick_and_environment_tests_preserve_formal_latest": true,
+  "unit_tests": "11 passed in workspace and extracted package",
+  "full_result": "results/2026-10-13/organized_portable_02_full",
+  "changed_result": "results/2026-10-13/organized_portable_02_changed",
+  "tested_archive_sha256": "a355a5e5bfb6e4096ae7da9af4fdf55df3b1d65cce4ff734c59d40f4783ee66d",
+  "limitations": "Company desktop not accessed. Linux/ARM/macOS runtime not tested; default proxy needs no WSL. HotSpot separately tested in full formal rerun.",
+  "final_archive_sha256": "f03cbe54a6503a4fdd60609211da47f7bdf7456ef79026c6766e6c62f7560ab2",
+  "final_archive_core_and_runtime_identical_to_fully_tested_archive": true,
+  "compared_core_runtime_files": 1611,
+  "final_archive_manifest_hashes_valid": true,
+  "final_archive_input_check_and_11_tests_pass": true
+}

@@ -1,0 +1,74 @@
+{
+  "reference_run": "results/2026-10-13/20261013_release",
+  "rerun": "results/2026-10-13/013919_layout",
+  "unchanged_published_source_hashes": {
+    "run_layout.py": true,
+    "layout_input.py": true,
+    "layout_svg.py": true,
+    "layout_baseline.json": true,
+    "yaml_subset.py": true,
+    "layout_hotspot.py": true
+  },
+  "identical_input_bytes": {
+    "input_config.yaml.json": true,
+    "input_annealing_cfg.yaml": true
+  },
+  "identical_npz_arrays": {
+    "initial": {
+      "xy_mm": true,
+      "tier": true,
+      "module_id": true,
+      "movable": true,
+      "edges": true,
+      "labels": true,
+      "temperature_C": true,
+      "route_choice": true
+    },
+    "balanced": {
+      "xy_mm": true,
+      "tier": true,
+      "module_id": true,
+      "movable": true,
+      "edges": true,
+      "labels": true,
+      "temperature_C": true,
+      "route_choice": true
+    },
+    "timing": {
+      "xy_mm": true,
+      "tier": true,
+      "module_id": true,
+      "movable": true,
+      "edges": true,
+      "labels": true,
+      "temperature_C": true,
+      "route_choice": true
+    },
+    "thermal": {
+      "xy_mm": true,
+      "tier": true,
+      "module_id": true,
+      "movable": true,
+      "edges": true,
+      "labels": true,
+      "temperature_C": true,
+      "route_choice": true
+    }
+  },
+  "identical_metrics_csv_bytes": true,
+  "unchanged_algorithm_AST": {
+    "Heat": true,
+    "Model": true,
+    "Regions": true,
+    "Cells": true,
+    "Routing": true,
+    "pareto": true,
+    "source_settings": true
+  },
+  "backend": "HotSpot",
+  "unit_tests": 11,
+  "notes": "evaluate only changes baseline path; main adds dated results and indexing. No optimization math change.",
+  "original_historical_result_files_preserved": 410,
+  "legacy_test_model": "passed: 17 saved layouts, gradients, thermal reciprocity, bond geometry",
+  "legacy_test_puzzle": "passed: 42 territories, 88200 cells, shape/cell gradients and provenance"
+}

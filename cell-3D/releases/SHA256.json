@@ -1,10 +1,10 @@
 {
   "cell3d_source.zip": {
-    "bytes": 186055,
-    "sha256": "3e1f1a0cdf393fd546b1e8875f49d18b67ce13aa714a06ebe10d02b2bda39503"
+    "bytes": 5185630,
+    "sha256": "7b81b63f7276f4b31c0dfcb52807037e22ac5f6897456d8d44db92300200d33a"
   },
   "cell3d_windows_x64_offline.zip": {
-    "bytes": 27640481,
-    "sha256": "d1e75cc9b2090bf2c41d7f58dc61bcc12e8ba749b47bf712d026e51859db8e47"
+    "bytes": 32643254,
+    "sha256": "f03cbe54a6503a4fdd60609211da47f7bdf7456ef79026c6766e6c62f7560ab2"
   }
 }

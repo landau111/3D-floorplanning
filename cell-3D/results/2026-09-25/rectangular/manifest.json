@@ -1,0 +1,361 @@
+{
+  "track": "C-synthetic-exploration",
+  "status": "synthetic_proxy_only",
+  "config": {
+    "schema": "cell3d-estimate-v1",
+    "track": "C-synthetic-exploration",
+    "provenance": "All physical parameters are assumptions except user-supplied bonding constraints. Not calibrated C910 physical design.",
+    "die_mm": 1.6,
+    "tiers": 2,
+    "node_nm_assumed": 28,
+    "vdd_V": 0.8,
+    "frequency_GHz": 2.0,
+    "ambient_C": 45.0,
+    "temperature_limit_C": 95.0,
+    "package_R_K_W": 3.5,
+    "lateral_G_W_K": 0.008,
+    "intertier_G_W_K_at_16": 0.012,
+    "top_sink_G_W_K_at_16": 0.025,
+    "thermal_grid": 16,
+    "routing_grid": 16,
+    "routing_tracks_per_edge": 600,
+    "routing_capacity_note": "Assumed 3 effective directional routing layers x 100um / 0.5um track pitch = 600 tracks per 0.1mm GCell edge before macro blockage.",
+    "macro_routing_capacity_factor": 0.45,
+    "pitch_um": 5.0,
+    "max_density_per_mm2": 20000,
+    "constraint_interpretation": "F2F signal bonds; fixed, aligned 0.1mm windows. Power/clock reserves not modeled. Not standard-cell count density.",
+    "cell_width_um": 8.0,
+    "cell_height_um": 4.0,
+    "cell_count_per_logic_module": 2100,
+    "cell_geometry_note": "Uniform synthetic standard cells, each individually placed; no library mapping, clustering or claim to full C910 gate count.",
+    "module_region_mm": 0.34,
+    "macro_side_mm": 0.76,
+    "wire_C_pF_per_mm": 0.2,
+    "wire_activity": 0.12,
+    "wire_delay_ns_per_mm": 0.11,
+    "wire_delay_ns_per_mm2": 0.04,
+    "bond_C_pF": 0.004,
+    "bond_delay_ns": 0.014,
+    "leakage_alpha_per_K": 0.012,
+    "leakage_reference_C": 60.0,
+    "logic_delay_alpha_per_K": 0.0012,
+    "wire_delay_alpha_per_K": 0.002,
+    "density_target": 0.78,
+    "placement_steps": 160,
+    "routing_steps": 160,
+    "seed": 20260925,
+    "modules": [
+      {
+        "name": "l2_b0",
+        "kind": "sram_macro",
+        "dynamic_W": 0.55,
+        "leakage_W": 0.1
+      },
+      {
+        "name": "l2_b1",
+        "kind": "sram_macro",
+        "dynamic_W": 0.55,
+        "leakage_W": 0.1
+      },
+      {
+        "name": "if_pp",
+        "kind": "logic",
+        "dynamic_W": 0.38,
+        "leakage_W": 0.035
+      },
+      {
+        "name": "if_ctl",
+        "kind": "logic",
+        "dynamic_W": 0.2,
+        "leakage_W": 0.02
+      },
+      {
+        "name": "l2_ctl",
+        "kind": "logic",
+        "dynamic_W": 0.3,
+        "leakage_W": 0.03
+      },
+      {
+        "name": "tpe",
+        "kind": "logic",
+        "dynamic_W": 0.18,
+        "leakage_W": 0.02
+      },
+      {
+        "name": "ls",
+        "kind": "logic",
+        "dynamic_W": 0.8,
+        "leakage_W": 0.07
+      },
+      {
+        "name": "mm",
+        "kind": "logic",
+        "dynamic_W": 0.24,
+        "leakage_W": 0.025
+      },
+      {
+        "name": "id",
+        "kind": "logic",
+        "dynamic_W": 0.32,
+        "leakage_W": 0.03
+      },
+      {
+        "name": "rn",
+        "kind": "logic",
+        "dynamic_W": 0.34,
+        "leakage_W": 0.035
+      },
+      {
+        "name": "is_int",
+        "kind": "logic",
+        "dynamic_W": 0.54,
+        "leakage_W": 0.045
+      },
+      {
+        "name": "ix",
+        "kind": "logic",
+        "dynamic_W": 0.72,
+        "leakage_W": 0.065
+      },
+      {
+        "name": "vec_vx",
+        "kind": "logic",
+        "dynamic_W": 1.05,
+        "leakage_W": 0.09
+      },
+      {
+        "name": "is_int_fwd",
+        "kind": "logic",
+        "dynamic_W": 0.32,
+        "leakage_W": 0.03
+      },
+      {
+        "name": "is_int_rf",
+        "kind": "logic",
+        "dynamic_W": 0.55,
+        "leakage_W": 0.07
+      },
+      {
+        "name": "vec_is_vec",
+        "kind": "logic",
+        "dynamic_W": 0.55,
+        "leakage_W": 0.05
+      }
+    ],
+    "connections": [
+      [
+        "if_pp",
+        "if_ctl",
+        96
+      ],
+      [
+        "if_ctl",
+        "id",
+        128
+      ],
+      [
+        "id",
+        "rn",
+        192
+      ],
+      [
+        "rn",
+        "is_int",
+        192
+      ],
+      [
+        "is_int",
+        "ix",
+        256
+      ],
+      [
+        "ix",
+        "is_int_fwd",
+        256
+      ],
+      [
+        "is_int_fwd",
+        "is_int_rf",
+        256
+      ],
+      [
+        "is_int_rf",
+        "is_int",
+        256
+      ],
+      [
+        "rn",
+        "vec_is_vec",
+        192
+      ],
+      [
+        "vec_is_vec",
+        "vec_vx",
+        384
+      ],
+      [
+        "ix",
+        "ls",
+        128
+      ],
+      [
+        "ls",
+        "mm",
+        128
+      ],
+      [
+        "ls",
+        "l2_ctl",
+        256
+      ],
+      [
+        "l2_ctl",
+        "l2_b0",
+        256
+      ],
+      [
+        "l2_ctl",
+        "l2_b1",
+        256
+      ],
+      [
+        "mm",
+        "tpe",
+        64
+      ],
+      [
+        "tpe",
+        "if_ctl",
+        64
+      ],
+      [
+        "vec_vx",
+        "ls",
+        256
+      ]
+    ]
+  },
+  "numpy": "2.3.5",
+  "python": "3.12.14",
+  "baseline_sha256": "6ed6d8051a3c2fe3421f3c7c300815e25d5cf12c31f1a2ef89362260666a6165",
+  "source_sha256": "afb571372c0c9f5c12d001dabc1ab30fcd330a5b6f40b498c30079718968b854",
+  "elapsed_seconds": 111.659996509552,
+  "standard_cells": 29400,
+  "fixed_macro_samples": 128,
+  "two_pin_nets": 62416,
+  "winner": {
+    "route_overflow_tracks": 0.0,
+    "route_overflow_fraction": 0.0,
+    "max_route_utilization": 0.8816666666666667,
+    "bond_count": 1664,
+    "max_bond_bin_density_mm2": 6299.999999999999,
+    "max_bond_bin_count": 63,
+    "bond_bin_capacity": 200.00000000000003,
+    "power_W": 6.248442576362234,
+    "dynamic_W": 5.337457994823185,
+    "peak_C": 72.02962800861684,
+    "nominal_peak_C": 83.39671611878578,
+    "nominal_power_W": 8.870546714008738,
+    "frequency_GHz": 1.361435204744339,
+    "critical_delay_ns": 0.7345189786388704,
+    "nominal_WNS_ps": -245.7487823418747,
+    "nominal_TNS_ns": -29.617107206096502,
+    "operating_WNS_ps": 2.8853277544982348e-06,
+    "timing_path_proxy_count": 62416,
+    "total_wire_mm": 8134.962857142857,
+    "electrothermal_residual_C": 8.89110225443801e-07,
+    "power_conservation_error_W": 8.881784197001252e-16,
+    "ipc_stream": 0.9706061135358028,
+    "ipc_matmul": 0.772161184696896,
+    "bips_stream": 1.3214173329077228,
+    "bips_matmul": 1.0512474205834499,
+    "mean_bips": 1.1863323767455864,
+    "l2_link_cycles": 1,
+    "energy_nJ_per_instruction": 5.267025244226506,
+    "feasible": true,
+    "run": "A_split__thermal__seed17",
+    "candidate": "A_split",
+    "profile": "thermal",
+    "seed": 17
+  },
+  "pareto": [
+    "A_split__balanced",
+    "A_split__timing",
+    "A_split__thermal",
+    "B_critical_local__balanced",
+    "B_critical_local__timing",
+    "B_critical_local__thermal",
+    "C_hot_top__balanced",
+    "C_hot_top__timing",
+    "A_split__thermal__seed17",
+    "A_split__thermal__seed41"
+  ],
+  "validation": {
+    "placement_gradient_max_relative_error": 0.00020402759468598317,
+    "routing_gradient_max_relative_error": 1.993178784045929e-06,
+    "thermal_linearity": true,
+    "initial_legal": true,
+    "thermal_grid_16_to_32_peak_delta_C": 0.3101284153644315,
+    "thermal_grid_16_to_32_frequency_delta_GHz": -0.0001679062843322754,
+    "fine_grid_metrics": {
+      "route_overflow_tracks": 0.0,
+      "route_overflow_fraction": 0.0,
+      "max_route_utilization": 0.8816666666666667,
+      "bond_count": 1664,
+      "max_bond_bin_density_mm2": 6299.999999999999,
+      "max_bond_bin_count": 63,
+      "bond_bin_capacity": 200.00000000000003,
+      "power_W": 6.2486173969189736,
+      "dynamic_W": 5.336799724244778,
+      "peak_C": 72.33975642398127,
+      "nominal_peak_C": 83.84441477082015,
+      "nominal_power_W": 8.871946573087282,
+      "frequency_GHz": 1.3612672984600067,
+      "critical_delay_ns": 0.7346095802173875,
+      "nominal_WNS_ps": -245.88310729367336,
+      "nominal_TNS_ns": -29.672788150234776,
+      "operating_WNS_ps": 9.65745150516284e-07,
+      "timing_path_proxy_count": 62416,
+      "total_wire_mm": 8134.962857142857,
+      "electrothermal_residual_C": 9.121235251541293e-07,
+      "power_conservation_error_W": 8.881784197001252e-16,
+      "ipc_stream": 0.9706382225228758,
+      "ipc_matmul": 0.7721692737441624,
+      "bips_stream": 1.321298070955738,
+      "bips_matmul": 1.0511287812235415,
+      "mean_bips": 1.1862134260896398,
+      "l2_link_cycles": 1,
+      "energy_nJ_per_instruction": 5.267700785951801,
+      "feasible": true
+    },
+    "all_saved_placements_legal": true,
+    "max_power_conservation_error_W": 8.881784197001252e-16
+  },
+  "sensitivity_scenarios": {
+    "nominal": {},
+    "power_minus20": {
+      "power_scale": 0.8
+    },
+    "power_plus20": {
+      "power_scale": 1.2
+    },
+    "rc_minus25": {
+      "rc_scale": 0.75
+    },
+    "rc_plus25": {
+      "rc_scale": 1.25
+    },
+    "cooling_good": {
+      "package_R": 2.5
+    },
+    "cooling_poor": {
+      "package_R": 5.0
+    },
+    "combined_stress": {
+      "power_scale": 1.2,
+      "rc_scale": 1.25,
+      "package_R": 5.0
+    }
+  },
+  "decision_rule": "Among discrete feasible layouts maximize equally weighted STREAM/MATMUL BIPS; then minimize energy/instruction."
+}

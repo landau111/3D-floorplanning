@@ -1,0 +1,15 @@
+{
+  "started_at": "2026-10-13T01:54:14.838985+08:00",
+  "kind": "quick",
+  "status": "complete",
+  "algorithm": "config-driven cell refinement",
+  "command_arguments": [
+    "--quick",
+    "--config",
+    "C:\\Users\\yongxue\\Documents\\ChatGPT\\CLIP-3D\\build\\新版ZIP 解压验证 02\\cell-3D\\changed inputs\\config.yaml",
+    "--annealing-config",
+    "C:\\Users\\yongxue\\Documents\\ChatGPT\\CLIP-3D\\build\\新版ZIP 解压验证 02\\cell-3D\\changed inputs\\annealing.yaml",
+    "--output",
+    "C:\\Users\\yongxue\\Documents\\ChatGPT\\CLIP-3D\\cell-3D\\results\\2026-10-13\\organized_portable_02_changed"
+  ]
+}

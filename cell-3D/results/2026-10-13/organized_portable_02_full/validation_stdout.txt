@@ -1,0 +1,21 @@
+Input: C:\Users\yongxue\Documents\ChatGPT\CLIP-3D\build\新版ZIP 解压验证 02\cell-3D\configs\config.yaml.json
+Die 0.9 x 0.78 mm; 16 modules; hard macros: ['l2_b0', 'l2_b1', 'l2_ctl']
+Python 3.12.14 / NumPy 2.3.5 / Windows-11-10.0.26200-SP0
+Input warning: Layout summary HBT=8582 vs supplied cross-tier signals=1360; using supplied connectivity without scaling
+Input warning: Density limit differs: layout 40000.0 vs annealing 20000; layout wins
+Module dynamic power: 0.845000 W; supplied connections: 18 pairs
+Cells: 13132 ; synthetic edges: 37184 ; cross-tier signal edges: 1360
+Input temperatures retained as references; no power fitting. Backend: resistance proxy
+Optimizing nonrectangular regions ...
+Region checks passed; reserved thin margin 0.025600 mm2
+Running initial ...
+initial: 1.101 GHz, 0.421 W, 32.79 C, BIPS 0.9954, overflow 7255.0
+Running balanced ...
+balanced: 1.336 GHz, 0.510 W, 33.86 C, BIPS 1.1681, overflow 7694.0
+Running timing ...
+timing: 1.333 GHz, 0.508 W, 33.90 C, BIPS 1.1660, overflow 7533.8
+Running thermal ...
+thermal: 1.341 GHz, 0.512 W, 33.85 C, BIPS 1.1716, overflow 7570.8
+Saved: C:\Users\yongxue\Documents\ChatGPT\CLIP-3D\cell-3D\results\2026-10-13\organized_portable_02_full
+No feasible optimized candidate; selected_candidate is diagnostic only.
+Elapsed 20.3 seconds

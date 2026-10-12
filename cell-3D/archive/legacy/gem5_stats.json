@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-09-14T23:59:44.324366+00:00",
+  "baseline": {
+    "schema_version": "1.0",
+    "model_name": "c910-like-o3-se-v1",
+    "scope": "Single-core RV64GC syscall-emulation baseline; not a cycle-accurate C910 model.",
+    "parameters": {
+      "isa": {
+        "value": "RV64GC",
+        "status": "confirmed",
+        "source": "C910 user manual"
+      },
+      "clock": {
+        "value": "2GHz",
+        "status": "confirmed",
+        "source": "C910 integration manual product reference point"
+      },
+      "num_cores": {
+        "value": 1,
+        "status": "assumption",
+        "source": "Per-core baseline; C910MP integration has two cores"
+      },
+      "cache_line_bytes": {
+        "value": 64,
+        "status": "confirmed",
+        "source": "C910 user manual cache chapters"
+      },
+      "fetch_width": {
+        "value": 3,
+        "status": "inferred",
+        "source": "Aligned with documented three-instruction decode baseline"
+      },
+      "decode_width": {
+        "value": 3,
+        "status": "confirmed",
+        "source": "C910 user manual: three-instruction decoder"
+      },
+      "rename_width": {
+        "value": 3,
+        "status": "inferred",
+        "source": "Matched to decode width for baseline"
+      },
+      "dispatch_width": {
+        "value": 3,
+        "status": "inferred",
+        "source": "Matched to decode width for baseline"
+      },
+      "issue_width": {
+        "value": 3,
+        "status": "assumption",
+        "source": "Public documentation does not state aggregate issue width"
+      },
+      "writeback_width": {
+        "value": 3,
+        "status": "assumption",
+        "source": "Public documentation does not state aggregate writeback width"
+      },
+      "commit_width": {
+        "value": 3,
+        "status": "confirmed",
+        "source": "C910 user manual: up to three instructions retired per cycle"
+      },
+      "rob_entries": {
+        "value": 128,
+        "status": "assumption",
+        "source": "Runnable placeholder pending RTL parameter extraction"
+      },
+      "iq_entries": {
+        "value": 64,
+        "status": "assumption",
+        "source": "Runnable placeholder pending RTL issue-queue extraction"
+      },
+      "lq_entries": {
+        "value": 32,
+        "status": "assumption",
+        "source": "gem5 baseline placeholder pending RTL extraction"
+      },
+      "sq_entries": {
+        "value": 32,
+        "status": "assumption",
+        "source": "gem5 baseline placeholder pending RTL extraction"
+      },
+      "phys_int_regs": {
+        "value": 160,
+        "status": "assumption",
+        "source": "Baseline sizing pending RTL physical-register extraction"
+      },
+      "phys_float_regs": {
+        "value": 160,
+        "status": "assumption",
+        "source": "Baseline sizing pending RTL physical-register extraction"
+      },
+      "branch_predictor": {
+        "value": "gem5 TournamentBP defaults",
+        "status": "assumption",
+        "source": "Represents BHT/BTB/RAS behavior, not C910 predictor capacity"
+      },
+      "l1i_size": {
+        "value": "64KiB",
+        "status": "confirmed",
+        "source": "C910 user manual"
+      },
+      "l1i_assoc": {
+        "value": 2,
+        "status": "confirmed",
+        "source": "C910 user manual"
+      },
+      "l1i_latency_cycles": {
+        "value": 2,
+        "status": "assumption",
+        "source": "Timing placeholder pending SRAM/timing evidence"
+      },
+      "l1d_size": {
+        "value": "64KiB",
+        "status": "confirmed",
+        "source": "C910 user manual"
+      },
+      "l1d_assoc": {
+        "value": 2,
+        "status": "confirmed",
+        "source": "C910 user manual"
+      },
+      "l1d_latency_cycles": {
+        "value": 2,
+        "status": "assumption",
+        "source": "Timing placeholder pending SRAM/timing evidence"
+      },
+      "l2_size": {
+        "value": "1MiB",
+        "status": "confirmed",
+        "source": "C910 user manual"
+      },
+      "l2_assoc": {
+        "value": 16,
+        "status": "confirmed",
+        "source": "C910 user manual"
+      },
+      "l2_latency_cycles": {
+        "value": 12,
+        "status": "assumption",
+        "source": "Timing placeholder pending SRAM/timing evidence"
+      },
+      "memory_size": {
+        "value": "2GiB",
+        "status": "assumption",
+        "source": "SE-mode experiment capacity"
+      },
+      "memory_latency": {
+        "value": "50ns",
+        "status": "assumption",
+        "source": "SimpleMemory baseline placeholder"
+      },
+      "memory_bandwidth": {
+        "value": "12.8GiB/s",
+        "status": "assumption",
+        "source": "SimpleMemory baseline placeholder"
+      }
+    }
+  },
+  "provenance": {
+    "gem5_version": "gem5 version 25.1.0.1",
+    "gem5_git_commit": "c8222cc67a399bfc01e8658dd14b30d5bfd634f9",
+    "gem5_expected_tag": "v25.1.0.1",
+    "compiler": "riscv64-linux-gnu-gcc 13.3.0",
+    "simulation_mode": "SE/timing"
+  },
+  "normalization": {
+    "meaning": "Stable names and units across workloads; values are not divided by a reference machine.",
+    "missing_optional_stat_policy": "null"
+  },
+  "runs": [
+    {
+      "workload": "stream",
+      "status": "passed",
+      "binary": {
+        "path": "build/benchmarks/stream.riscv",
+        "sha256": "4bd4322a4c9e074b7a445f5a34a0eabd83cbf1d2707c93578413d99411186697"
+      },
+      "workload_result": {
+        "validation": "passed",
+        "n": 65536,
+        "iterations": 4,
+        "checksum": 4866048000.0,
+        "modeled_bytes": 20971520
+      },
+      "simulation": {
+        "instructions": 7590431,
+        "cycles": 8804154,
+        "sim_ticks": 4402076000,
+        "sim_seconds": 0.004402,
+        "ipc": 0.8621420070571233,
+        "cpi": 1.1599017236307134,
+        "source_stats": {
+          "instructions": "system.cpu.commitStats0.numInsts",
+          "cycles": "system.cpu.numCycles",
+          "sim_ticks": "simTicks",
+          "sim_seconds": "simSeconds"
+        }
+      },
+      "cache": {
+        "l1i": {
+          "accesses": 676238.0,
+          "misses": 697.0,
+          "miss_rate": 0.0010307022083940862,
+          "source_stats": {
+            "accesses": "system.cpu.l1i.overallAccesses::total",
+            "misses": "system.cpu.l1i.overallMisses::total"
+          }
+        },
+        "l1d": {
+          "accesses": 2972785.0,
+          "misses": 2671267.0,
+          "miss_rate": 0.8985738961949822,
+          "source_stats": {
+            "accesses": "system.cpu.l1d.overallAccesses::total",
+            "misses": "system.cpu.l1d.overallMisses::total"
+          }
+        },
+        "l2": {
+          "accesses": 370329.0,
+          "misses": 315039.0,
+          "miss_rate": 0.8507003232261043,
+          "source_stats": {
+            "accesses": "system.l2.overallAccesses::total",
+            "misses": "system.l2.overallMisses::total"
+          }
+        }
+      },
+      "normalized": {
+        "instructions_per_cycle": 0.8621420070571233,
+        "cycles_per_instruction": 1.1599017236307134,
+        "l1i_misses_per_kinst": 0.09182614267885447,
+        "l1d_misses_per_kinst": 351.92560211666506,
+        "l2_misses_per_kinst": 41.504757766719706
+      },
+      "raw_artifacts": {
+        "stats": "results/stream/stats.txt",
+        "config_ini": "results/stream/config.ini",
+        "config_json": "results/stream/config.json",
+        "program_output": "results/stream/program.out"
+      }
+    },
+    {
+      "workload": "matmul",
+      "status": "passed",
+      "binary": {
+        "path": "build/benchmarks/matmul.riscv",
+        "sha256": "23a0181bdf33014bd98a14dd2bf5fe37f0cae374ff6f44ae9f044df2a1930542"
+      },
+      "workload_result": {
+        "validation": "passed",
+        "n": 64,
+        "repeats": 2,
+        "checksum": 113832.995475,
+        "fma_operations": 524288
+      },
+      "simulation": {
+        "instructions": 3914594,
+        "cycles": 5271636,
+        "sim_ticks": 2635817500,
+        "sim_seconds": 0.002636,
+        "ipc": 0.7425766877682753,
+        "cpi": 1.3466622592279045,
+        "source_stats": {
+          "instructions": "system.cpu.commitStats0.numInsts",
+          "cycles": "system.cpu.numCycles",
+          "sim_ticks": "simTicks",
+          "sim_seconds": "simSeconds"
+        }
+      },
+      "cache": {
+        "l1i": {
+          "accesses": 28037.0,
+          "misses": 649.0,
+          "miss_rate": 0.02314798302243464,
+          "source_stats": {
+            "accesses": "system.cpu.l1i.overallAccesses::total",
+            "misses": "system.cpu.l1i.overallMisses::total"
+          }
+        },
+        "l1d": {
+          "accesses": 1620927.0,
+          "misses": 22405.0,
+          "miss_rate": 0.013822337464919765,
+          "source_stats": {
+            "accesses": "system.cpu.l1d.overallAccesses::total",
+            "misses": "system.cpu.l1d.overallMisses::total"
+          }
+        },
+        "l2": {
+          "accesses": 5533.0,
+          "misses": 3105.0,
+          "miss_rate": 0.5611783842400144,
+          "source_stats": {
+            "accesses": "system.l2.overallAccesses::total",
+            "misses": "system.l2.overallMisses::total"
+          }
+        }
+      },
+      "normalized": {
+        "instructions_per_cycle": 0.7425766877682753,
+        "cycles_per_instruction": 1.3466622592279045,
+        "l1i_misses_per_kinst": 0.16578986224369627,
+        "l1d_misses_per_kinst": 5.723454335238852,
+        "l2_misses_per_kinst": 0.7931857045711509
+      },
+      "raw_artifacts": {
+        "stats": "results/matmul/stats.txt",
+        "config_ini": "results/matmul/config.ini",
+        "config_json": "results/matmul/config.json",
+        "program_output": "results/matmul/program.out"
+      }
+    }
+  ]
+}

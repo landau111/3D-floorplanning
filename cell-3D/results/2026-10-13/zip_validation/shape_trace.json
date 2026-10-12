@@ -1,0 +1,16 @@
+[
+  {
+    "step": 0,
+    "loss": 3.078955385053969,
+    "tau": 0.044550000000000006
+  },
+  {
+    "step": 39,
+    "loss": 2.1186948159208816,
+    "tau": 0.0032400000000000003
+  },
+  {
+    "selected_legal_checkpoint": 39,
+    "rejected_checkpoint_count": 0
+  }
+]

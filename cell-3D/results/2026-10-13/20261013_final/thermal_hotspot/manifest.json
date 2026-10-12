@@ -1,0 +1,74 @@
+{
+  "command": [
+    "wsl.exe",
+    "-d",
+    "Codex-C910-gem5",
+    "--cd",
+    "/mnt/c/Users/yongxue/Documents/ChatGPT/CLIP-3D/cell3d/runs/20261013_final/thermal_hotspot",
+    "--exec",
+    "/mnt/c/Users/yongxue/Documents/ChatGPT/CLIP-3D/third_party/HotSpot/hotspot",
+    "-c",
+    "hotspot.config",
+    "-grid_layer_file",
+    "stack.lcf",
+    "-f",
+    "bottom.flp",
+    "-p",
+    "power.ptrace",
+    "-steady_file",
+    "hotspot.steady",
+    "-grid_steady_file",
+    "hotspot.grid.steady"
+  ],
+  "total_power_W": 1.1478157347747748,
+  "power_conservation_error_W": 0.0,
+  "nominal_peak_C": 43.45927037000001,
+  "grid": [
+    64,
+    64
+  ],
+  "backend": "HotSpot",
+  "stack": [
+    {
+      "name": "bottom_si",
+      "power_layer": "bottom",
+      "thickness_um": 50,
+      "conductivity_W_m_K": 130,
+      "heat_capacity_J_m3_K": 1630300
+    },
+    {
+      "name": "hb_interface",
+      "power_layer": "none",
+      "thickness_um": 2,
+      "conductivity_W_m_K": 1.4,
+      "heat_capacity_J_m3_K": 2200000
+    },
+    {
+      "name": "top_si",
+      "power_layer": "top",
+      "thickness_um": 50,
+      "conductivity_W_m_K": 130,
+      "heat_capacity_J_m3_K": 1630300
+    },
+    {
+      "name": "tim",
+      "power_layer": "none",
+      "thickness_um": 20,
+      "conductivity_W_m_K": 4,
+      "heat_capacity_J_m3_K": 4000000
+    }
+  ],
+  "package": {
+    "r_convec": 1.042,
+    "c_convec": 140.4,
+    "s_sink": 0.06,
+    "t_sink": 0.0069,
+    "k_sink": 400,
+    "p_sink": 3550000,
+    "s_spreader": 0.03,
+    "t_spreader": 0.001,
+    "k_spreader": 400,
+    "p_spreader": 3550000
+  },
+  "executable_sha256": "7d62ecd862167f73947262ef5f68bdc50dc9ca8d884899e8a1f62ebc055e3a6f"
+}
